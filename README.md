@@ -7,6 +7,8 @@ AlexanderChan 的个人主页，关注图神经网络、Graph Transformer 与推
 ## 技术特点
 
 - 原生 HTML、CSS 和 JavaScript，无构建依赖
+- 技术博客式文章索引与项目档案
+- 深灰强调色与纯色背景
 - 响应式桌面与手机布局
 - 深浅色主题切换
 - GitHub Pages 自动托管
