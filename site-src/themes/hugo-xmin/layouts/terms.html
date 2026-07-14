@@ -1,0 +1,15 @@
+{{ partial "header.html" . }}
+
+<main id="content" class="site-main">
+  <header class="page-header">
+    <p class="section-index">INDEX</p>
+    <h1>{{ .Title }}</h1>
+  </header>
+  <ul class="terms">
+    {{ range .Pages }}
+    <li><a href="{{ .RelPermalink }}">{{ .Title }}</a><span>{{ len .Pages }}</span></li>
+    {{ end }}
+  </ul>
+</main>
+
+{{ partial "footer.html" . }}

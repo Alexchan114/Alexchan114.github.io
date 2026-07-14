@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>GCN on AlexanderChan</title><link>https://alexchan114.github.io/tags/gcn/</link><description>Recent content in GCN on AlexanderChan</description><generator>Hugo</generator><language>zh-cn</language><lastBuildDate>Fri, 10 Jul 2026 00:00:00 +0000</lastBuildDate><atom:link href="https://alexchan114.github.io/tags/gcn/index.xml" rel="self" type="application/rss+xml"/><item><title>从邻接矩阵开始理解一次图卷积</title><link>https://alexchan114.github.io/notes/graph-convolution/</link><pubDate>Fri, 10 Jul 2026 00:00:00 +0000</pubDate><guid>https://alexchan114.github.io/notes/graph-convolution/</guid><description>&lt;p&gt;图卷积层经常被一行库函数隐藏。为了判断实现是否正确，最可靠的方法仍然是回到矩阵形式，手工检查一次信息传播。&lt;/p&gt;
+&lt;h2 id="计算结构"&gt;计算结构&lt;/h2&gt;
+&lt;p&gt;经典 GCN 层可以写成：&lt;/p&gt;
+&lt;p&gt;$$
+H^{(l+1)} = \sigma\left(\tilde{D}^{-\frac{1}{2}}\tilde{A}\tilde{D}^{-\frac{1}{2}}H^{(l)}W^{(l)}\right)
+$$&lt;/p&gt;
+&lt;p&gt;其中 $\tilde{A}=A+I$ 加入自环，$\tilde{D}$ 是对应的度矩阵。归一化的目的，是控制不同度数节点在聚合时的尺度。&lt;/p&gt;
+&lt;h2 id="最小检查清单"&gt;最小检查清单&lt;/h2&gt;
+&lt;ol&gt;
+&lt;li&gt;邻接矩阵是否与节点顺序一致。&lt;/li&gt;
+&lt;li&gt;自环是否只加入一次。&lt;/li&gt;
+&lt;li&gt;度矩阵是否从加入自环后的邻接矩阵计算。&lt;/li&gt;
+&lt;li&gt;稀疏表示和稠密表示的结果是否在容差内一致。&lt;/li&gt;
+&lt;li&gt;库实现的归一化方向是否与手写公式相同。&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;当一个四节点玩具图能够逐项对上，再迁移到批图和真实数据集，调试成本会低很多。&lt;/p&gt;</description></item></channel></rss>

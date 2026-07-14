@@ -1,26 +1,20 @@
-# AlexanderChan's personal site
+# AlexanderChan Technical Blog
 
-AlexanderChan 的个人主页，关注图神经网络、Graph Transformer 与推荐系统。
+个人技术博客，基于 [Hugo XMin](https://github.com/yihui/hugo-xmin)（MIT）改造并发布到 GitHub Pages。
 
-在线地址：<https://alexchan114.github.io>
+- Hugo 内容管理与文章归档
+- 深灰强调色和纯色背景
+- 研究笔记、项目档案、标签与 RSS
+- 响应式阅读布局
 
-## 技术特点
+## Source
 
-- 原生 HTML、CSS 和 JavaScript，无构建依赖
-- 技术博客式文章索引与项目档案
-- 深灰强调色与纯色背景
-- 响应式桌面与手机布局
-- 深浅色主题切换
-- GitHub Pages 自动托管
+Hugo 源文件位于 `site-src/`，生成后的静态站点发布在仓库根目录。
 
-## 本地预览
+## Build
 
 ```powershell
-python -m http.server 8000
+.\.tools\hugo-0.164.0\hugo.exe --source "$PWD\site-src" --destination "$PWD\site-dist"
 ```
 
-然后打开 <http://localhost:8000>。
-
-## 发布
-
-站点从 `main` 分支根目录发布到 GitHub Pages。推送更新后，GitHub 会自动重新部署。
+网站地址：<https://alexchan114.github.io/>

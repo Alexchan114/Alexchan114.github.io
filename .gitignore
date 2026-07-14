@@ -1,1 +1,3 @@
 .tools/
+site-dist/
+site-src/.hugo_build.lock

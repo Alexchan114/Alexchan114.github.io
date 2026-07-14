@@ -1,0 +1,9 @@
+  <footer class="site-footer">
+    {{ partial "foot_custom.html" . }}
+    {{ with site.Params.footer }}
+    <p>{{ replace . "{Year}" now.Year | markdownify }}</p>
+    {{ end }}
+    <p class="theme-credit">基于 <a href="https://github.com/yihui/hugo-xmin" target="_blank" rel="noreferrer">Hugo XMin</a>（MIT）改造</p>
+  </footer>
+  </body>
+</html>

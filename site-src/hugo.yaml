@@ -1,0 +1,51 @@
+baseURL: "https://alexchan114.github.io/"
+locale: "zh-cn"
+defaultContentLanguage: "zh"
+title: "AlexanderChan"
+theme: "hugo-xmin"
+enableRobotsTXT: true
+
+permalinks:
+  notes: "/notes/:slug/"
+
+menu:
+  main:
+    - name: 首页
+      url: "/"
+      weight: 1
+    - name: 笔记
+      url: "/notes/"
+      weight: 2
+    - name: 项目
+      url: "/projects/"
+      weight: 3
+    - name: 关于
+      url: "/about/"
+      weight: 4
+    - name: GitHub ↗
+      url: "https://github.com/Alexchan114"
+      weight: 5
+
+params:
+  description: "AlexanderChan 的图神经网络、Graph Transformer 与可复现实验笔记。"
+  footer: "AlexanderChan {Year} · [GitHub](https://github.com/Alexchan114) · [RSS](/index.xml)"
+
+taxonomies:
+  tag: tags
+
+markup:
+  highlight:
+    codeFences: true
+    guessSyntax: true
+    noClasses: false
+  goldmark:
+    renderer:
+      unsafe: true
+
+outputs:
+  home:
+    - HTML
+    - RSS
+  section:
+    - HTML
+    - RSS

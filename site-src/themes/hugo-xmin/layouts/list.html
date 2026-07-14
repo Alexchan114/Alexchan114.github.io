@@ -1,0 +1,58 @@
+{{ partial "header.html" . }}
+
+<main id="content" class="site-main">
+  {{ if .IsHome }}
+    <article class="home-intro">
+      {{ .Content }}
+    </article>
+
+    <section class="recent-notes" aria-labelledby="recent-notes-title">
+      <div class="section-heading">
+        <div>
+          <p class="section-index">01 / RECENT NOTES</p>
+          <h2 id="recent-notes-title">最近的研究记录</h2>
+        </div>
+        <a class="text-link" href="{{ "/notes/" | relURL }}">全部笔记 →</a>
+      </div>
+      <ol class="post-list">
+        {{ range first 5 (where site.RegularPages "Section" "notes") }}
+        <li>
+          <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+          <div>
+            <a class="post-title" href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
+            {{ with .Description }}<p>{{ . }}</p>{{ end }}
+            {{ with .Params.tags }}<p class="tags">{{ delimit . " · " }}</p>{{ end }}
+          </div>
+        </li>
+        {{ end }}
+      </ol>
+    </section>
+  {{ else }}
+    <header class="page-header">
+      <p class="section-index">{{ upper (.Section | default "PAGE") }}</p>
+      <h1>{{ .Title | markdownify }}</h1>
+      {{ with .Description }}<p class="page-description">{{ . }}</p>{{ end }}
+    </header>
+
+    <div class="page-content">
+      {{ .Content }}
+    </div>
+
+    {{ with .Pages }}
+    <ol class="post-list section-list">
+      {{ range .ByDate.Reverse }}
+      <li>
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
+        <div>
+          <a class="post-title" href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a>
+          {{ with .Description }}<p>{{ . }}</p>{{ end }}
+          {{ with .Params.tags }}<p class="tags">{{ delimit . " · " }}</p>{{ end }}
+        </div>
+      </li>
+      {{ end }}
+    </ol>
+    {{ end }}
+  {{ end }}
+</main>
+
+{{ partial "footer.html" . }}
