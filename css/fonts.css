@@ -1,14 +1,7 @@
 body {
-  font-family: Inter, ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Microsoft YaHei", sans-serif;
+  font-family: Optima, Candara, Calibri, Arial, sans-serif;
 }
-
-code,
-pre,
-.brand,
-.section-index,
-.article-details,
-.tags,
-.status-grid dt,
-.site-footer {
-  font-family: "SFMono-Regular", Consolas, "Liberation Mono", Menlo, monospace;
+code {
+  font-family: "Lucida Console", Monaco, monospace;
+  font-size: 85%;
 }

@@ -1,28 +1,12 @@
 {{ partial "header.html" . }}
+<div class="article-meta">
+<h1><span class="title">{{ .Title | markdownify }}</span></h1>
+{{ with .Params.author }}<h2 class="author">{{ . }}</h2>{{ end }}
+{{ if (gt .Params.date 0) }}<h2 class="date">{{ .Date.Format "2006/01/02" }}</h2>{{ end }}
+</div>
 
-<main id="content" class="site-main">
-  <article class="article">
-    <header class="article-meta">
-      <p class="section-index">{{ upper (.Section | default "PAGE") }}</p>
-      <h1>{{ .Title | markdownify }}</h1>
-      {{ with .Description }}<p class="article-deck">{{ . }}</p>{{ end }}
-      {{ if not .Date.IsZero }}
-      <div class="article-details">
-        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006.01.02" }}</time>
-        <span>{{ .ReadingTime }} 分钟阅读</span>
-      </div>
-      {{ end }}
-      {{ with .GetTerms "tags" }}
-      <div class="article-tags" aria-label="标签">
-        {{ range . }}<a href="{{ .RelPermalink }}">#{{ .LinkTitle }}</a>{{ end }}
-      </div>
-      {{ end }}
-    </header>
-
-    <div class="article-body">
-      {{ .Content }}
-    </div>
-  </article>
+<main>
+{{ .Content }}
 </main>
 
 {{ partial "footer.html" . }}

@@ -1,20 +1,7 @@
 ---
-title: "关于"
-description: "关于 AlexanderChan 和这个公开研究日志。"
+title: "About"
 ---
 
-我是 AlexanderChan，目前关注图神经网络、Graph Transformer 与推荐系统。
+Hi, I am AlexanderChan. This is my personal blog for notes about programming, machine learning, and ongoing experiments.
 
-这个网站是一份公开研究日志。我希望它不只展示“做过什么”，也能保留一个方法为什么有效、依赖什么假设，以及实验结果在什么边界内成立。
-
-## 这里会出现什么
-
-- 论文结构和关键数据流的拆解；
-- 能够复现的实验配置与检查方法；
-- 图学习代码中的实现细节；
-- 没有得到预期结果的路径与原因；
-- 值得继续追问的问题。
-
-## 联系方式
-
-你可以在 [GitHub](https://github.com/Alexchan114) 查看我的公开项目与代码。
+You can find my public work on [GitHub](https://github.com/Alexchan114).
