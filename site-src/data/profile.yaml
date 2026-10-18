@@ -14,8 +14,6 @@ bio:
 labels:
   education: {zh: 教育经历, en: Education}
   experience: {zh: 实习与项目, en: Experience & projects}
-  skills: {zh: 技能, en: Skills}
-  beyond: {zh: 其他经历, en: Beyond engineering}
   writing: {zh: 阅读文章, en: Read writing}
   present: {zh: 至今, en: Present}
 education:
@@ -32,35 +30,85 @@ experience:
     organization: {zh: OPPO, en: OPPO}
     role: {zh: AI for CAE 实习生, en: AI for CAE Intern}
     description:
-      zh: 面向手机冲击场景开发有限元图代理模型。基于 GraphGPS、Patch / Core-Halo 与多关系图网络，建模节点、单元及接触约束，并结合因果历史记忆与多 GPU 训练预测时序响应。
-      en: Developed graph-based finite-element surrogates for smartphone impact simulations. Used GraphGPS, Patch / Core-Halo modeling, and multi-relation graph networks to represent nodes, elements, and contact constraints, combining causal history memory with multi-GPU training for temporal response prediction.
+      zh: 围绕手机冲击响应预测，参与从有限元数据建模、图网络架构设计到训练验证的 AI for CAE 系统开发，探索复杂接触场景下的时序代理模型。
+      en: Worked on an AI for CAE system for smartphone impact response prediction, spanning finite-element data modeling, graph-network architecture, and training validation, with a focus on temporal surrogates for complex contact scenarios.
+    contributions:
+      - title: {zh: 有限元图代理建模, en: Graph-based finite-element surrogates}
+        text:
+          zh: 基于 GraphGPS 构建 Patch + Core/Halo 时序模型，将节点状态、单元拓扑、接触关系与 Tie 约束组织到统一图表示中，预测下一时刻的位移、等效塑性应变（PEEQ）及接触响应。
+          en: Built a GraphGPS-based temporal model with Patch + Core/Halo partitioning. Unified node states, element topology, contact relations, and tie constraints in a graph representation to predict next-step displacement, equivalent plastic strain (PEEQ), and contact response.
+      - title: {zh: 物理感知的多关系架构, en: Physics-aware multi-relation architecture}
+        text:
+          zh: 设计 Node–Element–Node 双部图消息传递、Tie Event MPNN、Contact Event MPNN 与 Global Attention 并行分支，通过门控残差融合局部物理传播与全局长程依赖。
+          en: Designed parallel branches for Node–Element–Node bipartite message passing, Tie Event MPNN, Contact Event MPNN, and global attention. Used gated residual fusion to combine local physical interactions with long-range dependencies.
+      - title: {zh: 因果历史记忆, en: Causal history memory}
+        text:
+          zh: 将历史有限元帧压缩为 Contact / Part / Global Tokens，结合 Age Encoding、分块多头注意力、FIFO 记忆与门控融合，在控制显存开销的同时利用多帧历史信息。
+          en: Compressed historical finite-element frames into Contact / Part / Global tokens. Combined age encoding, chunked multi-head attention, FIFO memory, and gated fusion to use multi-frame history while controlling memory cost.
+      - title: {zh: 训练工程与验证, en: Training engineering and validation}
+        text:
+          zh: 完成多 GPU 训练，结合 Core-only Loss、Field Mask 与时间反向传播（BPTT）开展 Patch 级时空联合训练，并进行模型收敛、多机型泛化与推理加速验证。
+          en: Implemented multi-GPU training with core-only loss, field masks, and backpropagation through time (BPTT) for patch-level spatiotemporal learning. Evaluated convergence, generalization across phone models, and inference acceleration.
   - start: '2025.08'
     organization: {zh: 华为校企联合研发项目, en: University–Huawei research collaboration}
     role: {zh: 接插件力学仿真 · 项目负责人, en: Connector mechanics simulation · Project lead}
     description:
-      zh: 研究公差组合下的连接器可靠度，结合代理模型与子结构降维；使用 HyperMesh、Abaqus、Tcl 和 abaqpy 实现公差抽样、网格检查与批量提交，并通过插拔物理实验对照仿真结果。
-      en: Investigate connector reliability under tolerance combinations using surrogate models and substructuring. Automate tolerance sampling, mesh checks, and batch submission with HyperMesh, Abaqus, Tcl, and abaqpy, and compare simulation results with physical insertion and extraction tests.
+      zh: 负责校企联合研发中的接插件力学仿真项目，研究制造公差组合下的互配可靠度，推进有限元自动化、代理模型与计算降维，并通过物理实验核对仿真结果。
+      en: Lead connector mechanics simulation projects within a university–industry research collaboration. Study mating reliability under manufacturing tolerance combinations, combining finite-element automation, surrogate modeling, and model reduction with physical test comparisons.
+    contributions:
+      - title: {zh: 公差建模与代理模型, en: Tolerance modeling and surrogates}
+        text:
+          zh: 将不同公差组合下的多部件几何与网格信息进行结构化编码，构建和训练连接器代理模型，探索以数据驱动预测降低重复有限元计算成本。
+          en: Structure geometry and mesh information for multi-part assemblies under different tolerance combinations. Build and train connector surrogate models to reduce the cost of repeated finite-element analyses through data-driven prediction.
+      - title: {zh: 仿真自动化, en: Simulation automation}
+        text:
+          zh: 基于 Tcl 与 abaqpy 驱动 HyperMesh 和 Abaqus，串联蒙特卡洛公差抽样、网格检查和任务批量提交，将重复建模与计算操作整理为可复用的自动化过程。
+          en: Automate HyperMesh and Abaqus through Tcl and abaqpy, connecting Monte Carlo tolerance sampling, mesh checks, and batch job submission in a reusable process for repeated modeling and analysis tasks.
+      - title: {zh: 子结构降维与多工况计算, en: Substructuring and multiple load cases}
+        text:
+          zh: 制定并落地基于子结构的计算降维方案，应用于单对连接器插拔与多对连接器联合计算，覆盖正位、偏位和偏角等工况，降低复杂装配体的计算开销。
+          en: Develop and implement a substructuring-based reduction strategy for single-pair insertion and extraction, and coupled analysis of multiple connector pairs. Cover aligned, offset, and angularly misaligned conditions to reduce computational cost for complex assemblies.
+      - title: {zh: 物理实验对照, en: Physical test comparison}
+        text:
+          zh: 统筹 HyperMesh 与 Abaqus 联合仿真，独立开展多工况插拔物理实验，清洗并对照实验与仿真数据，用于检验降维方案和代理模型的工程适用性。
+          en: Coordinate HyperMesh–Abaqus simulation and independently conduct insertion and extraction tests under multiple conditions. Clean and compare experimental and simulated data to assess the engineering applicability of the reduction strategy and surrogate models.
   - start: '2025.07'
     end: '2025.10'
     organization: {zh: 奇绩创坛, en: MiraclePlus}
     role: {zh: 实习生 · 行业研究与技术商业化, en: Intern · Industry research & technology commercialization}
     description:
-      zh: 参与前沿技术行业研究，关注 Physics AI 与工业仿真；参与技术商业化评价体系的数据整理、机器学习模型训练与技术资产因子分析。
-      en: Conducted research on emerging technologies, including Physics AI and industrial simulation. Contributed data preparation, machine-learning model training, and technology-factor analysis to a research commercialization evaluation system.
+      zh: 参与硬科技行业研究与商业访谈，关注仿真计算、量子计算、大模型及生物医药等领域，并参与面向论文技术商业化的评价体系建设。
+      en: Conducted deep-tech industry research and business interviews across simulation, quantum computing, large language models, and biomedicine. Contributed to an evaluation system for the commercialization potential of research technologies.
+    contributions:
+      - title: {zh: 前沿技术商业化研究, en: Technology commercialization research}
+        text:
+          zh: 调研 Physics AI 与 AI 加速工业仿真的技术路线和应用方案，结合行业研究与访谈形成对技术落地场景的理解，为早期科技项目评估提供研究支持。
+          en: Investigated technical approaches and applications in Physics AI and AI-accelerated industrial simulation. Combined industry research and interviews to understand deployment scenarios and support the assessment of early-stage technology ventures.
+      - title: {zh: 评价体系的数据建设, en: Data preparation for technology evaluation}
+        text:
+          zh: 参与从零搭建论文技术商业化评价体系，整理、清洗来自 YC Companies、Google Scholar 和 PubMed 的多源数据，为后续分析与建模建立底层数据基础。
+          en: Helped build a research commercialization evaluation system from the ground up. Organized and cleaned data from YC Companies, Google Scholar, and PubMed to support downstream analysis and modeling.
+      - title: {zh: 机器学习与技术因子分析, en: Machine learning and technology-factor analysis}
+        text:
+          zh: 基于行业研究数据完成机器学习模型训练，参与技术资产因子挖掘，将技术研究与数据分析结合到商业化评价中。
+          en: Trained machine-learning models using industry research data and contributed to technology-asset factor analysis, connecting technical research with data-driven commercialization assessment.
   - start: '2024.08'
     end: '2025.02'
     organization: {zh: AGV 强化学习项目, en: AGV reinforcement learning project}
     role: {zh: 项目负责人, en: Project lead}
     description:
-      zh: 为立体仓库货位优化构建 Gymnasium 环境，将结构稳定性纳入策略评估；结合 PPO / MAPPO、CoppeliaSim、Isaac Sim 和 SAP2000，完成仿真训练与实体仓库运行测试。
-      en: Built a Gymnasium environment for warehouse slot allocation with structural stability in policy evaluation. Combined PPO / MAPPO, CoppeliaSim, Isaac Sim, and SAP2000 for simulation-based training and operational tests in a physical warehouse.
-skills:
-  - label: {zh: 编程与机器学习, en: Programming & machine learning}
-    detail: {zh: 'C++ · Rust · Python · PyTorch · vLLM · verl · Gymnasium', en: 'C++ · Rust · Python · PyTorch · vLLM · verl · Gymnasium'}
-  - label: {zh: 仿真与工程, en: Simulation & engineering}
-    detail: {zh: 'HyperMesh · Abaqus · SAP2000 · Tcl · abaqpy', en: 'HyperMesh · Abaqus · SAP2000 · Tcl · abaqpy'}
-  - label: {zh: 语言, en: Languages}
-    detail: {zh: 英语 CET-6, en: 'English: College English Test, Band 6 (CET-6)'}
-beyond:
-  - {zh: 东南大学交响乐团团长, en: Student leader of the Southeast University Symphony Orchestra}
-  - {zh: 全国大学生英语竞赛国家三等奖, en: 'National third prize, National English Competition for College Students'}
+      zh: 负责考虑结构稳定性的立体仓库货位优化项目，将 AGV 仓储作业与结构安全评价相结合，完成从强化学习环境构建、策略训练到实体仓库测试的实践。
+      en: Led a warehouse slot-allocation project that incorporated structural stability into AGV decision-making, spanning reinforcement-learning environment design, policy training, and tests in a physical warehouse.
+    contributions:
+      - title: {zh: 强化学习环境构建, en: Reinforcement-learning environment}
+        text:
+          zh: 独立构建 Gymnasium 环境，将货位分配和结构稳定性要求转化为可计算的强化学习任务，使智能体在仿真中学习仓储策略。
+          en: Independently built a Gymnasium environment that translated warehouse slot allocation and structural stability requirements into a reinforcement-learning task, enabling agents to learn warehouse policies in simulation.
+      - title: {zh: 跨域仿真与结构反馈, en: Coupled simulation and structural feedback}
+        text:
+          zh: 联合 CoppeliaSim、Isaac Sim 与 SAP2000 建立仿真过程，通过 Python 对 SAP2000 进行二次开发，自动评估不同货位分布的结构稳定性与安全指标，为策略提供反馈。
+          en: Connected CoppeliaSim, Isaac Sim, and SAP2000 in a simulation process. Extended SAP2000 through Python to automatically evaluate structural stability and safety indicators for different slot allocations and provide feedback to the policy.
+      - title: {zh: 策略训练与实体测试, en: Policy training and physical testing}
+        text:
+          zh: 在自定义环境中使用 PPO 和 MAPPO 训练多智能体策略，随后将模型部署至实体仓库环境并完成现场运行测试，检验策略从仿真到实际应用的可行性。
+          en: Trained multi-agent policies with PPO and MAPPO in the custom environment, then deployed the models in a physical warehouse and completed on-site operational tests to assess transfer from simulation to practice.

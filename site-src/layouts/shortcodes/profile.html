@@ -27,15 +27,10 @@
       <div class="profile-entry-heading"><h3>{{ index .organization $lang }}</h3><p class="profile-period">{{ .start }} — {{ .end | default (index $p.labels.present $lang) }}</p></div>
       <p class="profile-role">{{ index .role $lang }}</p>
       <p class="profile-description">{{ index .description $lang }}</p>
+      <ul class="profile-contributions">
+        {{ range .contributions }}<li><strong>{{ index .title $lang }}</strong><span>{{ index .text $lang }}</span></li>{{ end }}
+      </ul>
     </div>
     {{ end }}
-  </section>
-  <section class="profile-section" aria-labelledby="profile-skills">
-    <h2 id="profile-skills">{{ index $p.labels.skills $lang }}</h2>
-    <dl class="profile-skills">{{ range $p.skills }}<div><dt>{{ index .label $lang }}</dt><dd>{{ index .detail $lang }}</dd></div>{{ end }}</dl>
-  </section>
-  <section class="profile-section profile-beyond" aria-labelledby="profile-beyond">
-    <h2 id="profile-beyond">{{ index $p.labels.beyond $lang }}</h2>
-    <ul>{{ range $p.beyond }}<li>{{ index . $lang }}</li>{{ end }}</ul>
   </section>
 </article>

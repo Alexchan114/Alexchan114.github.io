@@ -19,11 +19,11 @@
 .profile-period { color: #737373; font-size: .84rem; white-space: nowrap; margin: 0; font-variant-numeric: tabular-nums; }
 .profile-detail, .profile-role { color: #626262; font-size: .93rem; margin: .25rem 0 0; }
 .profile-description { font-size: .96rem; line-height: 1.85; margin: .65rem 0 0; }
-.profile-skills { margin: 0; }
-.profile-skills > div { margin: 0 0 .8rem; }
-.profile-skills dt { font-size: .9rem; color: #626262; }
-.profile-skills dd { margin: .2rem 0 0; line-height: 1.8; }
-.profile-beyond ul { padding-left: 1.2rem; line-height: 1.9; }
+.profile-contributions { margin: .85rem 0 0; padding-left: 1.15rem; font-size: .94rem; line-height: 1.85; }
+.profile-contributions li { padding-left: .2rem; margin-bottom: .8rem; }
+.profile-contributions li:last-child { margin-bottom: 0; }
+.profile-contributions strong { display: block; font-weight: 600; margin-bottom: .1rem; }
+.profile-section[aria-labelledby="profile-experience"] .profile-entry { margin-bottom: 2.4rem; }
 .home-writing { border-top: 1px solid #e0e0e0; padding-top: 1.2rem; margin-top: 2.5rem; scroll-margin-top: 1rem; }
 @media (max-width: 580px) {
   .home-profile { padding-top: .75rem; }
@@ -32,4 +32,4 @@
   .profile-period { margin-top: .3rem; }
   .profile-intro { margin-bottom: 2.25rem; }
 }
-@media print { .profile-links { display: none; } .profile-entry { break-inside: avoid; } }
+@media print { .profile-links { display: none; } .profile-entry-heading { break-after: avoid; } .profile-contributions li { break-inside: avoid; } }
