@@ -1,0 +1,3 @@
+# Published measurements and downloads retain the bytes recorded in provenance.
+/assets/cae-mcp/** -text
+/site-src/static/assets/cae-mcp/** -text
