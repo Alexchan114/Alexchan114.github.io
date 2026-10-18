@@ -1,11 +1,7 @@
 ---
-title: "AlexanderChan's Blog"
+title: "AlexanderChan 的博客"
 ---
 
-# AlexanderChan's Blog
+# AlexanderChan 的博客
 
-## Keep it simple, but not simpler
-
-Welcome. This is a minimal space for technical notes, experiments, and things worth remembering.
-
-The content below is temporary. I will replace it with my own writing over time.
+技术笔记、工程实践与实验记录。这里记录问题如何被拆解、工具如何实现，以及结果如何核对。

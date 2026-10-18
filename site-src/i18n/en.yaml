@@ -1,0 +1,32 @@
+main_navigation:
+  other: Main navigation
+language_switch:
+  other: Switch language
+not_found:
+  other: Page not found
+not_found_text:
+  other: This page does not exist. You can return to the home page.
+back_home:
+  other: Back to home
+date:
+  other: Date
+posts:
+  other: Posts
+notes:
+  other: Notes
+term_engineering:
+  other: Engineering
+term_general:
+  other: General
+term_notes:
+  other: Notes
+term_welcome:
+  other: Welcome
+term_draft:
+  other: Draft
+term_automation:
+  other: Automation
+term_uncertainty:
+  other: Uncertainty
+term_fem:
+  other: FEM

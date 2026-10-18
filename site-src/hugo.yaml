@@ -1,46 +1,75 @@
-baseURL: "https://alexchan114.github.io/"
-locale: "zh-cn"
-title: "AlexanderChan's Blog"
-theme: "hugo-xmin"
+baseURL: https://alexchan114.github.io/
+title: AlexanderChan's Blog
+theme: hugo-xmin
 enableRobotsTXT: true
-
 permalinks:
-  note: "/note/:year/:month/:day/:slug/"
-  post: "/post/:year/:month/:day/:slug/"
-
-menu:
-  main:
-    - name: Home
-      url: ""
-      weight: 1
-    - name: About
-      url: "about/"
-      weight: 2
-    - name: Categories
-      url: "categories/"
-      weight: 3
-    - name: Tags
-      url: "tags/"
-      weight: 4
-    - name: Subscribe
-      url: "index.xml"
-      weight: 5
-
+  note: /note/:year/:month/:day/:slug/
+  post: /post/:year/:month/:day/:slug/
 params:
-  description: "A minimal personal blog by AlexanderChan."
-  footer: "&copy; [AlexanderChan](https://github.com/Alexchan114) 2026 -- {Year} | [GitHub](https://github.com/Alexchan114)"
-
+  description: A minimal personal blog by AlexanderChan.
+  footer: '&copy; [AlexanderChan](https://github.com/Alexchan114) 2026 -- {Year} |
+    [GitHub](https://github.com/Alexchan114)'
 markup:
   highlight:
     codeFences: false
   goldmark:
     renderer:
       unsafe: true
-
 outputs:
   home:
-    - HTML
-    - RSS
+  - HTML
+  - RSS
   section:
-    - HTML
-    - RSS
+  - HTML
+  - RSS
+defaultContentLanguage: zh
+defaultContentLanguageInSubdir: false
+languages:
+  zh:
+    weight: 1
+    locale: zh-CN
+    label: 中文
+    title: AlexanderChan 的博客
+    menus:
+      main:
+      - name: 首页
+        weight: 1
+        pageRef: /
+      - name: 关于
+        weight: 2
+        pageRef: /about
+      - name: 分类
+        weight: 3
+        pageRef: /categories
+      - name: 标签
+        weight: 4
+        pageRef: /tags
+      - name: 订阅
+        weight: 5
+        url: /index.xml
+    params:
+      description: 技术笔记、工程实践与实验记录。
+  en:
+    weight: 2
+    locale: en-US
+    label: English
+    title: AlexanderChan's Blog
+    menus:
+      main:
+      - name: Home
+        weight: 1
+        pageRef: /
+      - name: About
+        weight: 2
+        pageRef: /about
+      - name: Categories
+        weight: 3
+        pageRef: /categories
+      - name: Tags
+        weight: 4
+        pageRef: /tags
+      - name: Subscribe
+        weight: 5
+        url: /en/index.xml
+    params:
+      description: Technical notes, engineering projects, and experiments.

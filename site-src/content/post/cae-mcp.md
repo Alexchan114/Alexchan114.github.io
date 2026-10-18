@@ -8,7 +8,7 @@ tags: ["CAE", "MCP", "Abaqus", "HyperMesh", "ParaView"]
 cae_article: true
 ---
 <article class="cae-article">
-<p class="article-downloads"><a href="/assets/cae-mcp/cae-mcp.pdf">PDF 阅读</a> · <a href="/assets/cae-mcp/cae-mcp-sources.zip">LaTeX / Tavotto 图源与数据</a> · <a href="/assets/cae-mcp/engineering-query.txt">完整 query 整理版</a> · <a href="/assets/cae-mcp/task_metrics.csv">实测统计 CSV</a></p><blockquote>
+<p class="article-downloads"><a href="/assets/cae-mcp/cae-mcp.pdf">PDF 阅读</a> · <a href="/assets/cae-mcp/cae-mcp-sources-bilingual.zip">LaTeX / Tavotto 图源与数据</a> · <a href="/assets/cae-mcp/engineering-query.txt">完整 query 整理版</a> · <a href="/assets/cae-mcp/task_metrics.csv">实测统计 CSV</a></p><blockquote>
 <p>给 Agent 一个端子模型和两步加载要求，它能否检查模型、安排计算资源、完成求解，再交回可核对的曲线与云图？这个项目把 HyperMesh、Abaqus 和 ParaView 连接为三个 MCP 服务，在一个真实端子接触案例上跑通了这条链路。三组独立实测均完成两步计算；启用 MCP 与工程规程的一组耗时 21.82 分钟，得到 108 帧结果与约 1.434141 N 的驱动力峰值。</p>
 </blockquote><nav class="article-toc" aria-label="文章目录"><details><summary>文章目录（12 节）</summary><ol><li><a href="#从一句工况描述开始">从一句工况描述开始</a></li><li><a href="#三个-mcp54-个工具">三个 MCP，54 个工具</a></li><li><a href="#长任务需要持久状态与实际文件">长任务需要持久状态与实际文件</a></li><li><a href="#把-odb-转换做成独立的-c-工具">把 ODB 转换做成独立的 C++ 工具</a></li><li><a href="#计算资源如何自动选择">计算资源如何自动选择</a></li><li><a href="#报错以后先读证据再生成新输入">报错以后，先读证据，再生成新输入</a></li><li><a href="#材料与截面库以及-skill-的位置">材料与截面库，以及 Skill 的位置</a></li><li><a href="#端子案例从模型检查到后处理">端子案例：从模型检查到后处理</a></li><li><a href="#三组独立实测都完成了差别在哪里">三组独立实测：都完成了，差别在哪里</a></li><li><a href="#完成计算以后仍需保留哪些工程事实">完成计算以后，仍需保留哪些工程事实</a></li><li><a href="#输入query-与可复核资料">输入、query 与可复核资料</a></li><li><a href="#实现所依据的原生接口">实现所依据的原生接口</a></li></ol></details></nav>
 <h2 id="从一句工况描述开始">从一句工况描述开始</h2>
@@ -314,4 +314,4 @@ cae_article: true
 <li><p><a href="https://docs.software.vt.edu/abaqusv2025/English/SIMACAEEXCRefMap/simaexc-c-analysisproc.htm">Abaqus：分析作业执行参数</a>。</p></li>
 <li><p><a href="https://modelcontextprotocol.io/">Model Context Protocol</a>。</p></li>
 </ul>
-<p class="article-downloads"><a href="/assets/cae-mcp/cae-mcp.pdf">PDF 阅读</a> · <a href="/assets/cae-mcp/cae-mcp-sources.zip">LaTeX / Tavotto 图源与数据</a> · <a href="/assets/cae-mcp/engineering-query.txt">完整 query 整理版</a> · <a href="/assets/cae-mcp/task_metrics.csv">实测统计 CSV</a></p></article>
+<p class="article-downloads"><a href="/assets/cae-mcp/cae-mcp.pdf">PDF 阅读</a> · <a href="/assets/cae-mcp/cae-mcp-sources-bilingual.zip">LaTeX / Tavotto 图源与数据</a> · <a href="/assets/cae-mcp/engineering-query.txt">完整 query 整理版</a> · <a href="/assets/cae-mcp/task_metrics.csv">实测统计 CSV</a></p></article>

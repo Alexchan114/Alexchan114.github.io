@@ -1,0 +1,12 @@
+.site-nav { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .5em 1em; }
+.site-nav .menu { margin: .4em 0; display: flex; flex-wrap: wrap; justify-content: center; gap: .3em; }
+.site-nav .menu li { margin: 0; }
+.language-switch { display: inline-flex; align-items: center; gap: .25em; padding: 2px; border: 1px solid #bbb; border-radius: 5px; font-size: .9em; white-space: nowrap; }
+.language-switch a, .language-switch span { display: inline-block; padding: .3em .65em; line-height: 1.4; text-decoration: none; border-radius: 3px; }
+.language-current { color: #fff; background: #333; }
+.language-switch a { color: #222; }
+.language-switch a:hover { background: #eee; }
+.language-switch a:focus-visible { outline: 2px solid #222; outline-offset: 2px; }
+.site-nav + hr { margin-top: .65em; }
+html[lang="en-US"] main { overflow-wrap: break-word; }
+@media (max-width: 500px) { .site-nav { justify-content: center; gap: .2em; } .site-nav .menu { width: 100%; margin-bottom: .5em; } .language-switch { margin-bottom: .3em; } }

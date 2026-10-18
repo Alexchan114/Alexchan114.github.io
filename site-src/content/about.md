@@ -1,7 +1,7 @@
 ---
-title: "About"
+title: "关于"
 ---
 
-Hi, I am AlexanderChan. This is my personal blog for notes about programming, machine learning, and ongoing experiments.
+你好，我是 AlexanderChan。这里记录编程、机器学习与工程仿真中的学习、实践和实验。
 
-You can find my public work on [GitHub](https://github.com/Alexchan114).
+我的公开项目可以在 [GitHub](https://github.com/Alexchan114) 查看。

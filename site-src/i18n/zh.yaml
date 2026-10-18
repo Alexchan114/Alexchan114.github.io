@@ -1,0 +1,32 @@
+main_navigation:
+  other: 主导航
+language_switch:
+  other: 切换语言
+not_found:
+  other: 页面未找到
+not_found_text:
+  other: 该页面不存在。可以返回首页继续阅读。
+back_home:
+  other: 返回首页
+date:
+  other: 日期
+posts:
+  other: 文章
+notes:
+  other: 随记
+term_engineering:
+  other: 工程
+term_general:
+  other: 综合
+term_notes:
+  other: 随记
+term_welcome:
+  other: 欢迎
+term_draft:
+  other: 草稿
+term_automation:
+  other: 自动化
+term_uncertainty:
+  other: 不确定性
+term_fem:
+  other: 有限元

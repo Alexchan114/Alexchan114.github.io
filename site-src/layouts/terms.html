@@ -1,0 +1,4 @@
+{{ partial "header.html" . }}
+<main><h1>{{ .Title }}</h1><ul class="terms">
+{{ range .Pages }}<li><a href="{{ .RelPermalink }}">{{ partial "localized-title.html" . }}</a> ({{ len .Pages }})</li>{{ end }}
+</ul></main>{{ partial "footer.html" . }}

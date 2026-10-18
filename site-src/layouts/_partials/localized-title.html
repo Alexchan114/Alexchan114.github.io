@@ -1,0 +1,5 @@
+{{- $title := .Title -}}
+{{- if eq .Kind "term" -}}
+  {{- with i18n (printf "term_%s" (.Data.Term | urlize)) -}}{{- $title = . -}}{{- end -}}
+{{- end -}}
+{{- $title -}}

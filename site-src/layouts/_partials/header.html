@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="{{ .Language.Locale }}">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{{ .Title }} | {{ .Site.Title }}</title>
+  <link rel="stylesheet" href="{{ "css/style.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/fonts.css" | relURL }}">
+  <link rel="stylesheet" href="{{ "css/languages.css" | relURL }}">
+  {{ range .AllTranslations }}
+  <link rel="alternate" hreflang="{{ .Language.Locale }}" href="{{ .Permalink }}">
+  {{ if eq .Language.Lang "zh" }}<link rel="alternate" hreflang="x-default" href="{{ .Permalink }}">{{ end }}
+  {{ end }}
+  {{ partial "head_custom.html" . }}
+</head>
+<body>
+<nav class="site-nav" aria-label="{{ i18n "main_navigation" }}">
+  <ul class="menu">
+    {{ range .Site.Menus.main }}<li><a href="{{ .URL }}">{{ .Name }}</a></li>{{ end }}
+  </ul>
+  <div class="language-switch" role="group" aria-label="{{ i18n "language_switch" }}">
+    {{ $current := . }}
+    {{ range hugo.Sites }}
+      {{ $lang := .Language.Lang }}
+      {{ $target := .Home.RelPermalink }}
+      {{ range $current.AllTranslations }}{{ if eq .Language.Lang $lang }}{{ $target = .RelPermalink }}{{ end }}{{ end }}
+      {{ if eq $current.Kind "404" }}{{ $target = printf "%s404.html" .Home.RelPermalink }}{{ end }}
+      {{ $label := "English" }}{{ if eq $lang "zh" }}{{ $label = "中文" }}{{ end }}
+      {{ if eq $current.Language.Lang $lang }}
+      <span class="language-current" lang="{{ .Language.Locale }}" aria-current="true">{{ $label }}</span>
+      {{ else }}
+      <a href="{{ $target }}" lang="{{ .Language.Locale }}" hreflang="{{ .Language.Locale }}" data-language="{{ $lang }}">{{ $label }}</a>
+      {{ end }}
+    {{ end }}
+  </div>
+</nav>
+<hr>

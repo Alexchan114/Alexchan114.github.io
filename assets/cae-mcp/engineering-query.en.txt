@@ -1,0 +1,23 @@
+CAE MCP terminal task: portable English adaptation
+
+This is an editorial adaptation of the measured common query, with local absolute paths and experiment-directory isolation wording removed. Engineering conditions are preserved; it is not a byte-identical transcription.
+Original query SHA256: baa085f66206d3bac2f2f1f8199365c48e8afd03de1e3f8d25991ead2ffad35a
+
+INPUTS (read-only): inputs/terminal_pair.inp and inputs/terminal_pair.hm. HM is a preprocessing companion; INP is authoritative for mesh labels, materials, sections and eight existing contact pairs. Keep the mesh, original density/elastic/plastic/section cards and contact definitions. Do not replace INP labels with HM labels.
+
+CONFIRMED CONDITIONS: mm-N-MPa, global coordinates. One female terminal, two male blades, shield and prepress plate. Fix translations of G_boundary_1, G_boundary_2 and P_boundary_1. Kinematically couple M_boundary_1 to the existing female_coupling_point and the node-type surface Set to a separate plate RP. Initially fix RP translations and rotations; retain rotations and non-driven translations throughout.
+Prepress: plate U2=+0.3348 mm, U3=0; female stationary.
+Insertion: retain plate U2=+0.3348 mm, then plate and female simultaneously reach U3=-10 mm.
+Friction 0.13 for all existing pairs, hard contact, finite sliding, NLGEOM=YES. Exactly two steps; no withdrawal or invented stabilization. Each Static step uses initial increment .01, period 1, minimum 1e-8, maximum .05, INC=10000.
+
+Create a new prepared INP and retain source files plus actual region and mesh checks. Use at most 2 physical CPUs, a 15% memory cap, Standard parallel all and pure threads (threads_per_mpi_process=2 for 2 CPUs). Record resource selection. Run native datacheck before submitting a new full solve. Wait for both steps to reach 1.0, the native full-completion marker and a nonempty, closed new ODB.
+
+Extract stored RP U2/U3/RF2/RF3 histories, both-step ALLSE/ALLPD/ALLFD/ALLWK, final global RF balance, and original integration-point Mises/PEEQ. Insertion force is -(female RP RF3 + plate RP RF3), not the sum of both contact sides. Save CSV/JSON evidence.
+
+Convert all steps and frames of the new ODB to binary VTU/PVD, fields U+S:MISES, Avg75 by actual section assignment. Inspect actual arrays and frame counts in ParaView; render both endpoints with deformation scale 1 and correct numeric stress ranges. Save PNG/PVSM and a force-displacement curve with units. Distinguish extrapolated nodal stress from integration-point stress and retain native warnings.
+
+If a native computation fails, read actual .dat/.msg/.sta/log evidence, retain the failed attempt and apply only evidence-supported numerical/syntax/runtime changes to a new input. Retry at most twice. If blocked, report the exact blocker and partial artifacts. Do not alter physical conditions to force convergence.
+
+The result index must identify real prepared_inp, odb_path, force_csv, energy_csv, preprocessing_summary, resource_record, vtk_manifest, pvd_path, prepress_png, insertion_png, curve_png, log_paths, completed_steps, warnings, failed_attempts and status.
+
+Observed process deviation: native groups performed additional diagnostic attempts. The article documents this; the artifact checklist does not score that process constraint.
