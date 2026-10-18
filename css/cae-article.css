@@ -1,0 +1,23 @@
+.cae-article { line-height: 1.85; overflow-wrap: break-word; }
+.cae-article h2 { margin-top: 2.1em; line-height: 1.45; scroll-margin-top: 1em; }
+.cae-article h3 { margin-top: 1.7em; line-height: 1.5; }
+.cae-article .article-downloads { line-height: 2; font-size: .94em; }
+.cae-article .article-toc { border-top: 1px solid #bbb; border-bottom: 1px solid #bbb; padding: .8em 0; margin: 1.6em 0; }
+.cae-article .article-toc summary { cursor: pointer; font-weight: bold; }
+.cae-article .article-toc ol { padding-left: 1.6em; }
+.cae-article .article-toc a { text-decoration-thickness: 1px; text-underline-offset: .15em; }
+.cae-article figure { margin: 2em 0; }
+.cae-article figure img { display: block; width: 100%; height: auto; }
+.cae-article figcaption { color: #444; font-size: .9em; line-height: 1.7; margin-top: .7em; }
+.cae-article .table-scroll { overflow-x: auto; margin: 1.7em 0; }
+.cae-article table { width: 100%; border-collapse: collapse; font-size: .93em; line-height: 1.7; }
+.cae-article caption { text-align: left; font-weight: bold; padding-bottom: .6em; }
+.cae-article th, .cae-article td { padding: .55em .6em; vertical-align: top; }
+.cae-article thead, .cae-article tfoot, .cae-article tr, .cae-article tr:nth-child(even) { background: transparent; }
+.cae-article th { border-bottom: 1px solid #444; white-space: nowrap; }
+.cae-article td { border-bottom: 1px solid #ddd; }
+.cae-article pre { font-size: .88em; line-height: 1.6; box-shadow: none; }
+.cae-article code { overflow-wrap: anywhere; }
+.cae-article math[display="block"] { display: block; overflow-x: auto; padding: .7em 0; }
+@media (max-width: 600px) { .cae-article { line-height: 1.9; } .cae-article table { min-width: 480px; font-size: .86em; } .cae-article th, .cae-article td { padding: .45em; } }
+@media print { .cae-article .article-toc { display: none; } .cae-article figure { break-inside: avoid; } }

@@ -1,0 +1,10 @@
+{{ if .Params.cae_article }}
+<meta name="description" content="{{ .Description }}" />
+<link rel="canonical" href="{{ .Permalink }}" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ .Title }}" />
+<meta property="og:description" content="{{ .Description }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+<meta property="og:image" content="{{ "assets/cae-mcp/terminal_states.png" | absURL }}" />
+<link rel="stylesheet" href="{{ "css/cae-article.css" | relURL }}" />
+{{ end }}

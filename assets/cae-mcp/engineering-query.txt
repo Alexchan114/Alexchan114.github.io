@@ -1,0 +1,38 @@
+CAE MCP 端子任务：可移植整理版
+
+说明：由实际共同 query 整理，工程条件保持一致；本机运行时绝对路径替换为配置入口，并省略实验目录隔离措辞。不是原 query 的逐字转录。
+原始 query SHA256：baa085f66206d3bac2f2f1f8199365c48e8afd03de1e3f8d25991ead2ffad35a
+
+输入（只读）：inputs/terminal_pair.inp 和 inputs/terminal_pair.hm。
+HM 用于原生几何/网格检查；INP 是网格编号、材料、截面和接触的权威来源。保留已有网格、原始密度/弹性/塑性/截面定义及已有八对接触，不重划网格，不把 HM 节点编号当成 INP 编号。
+
+单位：mm-N-MPa。坐标：全局。
+结构：一件 female、两片 male、shield 和 prepress plate。
+固定 G_boundary_1、G_boundary_2（male 根部）及 P_boundary_1（shield 根部）的平移自由度。
+M_boundary_1 与已有 female_coupling_point 建立 kinematic coupling。
+现有名为 Set 的节点面与独立 plate RP 建立 kinematic coupling。
+初始固定两个 RP 的平移和转动；整个过程中固定转动及未驱动的平移分量。
+
+Prepress：plate U2=+0.3348 mm，plate U3=0，female 保持不动。
+Insertion：保持 plate U2=+0.3348 mm；plate 和 female 同时 U3=-10 mm。
+所有接触摩擦系数 0.13，硬接触、有限滑移、NLGEOM=YES。
+恰好两个分析步，不增加拔出，不添加未指定稳定化，不更改物理条件。
+两个 Static 步：初始增量 0.01，步长 1，最小增量 1e-8，最大增量 0.05，INC=10000。
+
+生成新 prepared INP，保存原文件与区域/网格检查结果。
+最多 2 个物理 CPU，memory 上限 15%，Standard parallel all，纯线程；2 CPU 时 threads_per_mpi_process=2。记录资源选择。
+先运行真实 datacheck，再提交新的完整求解。
+等待两步到 1.0、原生完整完成标记和非空、关闭的新 ODB。
+
+从实际储存结果读取 RP U2/U3/RF2/RF3 history；两步 ALLSE/ALLPD/ALLFD/ALLWK；末帧全储存 RF 余额；原积分点 Mises/PEEQ。
+插入方向驱动力定义为 -(female RP RF3 + plate RP RF3)，不累加接触两侧内部力。
+保存 CSV 和 JSON。
+
+把本次新 ODB 的所有步骤/所有帧转换为二进制 VTU/PVD，字段 U+S:MISES，Avg75 按实际 section assignment。
+用 ParaView 核对真实数组和帧数，渲染 Prepress/Insertion 终点，变形倍率 1、实际数值色标。
+保存 PNG/PVSM 和带单位的力-位移曲线。区分外推节点应力与原积分点应力，保留原生警告。
+
+原生计算失败时读取实际 .dat/.msg/.sta/log 上下文，保留失败尝试，只修复有依据的数值/语法/运行时问题到新输入，最多重试两次。仍受阻则给出准确原因和部分产物，不声明成功，不改变物理条件强行收敛。
+
+最终结果索引包含实际存在的 prepared_inp、odb_path、force_csv、energy_csv、preprocessing_summary、resource_record、vtk_manifest、pvd_path、prepress_png、insertion_png、curve_png、log_paths、completed_steps、warnings、failed_attempts 和 status。
+实际测量中原生组进行过更多诊断尝试，正文已列明这一过程偏离，产物得分不覆盖过程约束。

@@ -1,0 +1,56 @@
+{
+  "article_date": "2026-10-18",
+  "measurement_date": "2026-10-12",
+  "upstream_metrics_sha256": "7c44a3e8218c30221652289a30697a5b276a260688ed879f09c4ac667d79fafb",
+  "input_fingerprints": {
+    "terminal_pair.hm": {
+      "bytes": 2313685,
+      "sha256": "11d71b6229318dfe3cb9650a1087edff6c86bb1bff24593845b1da98a9b7dd2a"
+    },
+    "terminal_pair.inp": {
+      "bytes": 3460015,
+      "sha256": "cc27e5aad2492a576fc51c1ccf1572e03b4c3c315a814e5d6ab7376da0b80086"
+    }
+  },
+  "inputs_published": false,
+  "notes": [
+    "Input fingerprints identify the actual measured case; CAD/HM/INP and ODB files are not released with this article.",
+    "Main force/energy panels use independent evaluator histories of group A. State images are presentation renders of that same new ODB export; camera work is excluded from task timing.",
+    "Group comparison curves come from independent evaluator reads of three fresh task-session ODBs.",
+    "A/B share model and reasoning settings; C changes model and host. One run per group does not establish a population-level causal effect."
+  ],
+  "files": {
+    "energy_history.csv": {
+      "sha256": "d5460a0b1540126e6b9d195f96f482669f8d6f0e4beba94430b2714a5decee1f",
+      "bytes": 40098
+    },
+    "force_displacement.csv": {
+      "sha256": "70f3bf8b4f07ba65f0e79ba39f38eafd62fae6ee018b28b0d9f5b517a973f024",
+      "bytes": 23122
+    },
+    "provenance.json": {
+      "sha256": "1018cc817794322675c1141644abed80af0e1d792ceafebf5f7a2c9581a0bbfd",
+      "bytes": 2058
+    },
+    "task_metrics.csv": {
+      "sha256": "eaa3d864064606c1490a40da6b3aafe3069941486a53e172a4abb1b5ec1883c9",
+      "bytes": 1167
+    },
+    "task_metrics.json": {
+      "sha256": "0ce14cf873ceae9d1cb09ee031af00015249bdabece0a5cf7e9c6ebcafca9fdf",
+      "bytes": 3787
+    },
+    "trial_a_force.csv": {
+      "sha256": "70f3bf8b4f07ba65f0e79ba39f38eafd62fae6ee018b28b0d9f5b517a973f024",
+      "bytes": 23122
+    },
+    "trial_b_force.csv": {
+      "sha256": "8f6ab6b60183f3c3062de47ed408327759a62e893e9d0aa0a4610ac1f86de8f9",
+      "bytes": 23111
+    },
+    "trial_c_force.csv": {
+      "sha256": "898d197645a6bb1b85a5b0cb413946fd5656c3c557ec5f4bee531c0911807c81",
+      "bytes": 23147
+    }
+  }
+}
