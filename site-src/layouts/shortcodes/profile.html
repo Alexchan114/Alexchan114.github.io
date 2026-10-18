@@ -1,0 +1,41 @@
+{{- $p := hugo.Data.profile -}}
+{{- $lang := .Page.Language.Lang -}}
+<article class="home-profile" aria-labelledby="profile-name">
+  <header class="profile-intro">
+    <p class="profile-focus">{{ index $p.focus $lang }}</p>
+    <h1 id="profile-name">{{ index $p.name $lang }} <span class="profile-alias">{{ $p.alias }}</span></h1>
+    <p class="profile-position">{{ index $p.position $lang }}</p>
+    <p class="profile-bio">{{ index $p.bio $lang }}</p>
+    <nav class="profile-links" aria-label="{{ if eq $lang "zh" }}个人链接{{ else }}Profile links{{ end }}">
+      <a href="https://github.com/Alexchan114">GitHub <span aria-hidden="true">↗</span></a>
+      <a href="#writing">{{ index $p.labels.writing $lang }} <span aria-hidden="true">↓</span></a>
+    </nav>
+  </header>
+  <section class="profile-section" aria-labelledby="profile-education">
+    <h2 id="profile-education">{{ index $p.labels.education $lang }}</h2>
+    {{ range $p.education }}
+    <div class="profile-entry">
+      <div class="profile-entry-heading"><h3>{{ index .institution $lang }}</h3><p class="profile-period">{{ .start }} — {{ .end | default (index $p.labels.present $lang) }}</p></div>
+      <p class="profile-detail">{{ index .detail $lang }}</p>
+    </div>
+    {{ end }}
+  </section>
+  <section class="profile-section" aria-labelledby="profile-experience">
+    <h2 id="profile-experience">{{ index $p.labels.experience $lang }}</h2>
+    {{ range $p.experience }}
+    <div class="profile-entry">
+      <div class="profile-entry-heading"><h3>{{ index .organization $lang }}</h3><p class="profile-period">{{ .start }} — {{ .end | default (index $p.labels.present $lang) }}</p></div>
+      <p class="profile-role">{{ index .role $lang }}</p>
+      <p class="profile-description">{{ index .description $lang }}</p>
+    </div>
+    {{ end }}
+  </section>
+  <section class="profile-section" aria-labelledby="profile-skills">
+    <h2 id="profile-skills">{{ index $p.labels.skills $lang }}</h2>
+    <dl class="profile-skills">{{ range $p.skills }}<div><dt>{{ index .label $lang }}</dt><dd>{{ index .detail $lang }}</dd></div>{{ end }}</dl>
+  </section>
+  <section class="profile-section profile-beyond" aria-labelledby="profile-beyond">
+    <h2 id="profile-beyond">{{ index $p.labels.beyond $lang }}</h2>
+    <ul>{{ range $p.beyond }}<li>{{ index . $lang }}</li>{{ end }}</ul>
+  </section>
+</article>

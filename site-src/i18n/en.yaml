@@ -30,3 +30,6 @@ term_uncertainty:
   other: Uncertainty
 term_fem:
   other: FEM
+
+recent_writing:
+  other: Recent writing

@@ -1,7 +1,6 @@
 ---
-title: "AlexanderChan 的博客"
+title: "陈嘉鹏 · AlexanderChan"
+description: "东南大学结构工程硕士在读，关注 AI for CAE、图机器学习与仿真自动化。"
 ---
 
-# AlexanderChan 的博客
-
-技术笔记、工程实践与实验记录。这里记录问题如何被拆解、工具如何实现，以及结果如何核对。
+{{< profile >}}

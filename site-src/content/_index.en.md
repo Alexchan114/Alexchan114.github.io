@@ -1,7 +1,6 @@
 ---
-title: "AlexanderChan's Blog"
+title: "Jiapeng Chen · AlexanderChan"
+description: "Master's student in Structural Engineering at Southeast University, working on AI for CAE, graph machine learning, and simulation automation."
 ---
 
-# AlexanderChan's Blog
-
-Technical notes, engineering projects, and experiments: how problems are broken down, how tools are built, and how results are checked.
+{{< profile >}}

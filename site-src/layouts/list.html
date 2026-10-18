@@ -1,10 +1,11 @@
 {{ partial "header.html" . }}
 {{ if not .IsHome }}<h1>{{ partial "localized-title.html" . }}</h1>{{ end }}
 <main>{{ .Content }}
+{{ if .IsHome }}<section id="writing" class="home-writing" aria-labelledby="writing-title"><h2 id="writing-title">{{ i18n "recent_writing" }}</h2>{{ end }}
 <ul>
 {{ $pages := .Pages }}{{ if .IsHome }}{{ $pages = .Site.RegularPages }}{{ end }}
 {{ range (where $pages "Section" "!=" "") }}
 <li><time class="date" datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006/01/02" }}</time> <a href="{{ .RelPermalink }}">{{ .Title | markdownify }}</a></li>
 {{ end }}
-</ul></main>
+</ul>{{ if .IsHome }}</section>{{ end }}</main>
 {{ partial "footer.html" . }}
