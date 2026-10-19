@@ -33,3 +33,11 @@ term_fem:
 
 recent_writing:
   other: 最新文章
+pinned:
+  other: 置顶
+guide_contents:
+  other: 阅读目录
+guide_source:
+  other: 根据《Jone Gorman AI instruction》整理。保留原文学习路线与课程资源，并修订编号、术语及部分表述。
+guide_download:
+  other: 下载阅读

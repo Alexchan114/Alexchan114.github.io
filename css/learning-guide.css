@@ -1,0 +1,19 @@
+.learning-guide { color: #242424; padding-top: 1.2rem; line-height: 1.85; }
+.guide-header { margin-bottom: 2.4rem; }
+.guide-meta, .guide-source, .guide-downloads { color: #666; font-size: .88rem; }
+.guide-header h1 { font-family: Georgia, "Songti SC", SimSun, serif; font-size: clamp(1.8rem, 4.5vw, 2.55rem); font-weight: 500; line-height: 1.4; margin: .65rem 0 1rem; }
+.guide-description { font-size: 1.06rem; color: #555; }
+.guide-source { line-height: 1.65; }
+.guide-toc { border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 1rem 0; margin: 2rem 0; }
+.guide-toc h2 { font-size: 1rem; margin: 0 0 .7rem; }
+.guide-toc ul { padding-left: 1.25rem; margin: .25rem 0; }
+.guide-toc li { margin: .2rem 0; }
+.guide-toc a { color: #444; text-decoration-color: #bbb; text-underline-offset: .2em; }
+.guide-body h2 { font-size: 1.35rem; margin: 2.6rem 0 1rem; line-height: 1.5; scroll-margin-top: 1rem; }
+.guide-body h3 { font-size: 1.05rem; margin: 1.6rem 0 .6rem; }
+.guide-body li { margin: .4rem 0; overflow-wrap: anywhere; }
+.guide-body ul { padding-left: 1.4rem; }
+.guide-body a { text-underline-offset: .18em; }
+.guide-body pre { box-shadow: none; border-radius: 0; font-size: .88rem; line-height: 1.65; }
+.guide-body p { margin: 1rem 0; }
+@media (max-width: 500px) { .learning-guide { padding-top: .6rem; } .guide-header h1 { font-size: 1.85rem; } .guide-body h2 { font-size: 1.2rem; } }

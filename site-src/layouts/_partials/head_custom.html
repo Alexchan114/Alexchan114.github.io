@@ -7,6 +7,15 @@
 <meta property="og:url" content="{{ .Permalink }}" />
 <link rel="stylesheet" href="{{ "css/home-profile.css" | relURL }}" />
 {{ end }}
+{{ if eq .Layout "learning-guide" }}
+<meta name="description" content="{{ .Description }}" />
+<link rel="canonical" href="{{ .Permalink }}" />
+<meta property="og:type" content="article" />
+<meta property="og:title" content="{{ .Title }}" />
+<meta property="og:description" content="{{ .Description }}" />
+<meta property="og:url" content="{{ .Permalink }}" />
+<link rel="stylesheet" href="{{ "css/learning-guide.css" | relURL }}" />
+{{ end }}
 {{ if or .Params.cae_article .Params.connector_article }}
 <meta name="description" content="{{ .Description }}" />
 <link rel="canonical" href="{{ .Permalink }}" />

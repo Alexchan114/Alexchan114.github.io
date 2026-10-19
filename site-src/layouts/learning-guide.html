@@ -1,0 +1,15 @@
+{{ partial "header.html" . }}
+<main class="learning-guide">
+  <article aria-labelledby="guide-title">
+    <header class="guide-header">
+      <p class="guide-meta">{{ if .Params.pinned }}<span class="pin-label">{{ i18n "pinned" }}</span> · {{ end }}<time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "2006/01/02" }}</time></p>
+      <h1 id="guide-title">{{ .Title }}</h1>
+      <p class="guide-description">{{ .Description }}</p>
+      <p class="guide-source">{{ i18n "guide_source" }}</p>
+      <p class="guide-downloads">{{ i18n "guide_download" }}: <a href="{{ printf "articles/ai-learning-guide/guide.%s.pdf" .Language.Lang | relURL }}">PDF</a> · <a href="{{ printf "articles/ai-learning-guide/guide.%s.md" .Language.Lang | relURL }}">Markdown</a></p>
+    </header>
+    <nav class="guide-toc" aria-label="{{ i18n "guide_contents" }}"><h2>{{ i18n "guide_contents" }}</h2>{{ .TableOfContents }}</nav>
+    <div class="guide-body">{{ .Content }}</div>
+  </article>
+</main>
+{{ partial "footer.html" . }}

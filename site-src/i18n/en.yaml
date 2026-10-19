@@ -33,3 +33,11 @@ term_fem:
 
 recent_writing:
   other: Recent writing
+pinned:
+  other: Pinned
+guide_contents:
+  other: Contents
+guide_source:
+  other: Organized from “Jone Gorman AI instruction,” retaining its learning path and resources while revising numbering, terminology, and selected wording. Many linked videos are hosted on Chinese-language pages.
+guide_download:
+  other: Download

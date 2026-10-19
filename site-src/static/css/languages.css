@@ -8,5 +8,7 @@
 .language-switch a:hover { background: #eee; }
 .language-switch a:focus-visible { outline: 2px solid #222; outline-offset: 2px; }
 .site-nav + hr { margin-top: .65em; }
+.pin-label { display: inline-block; padding: .08em .45em; border: 1px solid #aaa; border-radius: 3px; color: #444; font-size: .75rem; line-height: 1.45; vertical-align: .1em; white-space: nowrap; }
+.is-pinned > a { font-weight: 600; }
 html[lang="en-US"] main { overflow-wrap: break-word; }
 @media (max-width: 500px) { .site-nav { justify-content: center; gap: .2em; } .site-nav .menu { width: 100%; margin-bottom: .5em; } .language-switch { margin-bottom: .3em; } }
