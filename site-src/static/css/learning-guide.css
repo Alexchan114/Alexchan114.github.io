@@ -5,7 +5,9 @@
 .guide-description { font-size: 1.06rem; color: #555; }
 .guide-source { line-height: 1.65; }
 .guide-toc { border-top: 1px solid #ddd; border-bottom: 1px solid #ddd; padding: 1rem 0; margin: 2rem 0; }
-.guide-toc h2 { font-size: 1rem; margin: 0 0 .7rem; }
+.guide-toc summary { font-size: 1rem; font-weight: 600; cursor: pointer; }
+.guide-toc details[open] summary { margin-bottom: .7rem; }
+.guide-toc summary:focus-visible { outline: 2px solid #555; outline-offset: 4px; }
 .guide-toc ul { padding-left: 1.25rem; margin: .25rem 0; }
 .guide-toc li { margin: .2rem 0; }
 .guide-toc a { color: #444; text-decoration-color: #bbb; text-underline-offset: .2em; }
@@ -16,4 +18,7 @@
 .guide-body a { text-underline-offset: .18em; }
 .guide-body pre { box-shadow: none; border-radius: 0; font-size: .88rem; line-height: 1.65; }
 .guide-body p { margin: 1rem 0; }
+.guide-body table { display: block; max-width: 100%; overflow-x: auto; border-collapse: collapse; font-size: .88rem; }
+.guide-body th, .guide-body td { text-align: left; vertical-align: top; padding: .6rem .7rem; min-width: 7rem; }
+.guide-body thead, .guide-body tr:nth-child(even) { background: transparent; }
 @media (max-width: 500px) { .learning-guide { padding-top: .6rem; } .guide-header h1 { font-size: 1.85rem; } .guide-body h2 { font-size: 1.2rem; } }

@@ -38,6 +38,6 @@ pinned:
 guide_contents:
   other: 阅读目录
 guide_source:
-  other: 根据《Jone Gorman AI instruction》整理。保留原文学习路线与课程资源，并修订编号、术语及部分表述。
+  other: 以《Jone Gorman AI instruction》为起点，结合课程、论文、官方文档与开源项目，扩展 Agent、Physical AI 和 RSI 的学习路线。
 guide_download:
   other: 下载阅读

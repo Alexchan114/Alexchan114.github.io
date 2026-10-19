@@ -8,7 +8,7 @@
       <p class="guide-source">{{ i18n "guide_source" }}</p>
       <p class="guide-downloads">{{ i18n "guide_download" }}: <a href="{{ printf "articles/ai-learning-guide/guide.%s.pdf" .Language.Lang | relURL }}">PDF</a> · <a href="{{ printf "articles/ai-learning-guide/guide.%s.md" .Language.Lang | relURL }}">Markdown</a></p>
     </header>
-    <nav class="guide-toc" aria-label="{{ i18n "guide_contents" }}"><h2>{{ i18n "guide_contents" }}</h2>{{ .TableOfContents }}</nav>
+    <nav class="guide-toc" aria-label="{{ i18n "guide_contents" }}"><details><summary>{{ i18n "guide_contents" }}</summary>{{ .Fragments.ToHTML 2 2 false | safeHTML }}</details></nav>
     <div class="guide-body">{{ .Content }}</div>
   </article>
 </main>
