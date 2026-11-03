@@ -1,0 +1,43 @@
+---
+title: "让力学决策经得起验证：Agent Benchmark 开发试跑"
+date: 2026-11-03
+slug: "mechanics-agent-benchmark"
+author: "AlexanderChan"
+description: "8道工程任务的评测设计、Kimi与DeepSeek/Pi真实试跑、完整query/output和Tavotto配图。v0.1仅2题可执行。"
+categories: ["Engineering"]
+tags: ["Mechanics", "Agent", "Benchmark", "MCP", "LaTeX"]
+connector_article: true
+---
+<article class="cae-article">
+<p class="article-downloads"><a href="/articles/mechanics-agent-benchmark/benchmark_zh.pdf">中文 PDF</a> · <a href="/articles/mechanics-agent-benchmark/benchmark_en.pdf">English PDF</a> · <a href="/articles/mechanics-agent-benchmark/mechanics-benchmark-v0.1-source-evidence.zip">代码、题库与完整轨迹</a></p>
+<blockquote><p><strong>开发试跑，不是排行榜。</strong> 8道任务已定义，2道一维力学算例可执行。4次有效任务中3次通过、1次输出预算耗尽；另2次环境/适配器探测保留并排除。尚无参评三维工业求解结果。</p></blockquote>
+<h2>从工程经验到可验证任务</h2>
+<p>把建模、子结构分区、公差施加、接触分析与边界搜索组织成可执行任务。模型不仅要给出建议，还要调用工具、生成产物，并接受独立数值核验。模型、执行框架和工具配置分别记录，不能把某个客户端的效果归因于模型本身。</p>
+<figure><a href="/articles/mechanics-agent-benchmark/architecture.pdf"><img src="/articles/mechanics-agent-benchmark/architecture.png" alt="模型、框架、工具与评分分层；当前试跑不包含商业求解器任务执行。" loading="lazy" style="width:100%;height:auto"></a><figcaption>模型、框架、工具与评分分层；当前试跑不包含商业求解器任务执行。</figcaption></figure>
+<h2>八道题</h2>
+<div class="table-scroll"><table><thead><tr><th>ID</th><th>任务</th><th>状态</th></tr></thead><tbody>
+<tr><td>M01</td><td>载荷、单位与平衡</td><td>算例可执行</td></tr>
+<tr><td>M02</td><td>力学驱动网格分配</td><td>规范已定义</td></tr>
+<tr><td>M03</td><td>非线性预压与接触</td><td>规范已定义</td></tr>
+<tr><td>M04</td><td>自主子结构区域决策</td><td>算例可执行</td></tr>
+<tr><td>M05</td><td>有界制造公差</td><td>规范已定义</td></tr>
+<tr><td>M06</td><td>子结构复用与接口完整性</td><td>规范已定义</td></tr>
+<tr><td>M07</td><td>偏位偏角失效边界搜索</td><td>规范已定义</td></tr>
+<tr><td>M08</td><td>故障恢复与可信排名</td><td>规范已定义</td></tr>
+</tbody></table></div>
+<h2>重要区域由力学证据决定</h2>
+<p>在已执行的自主分区算例中，保留活动双线性区域，将连续线性段凝聚，并保留接口自由度。不能只凭低应力决定某一区域不重要；最终要核验载荷包络下的目标响应。图中降阶一致性仅适用于该公开一维算例。</p>
+<figure><a href="/articles/mechanics-agent-benchmark/partition.pdf"><img src="/articles/mechanics-agent-benchmark/partition.png" alt="分区和独立载荷包络检查，不是连接器实验曲线。" loading="lazy" style="width:100%;height:auto"></a><figcaption>分区和独立载荷包络检查，不是连接器实验曲线。</figcaption></figure>
+<h2>真实试跑与不确定性</h2>
+<div class="table-scroll"><table><thead><tr><th>Task</th><th>Configuration</th><th>s</th><th>Outcome</th></tr></thead><tbody>
+<tr><td>M01</td><td>Pi + DeepSeek</td><td>6.88</td><td>passed</td></tr>
+<tr><td>M04</td><td>Pi + DeepSeek</td><td>16.36</td><td>passed</td></tr>
+<tr><td>M01</td><td>mini + Kimi</td><td>37.25</td><td>passed</td></tr>
+<tr><td>M04</td><td>mini + Kimi</td><td>122.72</td><td>output_budget_exhausted</td></tr>
+</tbody></table></div>
+<figure><a href="/articles/mechanics-agent-benchmark/pilot.pdf"><img src="/articles/mechanics-agent-benchmark/pilot.png" alt="4次有效试跑，不能据此排名模型或框架。" loading="lazy" style="width:100%;height:auto"></a><figcaption>4次有效试跑，不能据此排名模型或框架。</figcaption></figure>
+<p>Kimi原配置kimi-k2.5返回不可用/无权限，实际使用只读清单中的kimi-k2.6。DeepSeek请求标识为deepseek-v4-flash，Pi SDK固定为0.73.1。单次输出上限4096 token。模型和框架同时改变，耗时不能作为单一因素的因果比较。API实际账单未知，SDK的零成本字段不是免费。</p>
+<h2>完整证据与下一步</h2>
+<p>下载包保留所有尝试的query、逐轮请求/输出、工具调用、数值产物、独立评分、中英文附录与哈希清单；不包含密钥、CCS数据库或私有工业模型。现有三个CAE MCP的54项工具完成只读连接预检，此准备工作不计入agent试跑成绩。下一阶段补齐其余6题的公开三维工程输入、软件执行与独立评分，再开展预注册重复评测。</p>
+<p><a href="/articles/mechanics-agent-benchmark/pilot_summary.csv">Pilot CSV</a> · <a href="/articles/mechanics-agent-benchmark/pilot_summary.json">Pilot JSON</a> · <a href="/articles/mechanics-agent-benchmark/mechanics-benchmark-v0.1-source-evidence.zip">Source / evidence ZIP</a></p>
+</article>

@@ -1,0 +1,157 @@
+\documentclass[UTF8,a4paper,11pt,fontset=windows]{ctexart}
+\usepackage[margin=23mm,headheight=15pt]{geometry}
+\usepackage{fontspec,amsmath,amssymb,booktabs,tabularx,graphicx,xcolor,enumitem,fancyhdr,caption,placeins}
+\usepackage[hidelinks,unicode]{hyperref}
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{Consolas}[Scale=.85]
+\definecolor{Ink}{HTML}{203746}
+\definecolor{Teal}{HTML}{197B77}
+\definecolor{Orange}{HTML}{BF6039}
+\ctexset{section={format=\Large\bfseries\color{Ink}},subsection={format=\large\bfseries\color{Teal}}}
+\setlength{\parskip}{.35em}
+\setlength{\emergencystretch}{2em}
+\setlist{nosep,leftmargin=1.5em}
+\captionsetup{font=small,labelfont=bf}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Mechanics Agent Benchmark / v0.1}
+\fancyhead[R]{\small AlexanderChan}
+\fancyfoot[C]{\thepage}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\fig}[2]{\begin{figure}[htbp]\centering\includegraphics[width=\linewidth]{#1.pdf}\caption{#2}\end{figure}}
+\begin{document}
+
+
+\thispagestyle{empty}
+
+{\color{Teal}\sffamily ENGINEERING EVALUATION / 2026.11.03}\par\vspace{1em}
+
+{\Huge\bfseries\color{Ink}力学工程自主决策 Agent Benchmark}\par\vspace{.8em}
+
+{\large 八道任务设计、受控工具执行与第一轮真实试跑}\par
+
+\vspace{.8em}AlexanderChan\par\vspace{1em}
+
+\noindent\fbox{\parbox{.94\linewidth}{\textbf{开发版范围.} 已定义8道任务，当前2道一维力学算例可执行。4次有效试跑中3次通过，1次输出预算耗尽；另保留2次环境或适配器无效探测。尚未完成三维工业算例、商业求解器任务评测或模型排行榜。}}
+
+\section{为什么评测力学决策}
+
+评测关注模型能否从物理要求出发，选择区域、载荷、离散精度和验证方法，并交付可检查的工程结果。完成消息不是求解证据，工具调用格式正确也不是力学正确。CORE表示保留细节的核心区，SUB表示凝聚后的子结构区；两者应由响应与适用条件决定，而不是预先赋予重要性标签。
+
+\fig{architecture}{模型、执行框架、受控工具与独立评分分层。图中实线表示当前试跑路径；54个商业CAE MCP工具仅完成连接与schema预检，尚未作为参评任务调用。}
+
+\section{八道任务与执行状态}
+
+\noindent\begin{tabularx}{\linewidth}{@{}l X l@{}}\toprule ID & 任务 & 状态 \\\midrule
+
+M01 & 载荷、单位与平衡 & 力学算例可执行 \\
+
+M02 & 力学驱动网格分配 & 规范已定义 \\
+
+M03 & 非线性预压与接触 & 规范已定义 \\
+
+M04 & 自主子结构区域决策 & 力学算例可执行 \\
+
+M05 & 有界制造公差 & 规范已定义 \\
+
+M06 & 子结构复用与接口完整性 & 规范已定义 \\
+
+M07 & 偏位偏角失效边界搜索 & 规范已定义 \\
+
+M08 & 故障恢复与可信排名 & 规范已定义 \\
+
+\bottomrule\end{tabularx}
+
+每道任务均需独立输入、产物清单与评分器。后续隐藏变体不能用于调试提示词；八道任务不能支撑广泛的能力排名。
+
+\subsection{M01: 载荷、单位与平衡}
+
+审查阶梯轴向杆，确定端部约束与载荷符号，求端位移、支座反力、各段应力和应变能。调用所给轴向求解工具获取执行证据并验证平衡。将四类结果和求解产物编号写入solution。不得声称这是三维Abaqus结果。
+
+\subsection{M02: 力学驱动网格分配}
+
+导入可公开实体，在给定载荷和关注量下自主选择细化区域，划分二阶四面体，在自由度预算内完成网格敏感性验证，交付输入文件及完整质量证据。
+
+\subsection{M03: 非线性预压与接触}
+
+实施规定的先预压后插入接触分析，不修改材料、摩擦与接触物理，提取全部指定法向接触通道并核验塑性、终点与能量。
+
+\subsection{M04: 自主子结构区域决策}
+
+为给定一维装配选择CORE与可凝聚SUB，在整个载荷包络中保留活动非线性/接触而非仅看基线帧。调用condensation\_test验证方案。solution应包含core\_regions、sub\_regions、retained\_dofs、relative\_tip\_error、artifact\_id，并解释依据。这是弹簧链力学算例，不是Abaqus子结构实测。
+
+\subsection{M05: 有界制造公差}
+
+将几何shape、独立小板预抬和端子X/Y平移映射到有界正态幅值，生成含明确物理尺度的样本，核验独立控制点、刚体平移、网格质量与规定接口策略。
+
+\subsection{M06: 子结构复用与接口完整性}
+
+按来源、保留自由度、节点编号和坐标选择或拒绝候选子结构库，仅装配兼容库并完成datacheck和实际接口覆盖核验，不能只靠同名文件或增大Tie容差。
+
+\subsection{M07: 偏位偏角失效边界搜索}
+
+固定制造公差后自主安排试算，探查公端整体初始偏位/偏角下的插入失效边界，核验规定终点的接触力，不假设全局单调、不将求解失败当物理失效。
+
+\subsection{M08: 故障恢复与可信排名}
+
+恢复含数值、网格、资源和中断故障的批次，保留成功结果和物理条件，仅修复有证据的错误，对完整接触结果排名并明确排除缺通道或未达终点的case。
+
+\section{两道已执行任务的力学依据}
+
+\subsection{M01：力平衡与解析对照}
+
+阶梯杆采用毫米、牛顿、兆帕单位制。工具通过直接刚度法求解，评分器另用串联杆解析解核验。检查位移、反力符号、各段应力和应变能。
+
+\begin{align} u_{\rm tip}&=F\sum_i\frac{L_i}{E_i A_i}, & R&=-F,\\ \sigma_i&=\frac{F}{A_i}, & \mathcal{U}&=\frac12 F u_{\rm tip}.\end{align}
+
+\subsection{M04：活动非线性与静力凝聚}
+
+任务不是将所有低应力区域删除。六段串联系统中，r4与r6在载荷包络内进入不同刚度分支，因此必须保留其活动非线性。线性连续段r1至r3可凝聚内部自由度1、2，固定端0与接口3仍保留。下式通过求解线性系统实现，而不显式求逆。
+
+\begin{equation}\overline{\mathbf{K}}=\mathbf{K}_{rr}-\mathbf{K}_{ri}\mathbf{K}_{ii}^{-1}\mathbf{K}_{ir}.\end{equation}
+
+正确分区的端位移在1、5、12 N载荷下与完整双线性系统一致。错误地把所有段冻结为线性时，高载荷端位移发生偏差。此验证仅针对一维力学算例，不代表Abaqus工业子结构性能。
+
+\fig{partition}{分区与载荷包络验证。曲线来自公开算例的实际数值计算，不是连接器试验数据。}
+
+\section{真实试跑结果及边界}
+
+Kimi使用CCS现有密钥与只读清单返回的kimi-k2.6。DeepSeek使用原配置的deepseek-v4-flash请求标识，通过真实Pi SDK执行。服务商内部别名映射并非始终可观测，不能仅凭模型自述确认底层版本。
+
+\noindent\begin{tabularx}{\linewidth}{@{}l X r X@{}}\toprule 题目 & 配置 & 秒 & 结果 \\\midrule
+
+M01 & Pi + DeepSeek & 6.88 & 通过 \\
+
+M04 & Pi + DeepSeek & 16.36 & 通过 \\
+
+M01 & mini + Kimi & 37.25 & 通过 \\
+
+M04 & mini + Kimi & 122.72 & 输出预算耗尽 \\
+
+\bottomrule\end{tabularx}
+
+输出预算为每请求4096 token；Kimi的M04试跑在该预算下未提交解答。该结果是预算条件下的未完成，不代表无条件的力学能力判断。原kimi-k2.5返回404、首次Pi工具注册错误，均保留且从有效次数中排除。模型和框架在两组之间同时改变，因此不得把耗时差异归因于单一因素。
+
+\fig{pilot}{四次有效试跑的墙钟时间与结果，不构成模型或框架排名。橙色表示预算耗尽，不是接触失效或求解器失效。}
+
+\section{评分、轨迹与费用}
+
+两道已执行题均使用明确数值子项，而不是语言模型主观裁判。没有求解或凝聚产物不能满分；错误分区、漏接口、伪报误差及没有任何实际自由度减少的方案分别扣分。全保留方案可能物理正确，但不获得降阶收益分。完整三维赛道的误差阈值、资源预算和指标仍需独立参考算例标定后冻结。
+
+每次请求和返回、工具参数和结果、Pi可导出会话、最终提交与评分均写入JSONL和中英文可阅读附录。原始轨迹保留，包括被排除的探测；不重构厂商未暴露的提示或思维过程。文件以SHA256校验。参评模型没有文件、shell、任意代码或网络工具；这不是对任意原生agent的操作系统隔离承诺。
+
+输入、缓存读写与输出token分别记录，推理若已含于输出不重复累加。API账单未知；Pi SDK的零成本字段只是元数据占位，不能解释为免费。作者的连接探测、写报告和制图不计入参评任务耗时或token。正式96次重复评测尚未启动。
+
+\section{复现与下一阶段}
+
+在项目根目录运行下列命令。密钥由CCS只读数据库解析，无需复制到命令或配置文件。输出目录必须不存在。
+
+\begin{quote}\small\code{python -m mechanics_benchmark inventory}\\\code{python -m mechanics_benchmark tasks}\\\code{python -m unittest discover -s mechanics_benchmark/tests -v}\end{quote}
+
+下一阶段为M02、M03、M05至M08补齐可公开三维输入、真实软件执行及独立评分，扩展M04至实际子结构区域决策，再冻结比较矩阵与费用上限。原APP、工业模型、历史任务和CCS当前线路均未改动。
+
+\subsection{随附证据}
+
+源码包包含题目卡、中英文逐轮query/output附录、原始轨迹、数值产物、汇总CSV/JSON、哈希清单及Tavotto脚本与导出回执。未包含CCS数据库、商业软件、API密钥、私有几何或工业仿真数据。
+
+\end{document}

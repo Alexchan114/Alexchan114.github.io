@@ -1,0 +1,7 @@
+﻿run,task,model,harness,tier,classification,score,elapsed_seconds,tool_calls,ordinary_input,cache_read,cache_write,output,api_responses
+deepseek-pi-M01-a1,M01,deepseek-v4-flash,pi,mechanics-fixture,passed,100,6.875,3,1724,2176,0,874,3
+deepseek-pi-M04-a1,M04,deepseek-v4-flash,pi,mechanics-fixture,excluded_adapter_invalid,,14.766000000000531,0,766,0,0,1505,1
+deepseek-pi-M04-a2,M04,deepseek-v4-flash,pi,mechanics-fixture,passed,100,16.359999999999673,4,2262,6656,0,2044,4
+kimi-mini-M01-a1,M01,kimi-k2.5,mini,mechanics-fixture,excluded_environment_error,,0.6880000000001019,0,,,,,0
+kimi-mini-M01-a2,M01,kimi-k2.6,mini,mechanics-fixture,passed,100,37.25,3,1621,1024,0,1305,3
+kimi-mini-M04-a1,M04,kimi-k2.6,mini,mechanics-fixture,output_budget_exhausted,0,122.71900000000005,1,1755,512,0,4306,2

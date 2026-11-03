@@ -1,0 +1,157 @@
+\documentclass[UTF8,a4paper,11pt,fontset=windows]{ctexart}
+\usepackage[margin=23mm,headheight=15pt]{geometry}
+\usepackage{fontspec,amsmath,amssymb,booktabs,tabularx,graphicx,xcolor,enumitem,fancyhdr,caption,placeins}
+\usepackage[hidelinks,unicode]{hyperref}
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{Consolas}[Scale=.85]
+\definecolor{Ink}{HTML}{203746}
+\definecolor{Teal}{HTML}{197B77}
+\definecolor{Orange}{HTML}{BF6039}
+\ctexset{section={format=\Large\bfseries\color{Ink}},subsection={format=\large\bfseries\color{Teal}}}
+\setlength{\parskip}{.35em}
+\setlength{\emergencystretch}{2em}
+\setlist{nosep,leftmargin=1.5em}
+\captionsetup{font=small,labelfont=bf}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Mechanics Agent Benchmark / v0.1}
+\fancyhead[R]{\small AlexanderChan}
+\fancyfoot[C]{\thepage}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\fig}[2]{\begin{figure}[htbp]\centering\includegraphics[width=\linewidth]{#1.pdf}\caption{#2}\end{figure}}
+\begin{document}
+\renewcommand{\figurename}{Figure}\renewcommand{\tablename}{Table}
+
+\thispagestyle{empty}
+
+{\color{Teal}\sffamily ENGINEERING EVALUATION / 2026.11.03}\par\vspace{1em}
+
+{\Huge\bfseries\color{Ink}Mechanics Engineering\\Agent Benchmark}\par\vspace{.8em}
+
+{\large Eight task families, controlled execution and an initial measured pilot}\par
+
+\vspace{.8em}AlexanderChan\par\vspace{1em}
+
+\noindent\fbox{\parbox{.94\linewidth}{\textbf{Development scope.} Eight task families are defined; two 1D mechanics fixtures are executable. Four valid pilot attempts produced three passes and one output-budget exhaustion. Two invalid setup attempts are retained separately. No 3D industrial or vendor-solver task evaluation is claimed.}}
+
+\section{Why evaluate mechanical decisions?}
+
+The benchmark asks whether an agent can turn physical requirements into defensible regions, loads, discretization and verification, then deliver inspectable artifacts. A completion claim is not solve evidence; a valid tool call is not proof of mechanics. CORE denotes the retained detailed region and SUB a condensed substructure, not a predetermined importance label.
+
+\fig{architecture}{Separate model, harness, controlled tools and host validation. The pilot uses numerical fixture tools; 54 commercial-CAE MCP schemas were connectivity-probed, not exercised as evaluated task calls.}
+
+\section{Task families and implementation state}
+
+\noindent\begin{tabularx}{\linewidth}{@{}l X l@{}}\toprule ID & Task & Status \\\midrule
+
+M01 & Load, units and equilibrium & Fixture executable \\
+
+M02 & Mechanics-driven mesh allocation & Specified only \\
+
+M03 & Nonlinear preload and contact & Specified only \\
+
+M04 & Autonomous substructure partition & Fixture executable \\
+
+M05 & Bounded manufacturing variables & Specified only \\
+
+M06 & Library reuse and interface integrity & Specified only \\
+
+M07 & Pose failure-boundary search & Specified only \\
+
+M08 & Failure recovery and trusted ranking & Specified only \\
+
+\bottomrule\end{tabularx}
+
+Each task requires independent inputs, deliverables and validators. Held-out variants must not be used for prompt tuning; eight families do not support broad capability rankings.
+
+\subsection{M01: Load, units and equilibrium}
+
+Inspect the stepped axial bar. Determine the correct end constraints and force sign; compute tip displacement, support reaction, segment stress and strain energy. Use the provided independent axial solver tool to obtain execution evidence and verify equilibrium. Report all four results in solution and include the solver artifact ID. Do not claim a 3D Abaqus result.
+
+\subsection{M02: Mechanics-driven mesh allocation}
+
+Import the supplied redistributable solid, choose refinement regions using the specified loads and quantity of interest, generate quadratic tetrahedra and demonstrate mesh sensitivity under the DOF budget. Deliver input decks and complete quality evidence, not screenshots alone.
+
+\subsection{M03: Nonlinear preload and contact}
+
+Construct the prescribed preload-then-insert contact analysis without changing material, friction or contact physics. Extract every specified normal contact channel and audit plasticity, endpoint completion and energy measures.
+
+\subsection{M04: Autonomous substructure partition}
+
+Choose retained CORE regions and condensable SUB regions for the provided connected 1D assembly. Preserve active nonlinear/contact behavior over the whole declared load envelope, not just the baseline frame. Run condensation\_test on your candidate. Your solution must list core\_regions, sub\_regions, retained\_dofs, relative\_tip\_error and artifact\_id. Static accuracy, required interface DOFs and a genuine interior-DOF reduction all matter. Justify the decision. This is a spring-chain mechanics fixture, not an Abaqus substructure benchmark result.
+
+\subsection{M05: Bounded manufacturing variables}
+
+Map geometric shapes, independent plate prelift and terminal X/Y translations to bounded normal amplitudes. Generate samples with explicit scales; verify independent control points, rigid translations, mesh quality and the declared interface strategy.
+
+\subsection{M06: Library reuse and interface integrity}
+
+Select or reject candidate substructure libraries using provenance, retained DOFs, node labels and coordinates. Assemble only a compatible library, complete datacheck and verify actual interface coverage. Matching filenames and enlarged Tie tolerance are not sufficient.
+
+\subsection{M07: Pose failure-boundary search}
+
+At fixed manufacturing amplitudes, choose trials to resolve whole-male initial offset/angle failure boundaries before insertion. Verify terminal contact forces at the declared final displacement. Do not assume global monotonicity or classify solver failure as physical failure.
+
+\subsection{M08: Failure recovery and trusted ranking}
+
+Recover a batch containing numerical, mesh, resource and interruption failures. Preserve successful runs and physical conditions, repair only supported errors, then rank complete contact results with explicit exclusions for missing channels or endpoints.
+
+\section{Mechanics behind the executable fixtures}
+
+\subsection{M01: equilibrium and analytical reference}
+
+The stepped bar uses mm, N and MPa. A direct-stiffness solver produces the artifact; the independent validator uses the analytical series-bar solution, checking displacement, reaction sign, segment stress and strain energy.
+
+\begin{align} u_{\rm tip}&=F\sum_i\frac{L_i}{E_i A_i}, & R&=-F,\\ \sigma_i&=\frac{F}{A_i}, & \mathcal{U}&=\frac12 F u_{\rm tip}.\end{align}
+
+\subsection{M04: active nonlinearity and static condensation}
+
+The task is not to delete every low-stress region. Regions r4 and r6 change stiffness within the load envelope and must retain their active nonlinearity. Linear regions r1--r3 can eliminate interior DOFs 1 and 2 while retaining fixed DOF 0 and interface DOF 3. Implement the following expression through linear solves, not explicit inversion.
+
+\begin{equation}\overline{\mathbf{K}}=\mathbf{K}_{rr}-\mathbf{K}_{ri}\mathbf{K}_{ii}^{-1}\mathbf{K}_{ir}.\end{equation}
+
+The accepted partition reproduces the full bilinear tip response at 1, 5 and 12 N. Incorrectly freezing the whole assembly as linear changes the high-load response. This verifies a 1D mechanics fixture, not industrial Abaqus substructure performance.
+
+\fig{partition}{Partition and load-envelope verification from actual calculations on the public fixture; these are not connector experimental measurements.}
+
+\section{Measured pilot and its limits}
+
+Kimi used existing CCS credentials with the catalog-returned kimi-k2.6 ID. DeepSeek used the configured deepseek-v4-flash request ID through the actual Pi SDK. Internal provider alias resolution is not always observable; self-identification is not version evidence.
+
+\noindent\begin{tabularx}{\linewidth}{@{}l X r X@{}}\toprule Task & Configuration & Seconds & Outcome \\\midrule
+
+M01 & Pi + DeepSeek & 6.88 & Passed \\
+
+M04 & Pi + DeepSeek & 16.36 & Passed \\
+
+M01 & mini + Kimi & 37.25 & Passed \\
+
+M04 & mini + Kimi & 122.72 & Output budget exhausted \\
+
+\bottomrule\end{tabularx}
+
+The per-request output allocation was 4096 tokens. Kimi's M04 run did not submit under that allocation; this is a budget-conditioned outcome, not an unconditional mechanics judgment. The unavailable kimi-k2.5 route and the first Pi tool-registration error are retained but excluded. Both model and harness differ between groups, so timing differences are not attributable to one factor.
+
+\fig{pilot}{Wall times and outcomes of four valid pilot attempts, not a model/harness ranking. Orange denotes an output-budget outcome, not mechanical or solver failure.}
+
+\section{Scoring, traces and costs}
+
+Executable fixtures use numerical checks, not an LLM judge. Missing artifacts prevent full credit; incorrect partitions, missing interfaces, fabricated error and zero DOF elimination are scored separately. An all-CORE model may be physically correct but receives no reduction benefit. Full 3D error thresholds and compute budgets require independent calibration before registration.
+
+Every observable request/response, tool call/result, exported Pi session, submission and score is retained in JSONL and readable bilingual appendices, including excluded probes. Unexposed internal prompts or reasoning are not reconstructed. SHA256 identifies artifacts. Evaluated models have no filesystem, shell, arbitrary-code or network tools; this does not claim OS isolation for unrestricted native agents.
+
+Input, cache reads/writes and output tokens are separate; reasoning included in output is not added twice. API invoices are unavailable. Pi SDK zero-cost fields are placeholders, not free usage. Author probes, documentation and figure preparation are excluded from task time and tokens. The proposed 96-run campaign has not started.
+
+\section{Reproduction and next stage}
+
+Run from the project root. Credentials are resolved read-only from CCS and are not copied into commands or provider files. Choose a new output directory.
+
+\begin{quote}\small\code{python -m mechanics_benchmark inventory}\\\code{python -m mechanics_benchmark tasks}\\\code{python -m unittest discover -s mechanics_benchmark/tests -v}\end{quote}
+
+Next, supply public 3D inputs, real application execution and independent validators for M02, M03 and M05--M08, extend M04 to actual substructure-region decisions, then freeze the comparison matrix and spending limits. Production APP, industrial models, historical tasks and active CCS routes were not modified.
+
+\subsection{Accompanying evidence}
+
+The source/evidence bundle contains task cards, bilingual query/output appendices, raw traces, numerical artifacts, CSV/JSON summaries, hashes and Tavotto sources/export receipts. It excludes the CCS database, commercial software, API credentials, private geometry and industrial simulation data.
+
+\end{document}
