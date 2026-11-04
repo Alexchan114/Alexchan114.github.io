@@ -1,0 +1,166 @@
+\documentclass[UTF8,a4paper,11pt,fontset=windows]{ctexart}
+\usepackage[margin=23mm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,booktabs,tabularx,longtable,graphicx,xcolor,fancyhdr,caption,placeins,enumitem}
+\usepackage[hidelinks,unicode]{hyperref}
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{Consolas}[Scale=.82]
+\definecolor{Ink}{HTML}{203746}\definecolor{Teal}{HTML}{197B77}
+\ctexset{section={format=\Large\bfseries\color{Ink}},subsection={format=\large\bfseries\color{Teal}}}
+\setlength{\parskip}{.35em}\setlength{\emergencystretch}{2em}
+\setlist{nosep,leftmargin=1.5em}
+\captionsetup{font=small,labelfont=bf}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small Mechanics Agent Benchmark / v0.2}
+\fancyhead[R]{\small AlexanderChan}\fancyfoot[C]{\thepage}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\fig}[2]{\begin{figure}[htbp]\centering\includegraphics[width=\linewidth]{#1.pdf}\caption{#2}\end{figure}}
+\begin{document}
+
+
+\thispagestyle{empty}
+
+{\sffamily\color{Teal}PUBLIC ENGINEERING EVALUATION / 2026.11.04}\par\vspace{1em}
+
+{\Huge\bfseries\color{Ink}力学工程 Agent\\八题可执行基准}\par\vspace{1em}
+
+{\large 真实子结构决策、受控工具与可审计证据}\par\vspace{1em}
+
+AlexanderChan / v0.2.2\par
+
+\section*{交付范围}
+
+八道题均有可执行工具与独立判分器。其中一道调用真实Abaqus，其余七道为明确标注的简化力学或工程证据算例。本次是单次开发试跑，不是模型排行榜，也不是八道商业软件任务全部完成。
+
+\tableofcontents\newpage
+
+\section{评测动机与工程范围}
+
+基准围绕连接器仿真工作流中的自主决策组织：明确载荷和量纲、选择网格精度、配置独立预抬、决定线性子结构区域、生成有界制造公差、验证库复用、搜索偏位偏角边界，以及从失败任务中恢复。重点不在于解释看起来合理，而在于能否交付可检查的产物。
+
+CORE指保留显式有限元描述的区域，SUB指生成子结构的区域；case指一组输入及其输出，不代表特定客户或型号。FEM为Finite Element Method（有限元法），DOF为Degree of Freedom（自由度），MCP为Model Context Protocol（模型上下文协议）；Pi是agent执行框架而非模型。
+
+\fig{workflow}{模型、框架、工具、证据与判分分层。只有S04运行商业求解器。}
+
+\section{八道题的物理与判分}
+
+\subsection{S01 单位、串联柔度与平衡}
+
+轴向有限元采用分段弹性杆。独立参考通过柔度串联得到端位移，再核验根部反力与应变能。单位从GPa转为MPa后参与计算，避免仅靠结果量级判断正确性。
+
+\[u=F\sum_i\frac{L_i}{E_i A_i},\qquad R=-F,\qquad W=\frac12 Fu\]
+
+\subsection{S02 面向目标响应的网格分配}
+
+面积随坐标变化，线性单元使用中点面积，目标响应为端位移。模型需要在给定离散层级中选择满足误差要求的最少单元，而不是单纯选最细网格。评分将数值柔度与连续体积分比较。
+
+\[u_{\mathrm{exact}}=\frac{F}{E}\int_0^1\frac{dx}{1+x}=\frac{F}{E}\ln2\]
+
+\subsection{S03 独立预抬与单边接触}
+
+六块小板分别控制相邻两对接触，预抬在名义值上独立变化。采用单边法向弹簧，分离时法向力为零；优化目标为幅值平方和最小。该题验证预抬分配及接触开启判据，不等价于三维摩擦接触。
+
+\[N_j=k_j\max\{0,d+h_0+0.15a_{\lceil j/2\rceil}-g_j\}\]
+
+\subsection{S04 三维子结构自主分区}
+
+这是本版本唯一真实商业求解器题。公开杆件含线弹性半段和J2弹塑性半段，模型在2、4、6、8mm候选截面间选择分区，并保留根部及接口平移自由度。子结构通过真实Abaqus/MCP生成，随后装配求解并读取ODB。非线性本构区不能为了减少自由度而凝聚为线性区域。
+
+\[K_c=K_{bb}-K_{bi}K_{ii}^{-1}K_{ib},\qquad n_{\mathrm{elim}}=27(c-1)\]
+
+\subsection{S05 有界抽样及物理公差映射}
+
+72维变量包括42个Z向shape、6个独立预抬及12根公端子的X/Y平移。四种方法均先在单位超立方体采样，再通过截断正态逆分布变换映射到[-1,1]。这是条件分布，不是把超界值裁剪到端点。平移仅改变位置，不改变端子尺寸；子结构本身不平移。
+
+\[a=\Phi^{-1}\!\left[\Phi(-1)+u\{\Phi(1)-\Phi(-1)\}\right],\quad u\in(0,1)\]
+
+\subsection{S06 复用、几何兼容与绑定覆盖}
+
+复用先核对拓扑、材料及保留节点坐标。只有身份兼容的库才进入装配；局部CORE偏移通过不调整节点位置的Tie覆盖判定。Tie容差只解决几何搜索范围，不能掩盖错误的材料、网格或保留自由度。当前覆盖检查是平面解析几何，不是实际Tie求解。
+
+\[t_{\min}=|n_x|\Delta x_{\max}+|n_y|\Delta y_{\max}+10^{-6}\ \mathrm{mm}\]
+
+\subsection{S07 偏位偏角耦合首失效边界}
+
+沿指定的偏位偏角耦合路径搜索首次失效，而不是在二维空间中随意寻找一个低接触力点。每次试验返回12对法向力，最终需要安全端与失效端的两个实测产物，且区间宽度不超过0.002。该题是刚体杠杆加接触弹簧模型，边界数值不用于预测工业连接器。
+
+\[\begin{aligned}g(\lambda)&=\min_j N_j(\lambda)-0.4,\\N_j(\lambda)&=k_j\max\{0,\delta_j-0.1n_{x,j}\lambda-\ell_j\sin(2\lambda\pi/180)\}\end{aligned}\]
+
+\subsection{S08 故障恢复与可信排序}
+
+每个case先验证求解完成、目标位移到达和12对通道完整，再取绝对法向力的最小值排序。数值中止不是接触失效。恢复操作区分重新求解、仅重提取、等待活动任务和修复负体积网格，避免重复提交尚在运行的任务。
+
+\[N_{\min,c}=\min_{j=1,\ldots,12}|N_{c,j}(U_{3,\mathrm{final}})|\]
+
+\fig{sampling}{四种抽样方法的单个代表变量，16个样本；目标曲线为[-1,1]截断正态。仅展示抽样规则，不能据此比较统计效率。}
+
+\section{真实三维求解与独立校准}
+
+原创建模尺寸为12×2×2mm，117节点、48个C3D8单元。完整三维模型先独立求解；agent不能直接读取参考结果。分区题只向模型提供材料、网格规则和候选截面，实际工具完成子结构生成、降阶装配、求解及ODB场提取。
+
+校验覆盖弹性段解析解、端点位移、力平衡、塑性激活以及完整反力曲线等价性。校准反力为7.40683N，完整与降阶的存储帧反力一致，最优安全分区消去135个内部平移自由度。三维塑性状态不以一维塑性近似作为精确参考；该近似早期偏差已保留于诊断记录。微型算例不用于宣称工业加速比。
+
+\fig{solid}{真实Abaqus完整与降阶反力曲线；侧图为公开网格及材料分区，不是工业模型。}
+
+\section{冻结试跑结果}
+
+源代码、题目和评分规则先冻结再调用API。首轮八次及另外冻结的两次题面复核全部保留；S06布尔类型、S08排序方向以及复核中的恢复策略约定存在题面不足，共三次原始分数不用于能力评估。没有重试预算失败。合计10次记录，通过4次，服务或环境错误1次，协议歧义排除3次，有效尝试6次。
+
+\noindent\begin{tabularx}{\linewidth}{lllrX}\toprule Task & Configuration & Tier & s & Outcome\\\midrule
+
+S01 & kimi-mini & Reduced & 17.8 & Environment error \\
+
+S02 & deepseek-pi & Reduced & 14.1 & Passed \\
+
+S03 & kimi-mini & Reduced & 277.5 & Failed / budget \\
+
+S04 & deepseek-pi & CAE & 63.3 & Passed \\
+
+S05 & kimi-mini & Reduced & 41.1 & Passed \\
+
+S06 & deepseek-pi & Reduced & 9.3 & Task ambiguity (excluded) \\
+
+S07 & kimi-mini & Reduced & 158.9 & Failed / budget \\
+
+S08 & deepseek-pi & Reduced & 27.4 & Task ambiguity (excluded) \\
+
+S06* & deepseek-pi & Reduced & 9.4 & Passed \\
+
+S08* & deepseek-pi & Reduced & 10.0 & Policy ambiguity (excluded) \\
+
+\bottomrule\end{tabularx}
+
+\fig{outcomes}{按任务展示的单次耗时和状态；任务、模型、框架同时变化，不能据此排名。}
+
+Kimi请求标识为kimi-k2.6，使用受控mini框架；DeepSeek请求标识为deepseek-v4-flash，使用Pi SDK0.73.1。CCS只读解析凭据，不改变当前线路。服务端实际模型别名不总是可观测，因此保留请求标识与响应标识，不从模型自述推断身份。
+
+每题最多6次模型调用，每次6144输出token，24次工具调用，三维题最多一次候选求解。Pi推理设置为off；不同服务端的内部推理行为不能假定一致。token按API报告分项统计；SDK零成本字段不是免费，实际账单未知。Kimi遇到组织RPM限制的原始响应保留，公开版本仅隐去账号标识。
+
+表中星号标记题面复核。S06复核通过；S08复核正确识别并排序了低接触力case，但建议重新求解已完成的物理失效case，与判分器的最小恢复策略不一致。该策略此前没有完整写入题面，因此其原始零分也排除，不解释成模型力学错误。交付题库v0.2.2已补全约定，未继续调用API验证这一修订。原始判分器和新旧记录均保留。
+
+首次冻结记录了Python源码哈希；后续题面修改后，通过原哈希逐文件精确匹配恢复旧源码快照，恢复过程与校验回执公开。Pi桥接脚本及依赖文件初次未预先哈希，仅有执行后的版本证据，这一限制保留说明；新冻结命令已同时快照并哈希这些文件。
+
+\section{复现与扩展操作}
+
+解压源码包后，在项目根目录安装requirements.txt中的依赖。离线测试不需要API或商业软件。标准库SQLite只读访问本机CCS，不要上传数据库或把密钥写入配置文件。Pi运行时需单独安装，商业软件和MCP部署不随包提供。
+
+\begin{quote}\small\code{python -m unittest discover -s mechanics_benchmark/tests -q}\\\code{python -m mechanics_benchmark.run_suite freeze --output NEW_OUTPUT}\\\code{python -m mechanics_benchmark.run_suite run --output NEW_OUTPUT}\\\code{--task S04 --configuration deepseek-pi --reference REFERENCE_DIR}\end{quote}
+
+冻结命令记录环境版本与源码哈希；修改评分代码或输入后应使用新目录，不覆盖旧成绩。真实三维任务还需要MCP环境Python、独立参考目录及可写求解目录；默认路径集中在\code{run_suite.py}和\code{suite_tools.py}，可在部署时修改后重新冻结。每个任务目录包含run.json、query.json、trace.jsonl、submission.json（若提交）、artifacts和evaluation.json。
+
+新增模型时添加只读路由解析与明确模型标识；新增框架时实现相同能力工具接口、逐轮事件和预算控制，先验证无shell、任意文件与网络工具泄漏，再进行实际推理。当前验证过的只有mini与Pi，不能宣称所有本机agent已兼容。
+
+\section{证据、安全与解释边界}
+
+中英文附录逐条保留可观测query、request、output、工具参数、工具返回及原生MCP调用的父调用编号。原始JSONL是审计依据，不补写未公开的系统提示或内部思维。SHA256清单覆盖发布文件。公开包排除私有工程几何、合同、完整工业样本、凭据、商业软件及ODB/SIM大文件，仅包含原创公开算例与必要求解回执。
+
+这是具备八题执行闭环的开发基准，不是已完成的全面工业验证。真实HyperMesh自适应网格、三维摩擦接触、公差形变质量及所有原生agent客户端隔离仍属于扩展阶段。后续正式比较需使用相同任务的交叉模型/框架矩阵、多次重复、预先冻结的统计分析和费用上限。
+
+\section*{参考资料}
+
+\begin{enumerate}\item Abaqus 2025, \href{https://docs.software.vt.edu/abaqusv2025/English/SIMACAEKEYRefMap/simakey-r-retainednodaldofs.htm}{Retained nodal DOFs}.
+
+\item Abaqus 2025, \href{https://docs.software.vt.edu/abaqusv2025/English/SIMACAETHERefMap/simathe-c-superelements.htm}{Substructuring theory}.
+
+\item SciPy, \href{https://docs.scipy.org/doc/scipy/reference/stats.qmc.html}{Quasi-Monte Carlo documentation}; installed version recorded in preregistration.\end{enumerate}
+
+\end{document}

@@ -1,0 +1,11 @@
+﻿task,phase,configuration,tier,status,classification,raw_score,score,elapsed_seconds,tool_calls,solver_tests,ordinary_input,cache_read,cache_write,output,api_responses
+S01,initial,kimi-mini,public_reduced_physics,execution_error,environment_error,,,17.842999999999847,3,0,1426,768,0,657,3
+S02,initial,deepseek-pi,public_reduced_physics,submitted,passed,100,100,14.110000000000582,3,0,1377,5888,0,2276,4
+S03,initial,kimi-mini,public_reduced_physics,budget_exhausted,failed_or_budget,0,0,277.5,6,0,15232,9216,0,10522,6
+S04,initial,deepseek-pi,abaqus_mcp_3d,submitted,passed,100,100,63.28200000000015,3,1,2088,5504,0,1453,4
+S05,initial,kimi-mini,public_reduced_physics,submitted,passed,100,100,41.07800000000043,6,0,4797,1024,0,1631,3
+S06,initial,deepseek-pi,public_reduced_physics,submitted,excluded_task_ambiguity,0,,9.32799999999952,3,0,1797,5248,0,991,4
+S07,initial,kimi-mini,public_reduced_physics,output_budget_exhausted,failed_or_budget,0,0,158.85899999999947,1,0,1806,512,0,6572,2
+S08,initial,deepseek-pi,public_reduced_physics,submitted,excluded_task_ambiguity,0,,27.360000000000582,4,0,3056,11520,0,3714,5
+S06,amended,deepseek-pi,public_reduced_physics,submitted,passed,100,100,9.390999999999622,3,0,1809,5632,0,1078,4
+S08,amended,deepseek-pi,public_reduced_physics,submitted,excluded_policy_ambiguity,0,,9.984000000000378,3,0,2841,5120,0,1492,3

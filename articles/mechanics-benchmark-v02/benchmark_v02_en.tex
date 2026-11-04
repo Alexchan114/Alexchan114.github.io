@@ -1,0 +1,166 @@
+\documentclass[UTF8,a4paper,11pt,fontset=windows]{ctexart}
+\usepackage[margin=23mm,headheight=15pt]{geometry}
+\usepackage{amsmath,amssymb,booktabs,tabularx,longtable,graphicx,xcolor,fancyhdr,caption,placeins,enumitem}
+\usepackage[hidelinks,unicode]{hyperref}
+\setmainfont{TeX Gyre Pagella}
+\setsansfont{TeX Gyre Heros}
+\setmonofont{Consolas}[Scale=.82]
+\definecolor{Ink}{HTML}{203746}\definecolor{Teal}{HTML}{197B77}
+\ctexset{section={format=\Large\bfseries\color{Ink}},subsection={format=\large\bfseries\color{Teal}}}
+\setlength{\parskip}{.35em}\setlength{\emergencystretch}{2em}
+\setlist{nosep,leftmargin=1.5em}
+\captionsetup{font=small,labelfont=bf}
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small Mechanics Agent Benchmark / v0.2}
+\fancyhead[R]{\small AlexanderChan}\fancyfoot[C]{\thepage}
+\newcommand{\code}[1]{\texttt{\detokenize{#1}}}
+\newcommand{\fig}[2]{\begin{figure}[htbp]\centering\includegraphics[width=\linewidth]{#1.pdf}\caption{#2}\end{figure}}
+\begin{document}
+\renewcommand{\figurename}{Figure}\renewcommand{\tablename}{Table}\renewcommand{\contentsname}{Contents}
+
+\thispagestyle{empty}
+
+{\sffamily\color{Teal}PUBLIC ENGINEERING EVALUATION / 2026.11.04}\par\vspace{1em}
+
+{\Huge\bfseries\color{Ink}Mechanics Agent\\Executable Benchmark}\par\vspace{1em}
+
+{\large Actual substructure decisions, bounded tools and auditable evidence}\par\vspace{1em}
+
+AlexanderChan / v0.2.2\par
+
+\section*{Release scope}
+
+All eight exercises have executable tools and independent validators. One uses actual Abaqus; seven are explicitly reduced-physics or engineering-evidence fixtures. This is a single-attempt development pilot, not a leaderboard or eight completed vendor-software tasks.
+
+\tableofcontents\newpage
+
+\section{Motivation and engineering scope}
+
+The benchmark follows autonomous decisions in connector simulation: loading and units, mesh accuracy, independent prelift, linear substructure selection, bounded manufacturing variables, library reuse, coupled pose boundaries and failure recovery. Plausible prose is insufficient; inspectable artifacts are required.
+
+CORE denotes explicitly modeled finite elements; SUB denotes the generated substructure region. A case is one input/output instance, not a customer/model identity. FEM means Finite Element Method; DOF means Degree of Freedom; MCP means Model Context Protocol. Pi is an agent harness, not a model.
+
+\fig{workflow}{Separate model, harness, tools, evidence and scoring. Only S04 executes a vendor solver.}
+
+\section{Physics and checks in eight tasks}
+
+\subsection{S01 Units, series compliance and equilibrium}
+
+The axial FEM uses piecewise elastic bars. An independent series-compliance reference checks tip displacement, root reaction and strain energy. GPa is converted to MPa before assembly.
+
+\[u=F\sum_i\frac{L_i}{E_i A_i},\qquad R=-F,\qquad W=\frac12 Fu\]
+
+\subsection{S02 Goal-oriented mesh allocation}
+
+The area varies with position; linear elements use midpoint area. The agent must select the coarsest admissible mesh meeting the tip-displacement error bound, not simply over-refine. Scoring compares discrete compliance with the continuum integral.
+
+\[u_{\mathrm{exact}}=\frac{F}{E}\int_0^1\frac{dx}{1+x}=\frac{F}{E}\ln2\]
+
+\subsection{S03 Independent prelift and unilateral contact}
+
+Six independently controlled plates affect adjacent contact pairs. A unilateral normal-spring law sets force to zero on separation; the objective minimizes squared amplitudes. This tests prelift allocation and contact activation, not 3D frictional contact.
+
+\[N_j=k_j\max\{0,d+h_0+0.15a_{\lceil j/2\rceil}-g_j\}\]
+
+\subsection{S04 Autonomous 3D substructure partition}
+
+This is the only commercial-solver task in this release. The public solid has linear-elastic and J2-plastic halves. The agent selects a cut at 2, 4, 6 or 8 mm and retains root/interface translations. Actual Abaqus/MCP generation, reduced assembly and ODB extraction follow. Potentially plastic regions cannot be frozen linear merely to eliminate more DOFs.
+
+\[K_c=K_{bb}-K_{bi}K_{ii}^{-1}K_{ib},\qquad n_{\mathrm{elim}}=27(c-1)\]
+
+\subsection{S05 Bounded sampling and physical tolerance mapping}
+
+The 72 variables comprise 42 Z shapes, six independent prelifts and X/Y translations of 12 CORE terminals. Four samplers operate in the unit cube, followed by an inverse truncated-normal CDF on [-1, 1]. This is conditioning, not clipping. Translation preserves terminal dimensions and leaves SUB unchanged.
+
+\[a=\Phi^{-1}\!\left[\Phi(-1)+u\{\Phi(1)-\Phi(-1)\}\right],\quad u\in(0,1)\]
+
+\subsection{S06 Reuse, geometry compatibility and Tie coverage}
+
+Reuse first checks topology, material and retained-node coordinates. Only compatible libraries can be assembled. Local CORE offsets are assessed by unadjusted Tie coverage. Position tolerance cannot repair an incompatible material, mesh or retained topology. Coverage here is analytical planar geometry, not a native Tie solve.
+
+\[t_{\min}=|n_x|\Delta x_{\max}+|n_y|\Delta y_{\max}+10^{-6}\ \mathrm{mm}\]
+
+\subsection{S07 Coupled offset-angle first-loss boundary}
+
+Search targets the first loss along a prescribed coupled offset/angle path, not an arbitrary weak point in 2D. Each experiment returns 12 normal forces. The final safe/failing endpoints require two measured artifacts and a bracket width at most0.002. Rigid-lever spring results are not industrial connector predictions.
+
+\[\begin{aligned}g(\lambda)&=\min_j N_j(\lambda)-0.4,\\N_j(\lambda)&=k_j\max\{0,\delta_j-0.1n_{x,j}\lambda-\ell_j\sin(2\lambda\pi/180)\}\end{aligned}\]
+
+\subsection{S08 Failure recovery and trustworthy ranking}
+
+Each case must have solver completion, the target displacement and all 12 channels before ranking by minimum absolute normal force. A numerical abort is not contact failure. Recovery distinguishes re-solving, re-extraction, waiting for active jobs and repairing negative-volume mesh faults.
+
+\[N_{\min,c}=\min_{j=1,\ldots,12}|N_{c,j}(U_{3,\mathrm{final}})|\]
+
+\fig{sampling}{One representative variable,16 samples per sampler, against the truncated-normal density. Illustrates rules, not statistical efficiency.}
+
+\section{Actual 3D execution and independent calibration}
+
+The original public solid is12 by 2 by 2 mm with 117 nodes and48C3D8 elements. An independent full model is solved first; agents cannot read its result directly. The task exposes material/mesh rules and candidate cuts; the controlled tool performs generation, reduced assembly, solve and ODB extraction.
+
+Checks cover elastic analytical response, endpoint displacement, force balance, plastic activation and full reaction-curve equivalence. Calibration endpoint reaction is7.40683 N; stored full/reduced frames agree. The maximal safe partition removes135 interior translations. A 1D plastic approximation is not treated as an exact3D reference; its earlier discrepancy is retained. This tiny model establishes no industrial speedup.
+
+\fig{solid}{Actual Abaqus full/reduced reaction curves and public mesh/material partition, not an industrial model.}
+
+\section{Frozen pilot outcomes}
+
+Sources, tasks and rules were frozen before inference. All eight initial and two separately frozen protocol checks remain. S06 boolean typing, S08 ranking direction, and the amended recovery-policy contract were underspecified; three raw scores are excluded from capability evaluation. Budget failures were not retried. The 10 records contain 4 passes, 1 environment errors, three protocol exclusions and 6 valid attempts.
+
+\noindent\begin{tabularx}{\linewidth}{lllrX}\toprule Task & Configuration & Tier & s & Outcome\\\midrule
+
+S01 & kimi-mini & Reduced & 17.8 & Environment error \\
+
+S02 & deepseek-pi & Reduced & 14.1 & Passed \\
+
+S03 & kimi-mini & Reduced & 277.5 & Failed / budget \\
+
+S04 & deepseek-pi & CAE & 63.3 & Passed \\
+
+S05 & kimi-mini & Reduced & 41.1 & Passed \\
+
+S06 & deepseek-pi & Reduced & 9.3 & Task ambiguity (excluded) \\
+
+S07 & kimi-mini & Reduced & 158.9 & Failed / budget \\
+
+S08 & deepseek-pi & Reduced & 27.4 & Task ambiguity (excluded) \\
+
+S06* & deepseek-pi & Reduced & 9.4 & Passed \\
+
+S08* & deepseek-pi & Reduced & 10.0 & Policy ambiguity (excluded) \\
+
+\bottomrule\end{tabularx}
+
+\fig{outcomes}{Per-task single-attempt elapsed times and outcomes; task, model and harness change together, so no ranking follows.}
+
+Kimi request ID is kimi-k2.6 through the controlled mini harness; DeepSeek request ID is deepseek-v4-flash through Pi SDK 0.73.1. CCS credentials are read without switching active routes. Alias resolution is not always observable, so requested/reported identities are recorded without inferring identity from self-description.
+
+Budgets are 6 model calls, 6144 output tokens per call, 24 tools and one native candidate. Pi thinking is set off; provider internal behavior is not assumed equivalent. Usage is provider-reported; SDK zero-cost fields are not invoices. Actual billed cost is unknown. Kimi organization-RPM errors are retained, with account identifiers redacted publicly.
+
+An asterisk marks a protocol check. S06 passed. S08 correctly ranked/contact-classified the cases but proposed re-solving completed physical failures, contrary to the minimal-recovery scorer. That policy was not fully stated, so this raw zero is also excluded rather than called a mechanics error. Delivered v0.2.2 makes the policy explicit; no further inference tested this last clarification. Original evaluator and all records remain.
+
+The first registries pinned Python sources. After the text amendment, changed old sources were recovered byte-for-byte against those original hashes; recovery/verification receipts are public. The Pi bridge and requirements were not initially prehashed, only evidenced after execution. This limitation remains explicit; new freeze commands hash and snapshot them too.
+
+\section{Reproduction and extension}
+
+Extract the source bundle and install requirements.txt dependencies. Offline tests need no API or commercial software. SQLite reads local CCS only; never upload its database or write keys into configs. Install the Pi runtime separately. Commercial software and MCP deployment are not bundled.
+
+\begin{quote}\small\code{python -m unittest discover -s mechanics_benchmark/tests -q}\\\code{python -m mechanics_benchmark.run_suite freeze --output NEW_OUTPUT}\\\code{python -m mechanics_benchmark.run_suite run --output NEW_OUTPUT}\\\code{--task S04 --configuration deepseek-pi --reference REFERENCE_DIR}\end{quote}
+
+Freeze records dependency versions and source hashes. Changed rules/inputs require a new directory, not overwritten scores. The 3D task additionally needs MCP Python, an independent reference and writable solver workspace. Defaults are centralized in \code{run_suite.py} and \code{suite_tools.py}; adjust before freezing on a new deployment. Each attempt contains run.json, query.json, trace.jsonl, submission.json if submitted, artifacts and evaluation.json.
+
+A new model needs an explicit route/model identity. A new harness must implement the same capabilities, observable events and budgets, with pre-inference checks excluding shell/arbitrary-file/network access. Only mini and Pi are validated; other installed agents are not claimed compatible.
+
+\section{Evidence, safety and interpretation limits}
+
+Bilingual appendices retain observable queries, requests, outputs, tool arguments/results and parent IDs for native MCP calls. JSONL is authoritative; unexposed prompts/internal reasoning are not invented. SHA256 manifests cover release files. The public bundle excludes private geometry, contracts, industrial samples, credentials, commercial software and large ODB/SIM files; original public decks and solver receipts remain.
+
+This release closes execution for eight public exercises, not comprehensive industrial validation. Native HyperMesh adaptation, 3D frictional contact, morph quality and unrestricted-agent OS isolation remain extensions. Formal comparison needs crossed model/harness configurations on the same tasks, repeats, preregistered statistics and spending limits.
+
+\section*{References}
+
+\begin{enumerate}\item Abaqus 2025, \href{https://docs.software.vt.edu/abaqusv2025/English/SIMACAEKEYRefMap/simakey-r-retainednodaldofs.htm}{Retained nodal DOFs}.
+
+\item Abaqus 2025, \href{https://docs.software.vt.edu/abaqusv2025/English/SIMACAETHERefMap/simathe-c-superelements.htm}{Substructuring theory}.
+
+\item SciPy, \href{https://docs.scipy.org/doc/scipy/reference/stats.qmc.html}{Quasi-Monte Carlo documentation}; installed version recorded in preregistration.\end{enumerate}
+
+\end{document}
