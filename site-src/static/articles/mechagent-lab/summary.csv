@@ -1,0 +1,26 @@
+﻿attempt,task,configuration,model,classification,status,raw_score,score,elapsed_seconds,tool_calls,solver_tests,sdk_estimated_usd,actual_billed_usd,protocol_note,input_tokens,output_tokens,cached_input_tokens
+claude-code-S01-a1,S01,claude-code,deepseek-v4-flash,adapter_invalid,adapter_invalid,,,17.54699999999866,0,0,0.04973,,,436,1902,0
+claude-code-S01-a2,S01,claude-code,deepseek-v4-flash,adapter_invalid,adapter_invalid,,,12.735000000000582,0,0,0.04408,,,436,1676,0
+claude-code-S01-a3,S01,claude-code,deepseek-v4-flash,passed,submitted,100,100,11.468000000000757,4,0,0.041676000000000005,,,1806,1206,0
+claude-code-S02-a1,S02,claude-code,deepseek-v4-flash,passed,submitted,100,100,18.0,5,0,0.08161699999999998,,,1799,2654,0
+claude-code-S03-a1,S03,claude-code,deepseek-v4-flash,budget_exhausted,no_submission,,0,17.187000000005355,7,0,0.064808,,,1897,2067,0
+claude-code-S04-a1,S04,claude-code,deepseek-v4-flash,passed,submitted,100,100,64.42199999999866,3,1,0.060145,,,2209,1836,0
+claude-code-S05-a1,S05,claude-code,deepseek-v4-flash,failed,submitted,0,0,19.734000000004016,6,0,0.120077,,,5635,3502,0
+claude-code-S06-a1,S06,claude-code,deepseek-v4-flash,passed,submitted,100,100,9.639999999999418,3,0,0.042981000000000005,,,1968,1213,0
+claude-code-S07-a1,S07,claude-code,deepseek-v4-flash,protocol_ambiguity,submitted,0,,16.875,18,0,0.08791600000000001,,Task descriptor says safe/fail IDs without explicitly requiring an array. Submitted named endpoint object is rejected by the frozen array-indexing validator. Raw grade retained; exclude this formatting-ambiguous cell from capability conclusions.,5301,2139,0
+claude-code-S08-a1,S08,claude-code,deepseek-v4-flash,passed,submitted,100,100,10.375,4,0,0.055255000000000006,,,3425,1346,0
+codex-native-S01-a1,S01,codex-native,gpt-6.1-sol,passed,submitted,100,100,155.67199999999866,3,0,,,,51212,598,40320
+codex-native-S02-a1,S02,codex-native,gpt-6.1-sol,adapter_invalid,no_submission,,,6.561999999998079,0,0,,,,,,
+codex-native-S02-a2,S02,codex-native,gpt-6.1-sol,passed,submitted,100,100,39.84399999999732,3,0,,,,62924,740,51456
+codex-native-S03-a1,S03,codex-native,gpt-6.1-sol,adapter_invalid,no_submission,,,2.0159999999959837,0,0,,,,,,
+codex-native-S03-a2,S03,codex-native,gpt-6.1-sol,passed,submitted,100,100,56.67199999999866,4,0,,,,65422,1534,43136
+codex-native-S04-a1,S04,codex-native,gpt-6.1-sol,adapter_invalid,no_submission,,,2.0159999999959837,0,0,,,,,,
+codex-native-S04-a2,S04,codex-native,gpt-6.1-sol,environment_or_incomplete,submitted,0,,294.375,5,1,,,,251716,2139,223744
+codex-native-S05-a1,S05,codex-native,gpt-6.1-sol,adapter_invalid,no_submission,,,2.0,0,0,,,,,,
+codex-native-S05-a2,S05,codex-native,gpt-6.1-sol,passed,submitted,100,100,60.68800000000192,6,0,,,,111135,1474,96128
+codex-native-S06-a1,S06,codex-native,gpt-6.1-sol,adapter_invalid,no_submission,,,2.0319999999992433,0,0,,,,,,
+codex-native-S06-a2,S06,codex-native,gpt-6.1-sol,passed,submitted,100,100,30.609000000004016,3,0,,,,53551,589,41984
+codex-native-S07-a1,S07,codex-native,gpt-6.1-sol,adapter_invalid,no_submission,,,2.047000000005937,0,0,,,,,,
+codex-native-S07-a2,S07,codex-native,gpt-6.1-sol,passed,submitted,100,100,48.51600000000326,4,0,,,,78222,1157,54400
+codex-native-S08-a1,S08,codex-native,gpt-6.1-sol,adapter_invalid,no_submission,,,3.0160000000032596,0,0,,,,,,
+codex-native-S08-a2,S08,codex-native,gpt-6.1-sol,passed,submitted,100,100,34.75,3,0,,,,71324,945,62976

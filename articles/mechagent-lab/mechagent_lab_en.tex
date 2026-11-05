@@ -1,0 +1,245 @@
+\documentclass[11pt,a4paper]{ctexart}
+
+\usepackage[margin=23mm,headheight=14pt]{geometry}
+
+\usepackage{amsmath,amssymb,graphicx,booktabs,tabularx,longtable,xcolor,fancyhdr,caption,float,placeins}
+
+\usepackage[hidelinks,unicode]{hyperref}
+
+\setmainfont{TeX Gyre Pagella}
+
+\setsansfont{TeX Gyre Heros}
+
+\setmonofont{Consolas}[Scale=.8]
+
+\definecolor{Ink}{HTML}{203746}\definecolor{Teal}{HTML}{197B77}
+
+\ctexset{section={format=\Large\bfseries\color{Ink}}}
+
+\setlength{\parskip}{.4em}\setlength{\emergencystretch}{3em}
+
+\captionsetup{font=small,labelfont=bf}
+
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\small MechAgent Lab}\fancyhead[R]{\small AlexanderChan}\fancyfoot[C]{\thepage}
+
+\newcommand{\labfig}[2]{\begin{figure}[htbp]\centering\includegraphics[width=\linewidth]{#1.pdf}\caption{#2}\end{figure}}
+
+\begin{document}\thispagestyle{empty}
+
+\renewcommand{\contentsname}{Contents}\renewcommand{\figurename}{Figure}
+
+{\sffamily\color{Teal}ENGINEERING FIELD NOTES / 2026.11.05}\par\vspace{1em}
+
+{\Huge\bfseries\color{Ink}MechAgent Lab}\par\vspace{.5em}
+
+{\LARGE Mechanics in the Loop}\par\vspace{1em}
+
+From mechanics decisions to native agents, actual solves and auditable artifacts.
+
+\par AlexanderChan / 2026-11-05\par\vspace{1em}
+
+Eight public tasks, two native clients and sixteen formal attempts. Claude Code uses DeepSeek; Codex uses an existing ChatGPT login. Only S04 executes a commercial solver; other tasks explicitly use reduced physics or engineering evidence.
+
+\tableofcontents\newpage
+
+\section{Why put mechanics in an agent benchmark?}
+
+Engineering simulation is not primarily a command-generation problem. It requires consistent decisions across physical assumptions, discretization and software state. An agent may explain substructuring yet choose a nonlinear region for condensation, or read a small contact force from an aborted case and call it physical failure. MechAgent Lab therefore evaluates inspectable decisions and artifacts, not engineer-like prose.
+
+\par
+
+Eight public tasks cover units and equilibrium, mesh allocation, independent prelift, substructure partitioning, bounded tolerances, interface reuse, coupled pose boundaries and batch recovery. Original public solids and reduced-physics fixtures replace client geometry, contracts and industrial results.
+
+\par
+
+This extension adds actual Claude Code and Codex Command-Line Interface (CLI) loops. Claude Code uses an existing DeepSeek route; Codex uses an existing ChatGPT login. CCS here refers to the local CC Switch configuration manager, not a model or agent. Earlier controlled-mini/Kimi and Pi/DeepSeek traces remain historical evidence, not matched reruns. A harness name does not identify the underlying model.
+
+\par
+
+\labfig{architecture}{Model, native harness, finite tools and host scoring; mini/Pi are historical routes.}
+
+\section{Agree on evidence before reading scores}
+
+Each agent receives exactly three mechanics capabilities: inspect a fixture, execute an experiment and submit a structured solution. Model Context Protocol (MCP) is the invocation interface, not the solver. Tool arguments expose no arbitrary scripts, paths or terminal commands. Reference solutions and validators stay with the host.
+
+\par
+
+Native means the installed client still owns reasoning, tool selection and context management; no custom inference loop impersonates it. Unrelated Claude tools/plugins and Codex shell/browser capabilities are disabled. This is configuration control plus observable tool auditing, not an operating-system isolation claim.
+
+\par
+
+Task text, execution sources and validators are hashed before formal calls. Each client gets one formal attempt per task. Two Claude starts without tools and seven Codex handshake failures remain as startup exclusions. The valid Codex first task and completed Claude outcomes are not repeated. Transport amendments change the adapter, not physics or scoring.
+
+\par
+
+Every task has at most 24 broker calls and 360 seconds wall time; the partition task permits one native candidate. Claude also has native-turn/request-output limits. Codex does not claim the same hard output-token cap. Different models, native instructions and budgets prevent a causal harness or model ranking.
+
+\par
+
+\section{Eight tasks that test mechanics rather than wording}
+
+S01 uses axial bars in series. The agent converts GPa to MPa and checks tip displacement, root reaction and strain energy. Finite Element Method (FEM) results must cite an executed artifact; plausible numbers alone are insufficient.
+
+\par
+
+S02 varies cross-sectional area with position. The objective is the smallest allowed mesh meeting a tip-displacement error bound, not the finest mesh. The independent reference is a continuum compliance integral, whereas elements use midpoint area.
+
+\par
+
+S03 gives six plates six independent controls, each influencing two unilateral contacts. Minimize squared amplitudes while all final normal forces reach 0.4 N. Prelift adds to a nominal displacement; separation produces zero normal force, and friction cannot make up a normal-force deficit. This is a reduced spring model, not a 3D frictional-contact solve.
+
+\par
+
+S04 is the actual commercial-solver task. An original 3D bar has linear-elastic and J2-plastic halves. The agent selects a condensation cut, retains root/interface translations, and executes generation, reduced assembly and Output Database (ODB) extraction through Abaqus/MCP.
+
+\par
+
+S05 samples 72 variables: 42 Z-shape changes, six independent prelifts and 24 local male-terminal X/Y translations. Monte Carlo (MC), Latin Hypercube Sampling (LHS), Sobol and Halton first sample the unit cube, then apply the inverse standard-normal CDF conditioned on [-1,1]. Conditioning is not endpoint clipping.
+
+\par
+
+The physical maps are 0.15a mm for shape change, 0.3348+0.15a mm for prelift, and 0.1a mm for rigid local translation. Local manufacturing offsets preserve terminal dimensions and do not move the substructure. Whole-male assembly pose is a different variable.
+
+\par
+
+S06 checks both library identity and Tie coverage. CORE denotes explicitly represented finite elements; SUB denotes the condensed region. Reuse requires matching topology, material and retained-node coordinates. A search tolerance cannot repair a wrong material or mesh, and disabling adjustment prevents the Tie from pulling a manufacturing offset back to nominal.
+
+\par
+
+S07 finds first contact loss along a prescribed coupled offset/angle path. Each experiment returns twelve normal forces; the minimum is compared with 0.4 N. Two actual artifacts must prove a safe/failing bracket. The lever-arm/unilateral-spring numbers are not industrial connector limits.
+
+\par
+
+S08 tests evidence reliability and recovery. Rank only completed cases at final displacement with all twelve channels, then sort by minimum absolute normal force. A case is one input/output instance. Completed physical failures stay done; active jobs wait, missing channels require re-extraction, interrupted jobs require re-solving, and negative-volume input requires mesh repair.
+
+\par
+
+\labfig{tasks}{Eight decisions and evidence tiers; only S04 uses actual Abaqus.}
+
+\[u=F\sum_i\frac{L_i}{E_iA_i},\quad R=-F,\quad W=\tfrac12Fu\]
+
+\[a=\Phi^{-1}\!\left[\Phi(-1)+u\bigl(\Phi(1)-\Phi(-1)\bigr)\right],\quad u\in(0,1)\]
+
+\labfig{sampling}{One representative bounded marginal per sampler; sixteen samples do not establish efficiency.}
+
+\[g(\lambda)=\min_{j=1,\ldots,12}N_j(\lambda)-0.4\;\mathrm{N}\]
+
+\labfig{boundary}{S07 reduced-physics path and actual agent experiments; not an industrial connector prediction.}
+
+\section{An actual substructure decision}
+
+The public 12 by 2 by 2 mm solid has 117 nodes and 48 C3D8 elements. Condensation cannot extend into potentially plastic material. A Schur complement eliminates internal Degrees of Freedom (DOFs). The maximal safe cut at 6 mm eliminates 135 internal translations.
+
+\par
+
+An independent full solve precedes agent execution and is not visible through its tools. Actual Abaqus/MCP generates a SIM library, assembles/solves the reduced model and compares stored-frame reactions. This tiny model establishes execution and equivalence, not an industrial speedup. The plotted curves come from the successful Claude Code/DeepSeek extraction, not a theoretical substitute.
+
+\par
+
+Codex also chose the 6 mm cut and 135 eliminated DOFs, but its actual tool returned no artifact within 240 seconds; another candidate request was denied by the one-candidate budget. It submitted an empty artifact ID rather than invent solver success. Its independently scheduled solve later finished, but returned neither an agent-observed artifact before the deadline nor an extracted/checked curve for this attempt. The raw zero remains a tool-timeout/incomplete-evidence outcome; late host success does not retroactively pass the agent. No validated Codex curve is invented.
+
+\par
+
+\[K_c=K_{bb}-K_{bi}K_{ii}^{-1}K_{ib}\]
+
+\labfig{solid}{Actual full/reduced reaction curves and the public partition from this native campaign.}
+
+\section{Read failures as engineering evidence}
+
+Each matrix cell is a frozen task/client combination. Passing requires independent checks and artifact references. Budget exhaustion, missing submission, service error and adapter failure remain distinct. A success-shaped tool message cannot prove a completed solver run.
+
+\par
+
+Elapsed time includes client startup, model waiting and tools; S04 includes commercial-solver work. It is neither pure inference latency nor a solver speedup. SDK dollar estimates are separate from invoices and may be inappropriate for a third-party route; unknown actual billing stays null.
+
+\par
+
+A correct derivation without submission is a workflow failure. A wrong physical mapping is a semantics failure. Rate limits are environmental, and absent MCP tools are an adapter problem. We retain these distinctions instead of retrying until a clean table appears.
+
+\par
+
+Claude S07 found safe/failing endpoints 1.223 and 1.224 but submitted artifact IDs as an object with safe/fail keys. The frozen validator indexes an array, while the task did not explicitly require that type. Its raw zero stays in the evidence, but this cell is labeled protocol ambiguity rather than a mechanics-boundary error. No extra attempt or retroactive full score is awarded.
+
+\par
+
+Formal attempts: 12 passed, 1 failed, 1 budget-exhausted, 1 environmental/incomplete and 1 protocol-ambiguous. Another 9 startup exclusions remain.
+
+\labfig{outcomes}{Task outcomes and wall time; different models/routes/budgets prevent causal ranking.}
+
+\begin{longtable}{llrrl}\toprule Task & Client & s & Tools & Outcome\\\midrule\endhead
+
+S01 & CC & 17.5 & 0 & Setup excluded \\
+
+S01 & CC & 12.7 & 0 & Setup excluded \\
+
+S01 & CC & 11.5 & 4 & Pass \\
+
+S02 & CC & 18.0 & 5 & Pass \\
+
+S03 & CC & 17.2 & 7 & Budget \\
+
+S04 & CC & 64.4 & 3 & Pass \\
+
+S05 & CC & 19.7 & 6 & Fail \\
+
+S06 & CC & 9.6 & 3 & Pass \\
+
+S07 & CC & 16.9 & 18 & Contract excluded \\
+
+S08 & CC & 10.4 & 4 & Pass \\
+
+S01 & Codex & 155.7 & 3 & Pass \\
+
+S02 & Codex & 6.6 & 0 & Setup excluded \\
+
+S02 & Codex & 39.8 & 3 & Pass \\
+
+S03 & Codex & 2.0 & 0 & Setup excluded \\
+
+S03 & Codex & 56.7 & 4 & Pass \\
+
+S04 & Codex & 2.0 & 0 & Setup excluded \\
+
+S04 & Codex & 294.4 & 5 & Incomplete \\
+
+S05 & Codex & 2.0 & 0 & Setup excluded \\
+
+S05 & Codex & 60.7 & 6 & Pass \\
+
+S06 & Codex & 2.0 & 0 & Setup excluded \\
+
+S06 & Codex & 30.6 & 3 & Pass \\
+
+S07 & Codex & 2.0 & 0 & Setup excluded \\
+
+S07 & Codex & 48.5 & 4 & Pass \\
+
+S08 & Codex & 3.0 & 0 & Setup excluded \\
+
+S08 & Codex & 34.8 & 3 & Pass \\
+
+\bottomrule\end{longtable}
+
+\section{Reproduce a decision from its evidence}
+
+The archive contains task cards, frozen sources, linked registrations, all retained attempts, complete observable-query appendices, independent scores, original public INP decks, actual MCP job identities, figure data and Tavotto receipts. Every figure is executed/registered/exported in actual Tavotto as PDF and PNG. Both reading editions are compiled from LaTeX.
+
+\par
+
+Start with offline tests and local-mock tool checks. Then configure your own API/native login, MCP installation and commercial-software license. Never put keys in tasks or upload the CCS database. After registration, do not silently alter prompts, tools or validators; amend with preserved history.
+
+\par
+
+Future work should add public problems genuinely requiring 3D contact, mesh quality and path dependence, followed by repeated crossed configurations and explicit spending controls. Until then, evidence provenance is more useful than a polished leaderboard.
+
+\par
+
+\section{References and implementation}
+
+\url{https://learn.chatgpt.com/docs/non-interactive-mode}\par
+
+\url{https://code.claude.com/docs/en/headless}\par
+
+\url{https://alexchan114.github.io/post/2026/11/04/mechanics-benchmark-v02/}\par
+
+\end{document}

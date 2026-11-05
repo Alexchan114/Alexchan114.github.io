@@ -1,0 +1,791 @@
+{
+  "internal_version": "V3",
+  "public_title": "MechAgent Lab | Mechanics in the Loop",
+  "created_utc": "2026-11-04T17:26:22.090824+00:00",
+  "configurations": {
+    "claude-code": {
+      "harness": "Claude Code",
+      "client_version": "2.1.154",
+      "model": "deepseek-v4-flash",
+      "provider_id": "ab26ff7c-b94a-4228-a0b0-a5b40a926362",
+      "auth": "existing CCS route"
+    },
+    "codex-native": {
+      "harness": "Codex CLI",
+      "client_version": "0.166.0-alpha.5.1",
+      "model": "gpt-6.1-sol",
+      "auth": "existing ChatGPT login",
+      "reasoning_effort": "xhigh"
+    }
+  },
+  "tasks": {
+    "S01": {
+      "title": "Units, series compliance and equilibrium",
+      "title_zh": "单位、串联柔度与平衡",
+      "query": "Find tip U in mm, root reaction in N and total strain energy in N mm. Convert GPa to MPa. Execute the FEM tool and cite its artifact.",
+      "fixture": {
+        "length_mm": [
+          4,
+          6,
+          2
+        ],
+        "area_mm2": [
+          2,
+          3,
+          1
+        ],
+        "E_GPa": [
+          2,
+          1,
+          3
+        ],
+        "tip_force_N": 12
+      },
+      "output": {
+        "artifact_id": "string",
+        "U_mm": "number",
+        "reaction_N": "number",
+        "energy_Nmm": "number"
+      },
+      "id": "S01",
+      "version": "0.2.2",
+      "tier": "public_reduced_physics",
+      "budget": {
+        "max_turns": 6,
+        "max_output_tokens": 6144,
+        "max_tool_calls": 24,
+        "max_solver_tests": 1
+      },
+      "scoring": "binary: all independent checks required; no self-report scoring"
+    },
+    "S02": {
+      "title": "Goal-oriented mesh allocation",
+      "title_zh": "面向目标响应的网格分配",
+      "query": "Use uniform 1D linear axial elements and midpoint area. Choose the smallest allowed n with relative tip-U error <=0.001 versus the exact continuum integral. Execute the mesh tool for the submitted n; report U and relative error.",
+      "fixture": {
+        "L_mm": 1,
+        "E_MPa": 1000,
+        "F_N": 10,
+        "A_mm2": "1+x (x in mm)",
+        "allowed_n": [
+          1,
+          2,
+          4,
+          8,
+          16,
+          32,
+          64
+        ],
+        "relative_tolerance": 0.001
+      },
+      "output": {
+        "artifact_id": "string",
+        "n": "integer",
+        "U_mm": "number",
+        "relative_error": "number"
+      },
+      "id": "S02",
+      "version": "0.2.2",
+      "tier": "public_reduced_physics",
+      "budget": {
+        "max_turns": 6,
+        "max_output_tokens": 6144,
+        "max_tool_calls": 24,
+        "max_solver_tests": 1
+      },
+      "scoring": "binary: all independent checks required; no self-report scoring"
+    },
+    "S03": {
+      "title": "Independent prelift and unilateral contact",
+      "title_zh": "独立预抬与单边接触",
+      "query": "Six plates each control consecutive pairs (1,2),(3,4),etc. Choose six independent amplitudes in [0,1] minimizing sum(a_i^2) while every final normal force is >=0.4 N. No friction contribution. Use contact_test; report amplitudes and 12 final forces. This is a unilateral spring model, not a solid/contact solver.",
+      "fixture": {
+        "base_lift_mm": 0.3348,
+        "scale_mm": 0.15,
+        "insertion_mm": 0.18,
+        "gaps_mm": [
+          0.48,
+          0.52,
+          0.54,
+          0.5,
+          0.53,
+          0.56,
+          0.49,
+          0.51,
+          0.57,
+          0.55,
+          0.52,
+          0.54
+        ],
+        "stiffness_N_per_mm": [
+          6,
+          8,
+          7,
+          6,
+          8,
+          7,
+          6,
+          9,
+          7,
+          8,
+          6,
+          7
+        ],
+        "threshold_N": 0.4
+      },
+      "output": {
+        "artifact_id": "string",
+        "amplitudes": "six numbers",
+        "forces_N": "12 numbers"
+      },
+      "id": "S03",
+      "version": "0.2.2",
+      "tier": "public_reduced_physics",
+      "budget": {
+        "max_turns": 6,
+        "max_output_tokens": 6144,
+        "max_tool_calls": 24,
+        "max_solver_tests": 1
+      },
+      "scoring": "binary: all independent checks required; no self-report scoring"
+    },
+    "S04": {
+      "title": "Autonomous 3D substructure partition",
+      "title_zh": "三维子结构自主分区",
+      "query": "Choose the cut maximizing eliminated translational DOFs while keeping all potentially plastic elements outside the linear substructure. Retain ROOT and all interface translations. Run partition_test on your chosen cut: it invokes actual Abaqus generation, reduced solve and ODB extraction via MCP (1 CPU). Cite the returned artifact. Do not use stress magnitude alone to declare a region linear.",
+      "fixture": {
+        "dimensions_mm": [
+          12,
+          2,
+          2
+        ],
+        "mesh": "117 nodes,48 C3D8; x planes at integers; 9 nodes per plane",
+        "node_rule": "label=1+9*i+3*j+k; i=0..12,j,k=0..2",
+        "materials": [
+          {
+            "x_mm": [
+              0,
+              6
+            ],
+            "E_MPa": 1000,
+            "nu": 0,
+            "law": "linear elastic"
+          },
+          {
+            "x_mm": [
+              6,
+              12
+            ],
+            "E_MPa": 1000,
+            "nu": 0,
+            "law": "J2 plastic; yield=1MPa; hardening=50MPa"
+          }
+        ],
+        "load": "ROOT fixed; TIP U1=0.12mm, NLGEOM=NO",
+        "cuts_mm": [
+          2,
+          4,
+          6,
+          8
+        ],
+        "requirement": "linear substructure must preserve nonlinear constitutive regions; curve error <=1e-4 N"
+      },
+      "output": {
+        "artifact_id": "string",
+        "cut_mm": "integer",
+        "retained_nodes": "18 integers",
+        "retained_dofs": "[1,2,3]",
+        "eliminated_dofs": "integer"
+      },
+      "id": "S04",
+      "version": "0.2.2",
+      "tier": "abaqus_mcp_3d",
+      "budget": {
+        "max_turns": 6,
+        "max_output_tokens": 6144,
+        "max_tool_calls": 24,
+        "max_solver_tests": 1
+      },
+      "scoring": "binary: all independent checks required; no self-report scoring"
+    },
+    "S05": {
+      "title": "Bounded sampling and physical tolerance mapping",
+      "title_zh": "有界抽样及物理公差映射",
+      "query": "Generate 16 samples of 72 independent variables using each of MC,LHS,Sobol,Halton. All marginals are standard normal conditioned on [-1,1], not clipped normal or uniform. Use sample_test once per method, seed=20261104. Submit four artifact IDs and physical values for the first MC vector. First42 are Z shape changes (0.15a mm), next6 prelift (.3348+0.15a mm), final24 alternating X,Y per 12 rigid CORE terminals (0.1a mm). SUB is unchanged; translation preserves terminal dimensions.",
+      "fixture": {
+        "n": 16,
+        "dimensions": 72,
+        "seed": 20261104,
+        "bounds": [
+          -1,
+          1
+        ],
+        "marginal": "truncated standard normal",
+        "shape_count": 42,
+        "prelift_count": 6,
+        "terminal_count": 12
+      },
+      "output": {
+        "artifact_ids": "4 strings, MC/LHS/Sobol/Halton order",
+        "first_MC_physical_mm": "72 numbers"
+      },
+      "id": "S05",
+      "version": "0.2.2",
+      "tier": "public_reduced_physics",
+      "budget": {
+        "max_turns": 6,
+        "max_output_tokens": 6144,
+        "max_tool_calls": 24,
+        "max_solver_tests": 1
+      },
+      "scoring": "binary: all independent checks required; no self-report scoring"
+    },
+    "S06": {
+      "title": "Reuse, geometry compatibility and Tie coverage",
+      "title_zh": "复用、几何兼容与绑定覆盖",
+      "query": "Choose a reusable library matching target retained topology/material/coordinates. Independently translated CORE slave faces need an unadjusted Tie to an unchanged master plane; maximum normal offset is 0.1mm X +0.1mm Y projected on n. Give minimal safe tolerance=max distance+1e-6 mm, ADJUST=false. In both experiment and final solution, adjust MUST be a JSON boolean false, not a string. Tolerance must not excuse an incompatible library. Execute interface_test.",
+      "fixture": {
+        "target": {
+          "topology": "mesh-A",
+          "material": "E1000",
+          "retained_xyz": [
+            [
+              0,
+              0,
+              0
+            ],
+            [
+              0,
+              0,
+              1
+            ]
+          ]
+        },
+        "libraries": {
+          "L17": {
+            "topology": "mesh-A",
+            "material": "E1000",
+            "retained_xyz": [
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "L24": {
+            "topology": "mesh-A",
+            "material": "E1000",
+            "retained_xyz": [
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0.02,
+                1
+              ]
+            ]
+          },
+          "L33": {
+            "topology": "mesh-A",
+            "material": "E1200",
+            "retained_xyz": [
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ]
+          },
+          "L41": {
+            "topology": "mesh-B",
+            "material": "E1000",
+            "retained_xyz": [
+              [
+                0,
+                0,
+                0
+              ],
+              [
+                0,
+                0,
+                1
+              ]
+            ]
+          }
+        },
+        "master_normal": [
+          0.7071067811865475,
+          0.7071067811865475,
+          0
+        ],
+        "offset_limits_mm": [
+          0.1,
+          0.1
+        ],
+        "margin_mm": 1e-06
+      },
+      "output": {
+        "artifact_id": "string",
+        "library_id": "string",
+        "tie_tolerance_mm": "number",
+        "adjust": "JSON boolean false, not string"
+      },
+      "id": "S06",
+      "version": "0.2.2",
+      "tier": "public_reduced_physics",
+      "budget": {
+        "max_turns": 6,
+        "max_output_tokens": 6144,
+        "max_tool_calls": 24,
+        "max_solver_tests": 1
+      },
+      "scoring": "binary: all independent checks required; no self-report scoring"
+    },
+    "S07": {
+      "title": "Coupled offset-angle first-loss boundary",
+      "title_zh": "偏位偏角耦合首失效边界",
+      "query": "Along lambda in [0,2], offset X=0.1*lambda mm and angle=2*lambda deg, find a safe/failing bracket for the FIRST contact loss. Any of12 normal forces <0.4N fails. Return lambda_safe,lambda_failed with width<=0.002 and two pose_test artifacts proving endpoints. Kinematic spring contact only, not a connector prediction. Use the lever-arm geometry rather than a reward surrogate.",
+      "fixture": {
+        "k_N_per_mm": [
+          6.0,
+          6.2,
+          6.4,
+          6.6,
+          6.8,
+          7.0,
+          7.2,
+          7.4,
+          7.6,
+          7.8,
+          8.0,
+          8.2
+        ],
+        "initial_overlap_mm": [
+          0.19,
+          0.193,
+          0.196,
+          0.199,
+          0.202,
+          0.20500000000000002,
+          0.20800000000000002,
+          0.211,
+          0.214,
+          0.217,
+          0.22,
+          0.223
+        ],
+        "normal_x": [
+          0.45,
+          0.47000000000000003,
+          0.49,
+          0.51,
+          0.53,
+          0.55,
+          0.5700000000000001,
+          0.5900000000000001,
+          0.61,
+          0.63,
+          0.65,
+          0.67
+        ],
+        "lever_mm": [
+          1.5,
+          1.56,
+          1.62,
+          1.68,
+          1.74,
+          1.8,
+          1.8599999999999999,
+          1.92,
+          1.98,
+          2.04,
+          2.1,
+          2.16
+        ],
+        "path": {
+          "offset_X_mm_per_lambda": 0.1,
+          "angle_deg_per_lambda": 2
+        },
+        "threshold_N": 0.4,
+        "lambda_limits": [
+          0,
+          2
+        ]
+      },
+      "output": {
+        "lambda_safe": "number",
+        "lambda_failed": "number",
+        "artifact_ids": "safe/fail IDs"
+      },
+      "id": "S07",
+      "version": "0.2.2",
+      "tier": "public_reduced_physics",
+      "budget": {
+        "max_turns": 6,
+        "max_output_tokens": 6144,
+        "max_tool_calls": 24,
+        "max_solver_tests": 1
+      },
+      "scoring": "binary: all independent checks required; no self-report scoring"
+    },
+    "S08": {
+      "title": "Failure recovery and trustworthy ranking",
+      "title_zh": "故障恢复与可信排序",
+      "query": "Rank only trustworthy completed cases by minimum absolute normal force across12pairs at final |U3|=8mm. Sort ASCENDING minimum force, weakest first; ties by case ID ascending. Return contact_failures in this same ascending order. Report failure cases (<0.4N) and a recovery action for every case. Completed evidence must include solver success, final frame,12channels. Minimal recovery policy: every trustworthy completed case is done, including genuine contact failures; physical failure alone is not a reason to retry. Inactive interrupted jobs use retry_solve, completed jobs with missing channels use reextract, active jobs use wait, input errors with negative volume use repair_mesh. Never retry an active job or treat numerical abort as contact failure. inspect_cases exposes read-only evidence; no solver is launched.",
+      "fixture": {
+        "final_abs_U3_mm": 8,
+        "expected_pairs": 12,
+        "threshold_N": 0.4,
+        "cases": {
+          "c01": {
+            "solver": "completed",
+            "U3": -8,
+            "forces": [
+              -0.41,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8
+            ],
+            "active": false
+          },
+          "c02": {
+            "solver": "completed",
+            "U3": -8,
+            "forces": [
+              -0.9,
+              -0.9,
+              -0.9,
+              -0.9,
+              -0.9,
+              -0.9,
+              -0.9,
+              -0.35,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8
+            ],
+            "active": false
+          },
+          "c03": {
+            "solver": "completed",
+            "U3": -8,
+            "forces": [
+              -0.38,
+              -0.9,
+              -0.9,
+              -0.9,
+              -0.9,
+              -0.9,
+              -0.9,
+              -0.9,
+              -0.9,
+              -0.9,
+              -0.9,
+              -0.9
+            ],
+            "active": false
+          },
+          "c04": {
+            "solver": "interrupted",
+            "U3": -7,
+            "forces": [
+              -0.01,
+              -0.01,
+              -0.01,
+              -0.01,
+              -0.01,
+              -0.01,
+              -0.01,
+              -0.01,
+              -0.01,
+              -0.01,
+              -0.01,
+              -0.01
+            ],
+            "active": false
+          },
+          "c05": {
+            "solver": "completed",
+            "U3": -8,
+            "forces": [
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1
+            ],
+            "active": false
+          },
+          "c06": {
+            "solver": "running",
+            "U3": -4,
+            "forces": [
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1,
+              -0.1
+            ],
+            "active": true
+          },
+          "c07": {
+            "solver": "input_error",
+            "error": "negative element volume",
+            "active": false
+          },
+          "c08": {
+            "solver": "completed",
+            "U3": -8,
+            "forces": [
+              -0.45,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8,
+              -0.8
+            ],
+            "active": false
+          }
+        }
+      },
+      "output": {
+        "artifact_id": "string",
+        "ranking": "case IDs",
+        "contact_failures": "case IDs",
+        "actions": "object: done/retry_solve/reextract/wait/repair_mesh"
+      },
+      "id": "S08",
+      "version": "0.2.2",
+      "tier": "public_reduced_physics",
+      "budget": {
+        "max_turns": 6,
+        "max_output_tokens": 6144,
+        "max_tool_calls": 24,
+        "max_solver_tests": 1
+      },
+      "scoring": "binary: all independent checks required; no self-report scoring"
+    }
+  },
+  "tools": [
+    {
+      "name": "inspect_fixture",
+      "description": "Read the current public fixture and required output schema.",
+      "input_schema": {
+        "type": "object",
+        "properties": {},
+        "required": [],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "experiment",
+      "description": "Execute only the named experiment for the current task. No arbitrary code/files. Valid parameters are in the fixture and query.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "parameters": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "parameters"
+        ],
+        "additionalProperties": false
+      }
+    },
+    {
+      "name": "submit_solution",
+      "description": "Submit final structured solution; ends this attempt.",
+      "input_schema": {
+        "type": "object",
+        "properties": {
+          "solution": {
+            "type": "object"
+          },
+          "explanation": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "solution",
+          "explanation"
+        ],
+        "additionalProperties": false
+      }
+    }
+  ],
+  "source_hashes": {
+    "api.py": "ae44e5ce6a52d61b2773df363f5fa2d99ea7d044e9b2ad3e898b54a46c23451a",
+    "archive_frozen.py": "d7d47c489718b1c5c30c8a64bde73f92365b5984d36578cb9739f639b7ad4460",
+    "calibrate_solid.py": "97d899cadd5baf95d4e09798fe6c040707f486fe6fdef37149c8b5cf9304848e",
+    "cli.py": "17ff04ad2fa2f992cd47209a1df5370f867b16effe83ccec922609ee4d05c43f",
+    "credentials.py": "e8d5fd56c2fa1e2b0a27bc29dad4cf152ab61a3c2b274e01e7c16df43fe60a36",
+    "delivery.py": "f814596ba4c0b17e1a2ceab846da83fab3ced405ced02559a13afcba9b6bc42a",
+    "evaluate.py": "b38e8c28c23429ed3e8e44b6feba15d2c6c82edea290babfa92e38099c3a3a8e",
+    "figure_data.py": "157ed64b1519c3d3c2dd52771846e0bed17811a7f8e808d9d04e7b64af3b1530",
+    "mechanics.py": "774dcb8971b12a4760b2a8a3c31e14b2f42c0d93ce01367c3971362c0d1c57df",
+    "native_bridge.py": "3418c65e950486480015de21ea0ceb5c829e718557f84363343ddc5ccc1fc66c",
+    "native_host.py": "b0fcfd0b02db3a9a788bb7ea6a1d44a109acece983fade5fbdf82ced42507155",
+    "native_mcp.py": "b32781326681ea65834676a90b7279408ce38cb19701446d298ef0743d446f6a",
+    "native_probe.py": "1d10dc41c0c364c778572a4c00c8cdf68b3e929b0c90323c5b757cd30ff51b5b",
+    "native_suite.py": "86542652a9e3e2fc693076fa57f9f4b1e8f2f7a9bbfe9ea876ed79b5ec170377",
+    "pi_adapter.py": "6656c0bd2d1ad924c1c3b04c03968df08f2bb9e71514c1a903d4b0b700f57d5c",
+    "pi_bridge.mjs": "f5414a5700ac2e9d9340c1c236612f0172f4a3281345688fa2fe506eb2837c4e",
+    "probe.py": "938e038abf99039a528d4a9910205c4783fb6bc003df443ff609f765437a1e35",
+    "probe_mcp.py": "c28bf318ecba2c91d1ed86da71747c652d37e82d9ce4b4ba583c63188a4f683e",
+    "publish_preview.py": "30b9f349ae3fa281b8f1a8ae275dd3c81b94d11390d45383db6c477f13aecc56",
+    "publish_v2.py": "68b1fd84889a94e3abd97ea40940b0e804fe8cefc8ef511a82ad38c1ebb2ed05",
+    "qa.py": "34ae71e17489971dcb9a0d052e9be653539e20e63d6399c0afabf54e413f2c72",
+    "release.py": "4bcc8d4c644dcdf57d651578221556658abad7fad105b39f05ec7fe74f8cdc01",
+    "report.py": "7b478e53ae99abb8c5eb5fe543d07647d4659d96a1d516a3cf7192457a61da16",
+    "requirements.txt": "3de9f357db6c6e9f35b51f7a8a98f1aac5b2c0973b144cf2ca1d7fe68b9e87f9",
+    "run_suite.py": "8c7c30131d6af9cf9552291a0779311e08a9c98b335089fb97169e33cc8962c8",
+    "security.py": "2c7671188ac9f6b1d61eca5d7dbbaf8c4de3df3b0860d1bfd1cd803de8ab522a",
+    "solid_candidate.py": "6ddbce15a412f71f6453e45ed6adf6b48b79d035c8e25738c633ca1f6e110cdf",
+    "solid_reference.py": "c730c266bfaf4cf1f4767cc7ca706b1b19d7ff76a32b9419c7df28153ba194b4",
+    "suite_delivery.py": "f460acdaf68f9d8c4113e9259ae5226b40295a59440cc15ac7d9570995eb89c4",
+    "suite_evaluate.py": "867e38c6b9e68f0041017873c95054ff7823de3ce636e77209f37c50345a4095",
+    "suite_physics.py": "626591ee148690ccbcb81871a5fe36c820a6ef4858cb824189134908c5c00162",
+    "suite_qa.py": "80a961d5266b459dbe476ef23cd65f02e400310b2ed8e576642dbeb0e57fd689",
+    "suite_tools.py": "6f1e3042635e4b6b983d27a1de43ca4f15c56d821338dfa9d87cff0904affbbd",
+    "suite_v2.py": "b412a1e5f91a1a8e03bd5d68dec2c7e3b76950a4dcba09ae5e21502954823198",
+    "tasks.py": "b8fb061dc714534fa5176decf0e03863d988b0dded144bb49c7d17234fdef0bc",
+    "tools.py": "c2ae0d44ec2369be267b5a36dd7e18d3cd45c3d3ae3c9966f8f5aa7c99a6dcae",
+    "__init__.py": "7a151481dd55f90f2f793f0e6ead1ebd65589d0106e965a3e92c2f3bdfc1d0e3",
+    "__main__.py": "935a1c1166b0c1ea35a82256345000bf2c73ded718d77773bc27a71ecce28f7d"
+  },
+  "matrix": [
+    {
+      "configuration": "claude-code",
+      "task": "S01"
+    },
+    {
+      "configuration": "claude-code",
+      "task": "S02"
+    },
+    {
+      "configuration": "claude-code",
+      "task": "S03"
+    },
+    {
+      "configuration": "claude-code",
+      "task": "S04"
+    },
+    {
+      "configuration": "claude-code",
+      "task": "S05"
+    },
+    {
+      "configuration": "claude-code",
+      "task": "S06"
+    },
+    {
+      "configuration": "claude-code",
+      "task": "S07"
+    },
+    {
+      "configuration": "claude-code",
+      "task": "S08"
+    },
+    {
+      "configuration": "codex-native",
+      "task": "S01"
+    },
+    {
+      "configuration": "codex-native",
+      "task": "S02"
+    },
+    {
+      "configuration": "codex-native",
+      "task": "S03"
+    },
+    {
+      "configuration": "codex-native",
+      "task": "S04"
+    },
+    {
+      "configuration": "codex-native",
+      "task": "S05"
+    },
+    {
+      "configuration": "codex-native",
+      "task": "S06"
+    },
+    {
+      "configuration": "codex-native",
+      "task": "S07"
+    },
+    {
+      "configuration": "codex-native",
+      "task": "S08"
+    }
+  ],
+  "repetitions": 1,
+  "automatic_benchmark_retries": 0,
+  "maximum_attempts": 16,
+  "budgets": {
+    "tool_calls": 24,
+    "wall_seconds": 360,
+    "claude_native_turns": 6,
+    "claude_max_output_tokens_per_request": 6144,
+    "codex_output_token_cap": null,
+    "codex_token_usage": "reported after run"
+  },
+  "scope": "seven reduced-physics exercises; S04 actual Abaqus via host broker",
+  "isolation": "CLI configuration and observed-tool audit; no claim of OS-level isolation",
+  "comparison": "descriptive matched tasks; different models/routes/native budgets; no causal ranking",
+  "native_transport_retries": "Codex internal transport events retained; Claude gateway latches upstream errors",
+  "native_gateway": "Claude: exact three-tool request gate,6 forwarded requests,6144 max output per request; Codex native caps unchanged",
+  "amendment_of_hash": "3235f7222e5892cfdecec2e591d19777d33d2d9627ee8c322fe3cbd544c34bea",
+  "retained_valid_attempts": [
+    "codex-native-S01-a1"
+  ],
+  "excluded_setup_attempts": [
+    "claude-code-S01-a1",
+    "claude-code-S01-a2"
+  ],
+  "reason": "Two retained Claude startup attempts had no MCP tools. Prewarm the host broker and use a tiny stdio relay; verify outgoing tool schemas offline and gate before forwarding. No physics, query, validator or scoring change.",
+  "remaining_attempts": "Claude S01 once with verified adapter; other14first attempts; no retry of a valid task failure"
+}
