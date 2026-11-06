@@ -1,0 +1,24 @@
+{
+  "configuration": "claude-code",
+  "harness": "Claude Code",
+  "client_version": "2.1.154",
+  "model": "deepseek-v4-flash",
+  "provider_id": "ab26ff7c-b94a-4228-a0b0-a5b40a926362",
+  "auth": "existing CCS route",
+  "task": "S01",
+  "tier": "public_reduced_physics",
+  "status": "adapter_invalid",
+  "started_utc": "2026-11-04T16:31:41.233051+00:00",
+  "preregistration_hash": "3235f7222e5892cfdecec2e591d19777d33d2d9627ee8c322fe3cbd544c34bea",
+  "automatic_benchmark_retry": false,
+  "actual_billed_usd": null,
+  "elapsed_seconds": 12.735000000000582,
+  "returncode": 0,
+  "tool_calls": 0,
+  "solver_tests": 0,
+  "evaluation": null,
+  "observed_prohibited_tools": [
+    "unexpected_claude_tool_catalog"
+  ],
+  "finished_utc": "2026-11-04T16:31:53.977824+00:00"
+}

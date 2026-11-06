@@ -1,0 +1,223 @@
+1
+
+   Abaqus 2025                                  Date 05-Nov-2026   Time 01:28:28
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+
+
+                         The Abaqus Software is a product of:
+
+                           Dassault Systemes Americas Corp.
+                           1301 Atwood Avenue, Suite 101W
+                              Johnston, RI 02919, USA
+ 
+
+
+                   The Abaqus Software is available only under license
+                   from Dassault Systemes or its subsidiary and may be
+                   used or reproduced only in accordance with the terms
+                   of such license.
+ 
+                          On machine MyPC 
+                          you are authorized to run
+                          Abaqus/Foundation until 31-Dec-2055
+
+                          Your site id is:  
+
+
+ 
+                    For assistance or any other information you may
+                    obtain contact information for your local office
+                    from the world wide web at:
+
+                      https://www.3ds.com/products-services/simulia/services-support/
+
+ 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+                *                                                         * 
+                *                   *****************                     * 
+                *                   *  N O T I C E  *                     * 
+                *                   *****************                     * 
+                *                                                         * 
+                *                                                         * 
+                *                       Abaqus 2025                       * 
+                *                                                         * 
+                *       BUILD ID: 2024_09_20-21.00.46 RELr427 198590      * 
+                *                                                         * 
+                *                                                         * 
+                *  Please make sure you are using                         * 
+                *  release Abaqus 2025 manuals                            * 
+                *  plus the notes accompanying this release.              * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                *                                                         * 
+                * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * 
+
+
+ 
+
+
+
+     PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   *******************************************************
+
+
+     END PROCESSING PART, INSTANCE, AND ASSEMBLY INFORMATION
+   ***********************************************************
+
+
+
+
+     OPTIONS BEING PROCESSED
+   ***************************
+
+
+  *ELEMENT,TYPE=C3D8,ELSET=LINEAR
+  *heading
+          Original public elastic/plastic solid bar; mm-N-MPa                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+  *material, name=LINEAR
+  *elastic
+  *material, name=PLASTIC
+  *solidsection, elset=LINEAR, material=LINEAR
+  *solidsection, elset=LINEAR, material=LINEAR
+  *step, name=Generate
+  *step, name=Generate
+  *step, name=Generate
+  *step, name=Generate
+  *substructuregenerate, type=Z101, recoverymatrix=NO
+
+ ***WARNING: PARAMETERS TYPE AND LIBRARY ARE OBSOLETE AND WILL BE ELIMINATED IN 
+             THE FUTURE. PLEASE USE PARAMETER NAME INSTEAD TO DIRECTLY SPECIFY 
+             THE SUBSTRUCTURE NAME.
+
+ ***WARNING: INTEGRAL INERTIA QUANTITIES WILL NOT BE GENERATED FOR A 
+             SUBSTRUCTURE BECAUSE THE MODEL HAS NO INERTIA. TO DEFINE INERTIA, 
+             IT IS NECESSARY TO DEFINE A MATERIAL DENSITY OR LUMPED MASS OR 
+             INPUT THE MASS MATRIX FOR A PART OF THE MODEL USING THE MATRIX 
+             INPUT CAPABILITY.
+  *retainednodaldofs
+  *endstep
+  *step, name=Generate
+  *substructuregenerate, type=Z101, recoverymatrix=NO
+
+ ***WARNING: PARAMETERS TYPE AND LIBRARY ARE OBSOLETE AND WILL BE ELIMINATED IN 
+             THE FUTURE. PLEASE USE PARAMETER NAME INSTEAD TO DIRECTLY SPECIFY 
+             THE SUBSTRUCTURE NAME.
+  *endstep
+
+
+
+                            P R O B L E M   S I Z E
+
+
+          NUMBER OF ELEMENTS IS                                    24
+          NUMBER OF NODES IS                                       63
+          NUMBER OF NODES DEFINED BY THE USER                      63
+          TOTAL NUMBER OF VARIABLES IN THE MODEL                  189
+          (DEGREES OF FREEDOM PLUS MAX NO. OF ANY LAGRANGE MULTIPLIER
+           VARIABLES. INCLUDE *PRINT,SOLVE=YES TO GET THE ACTUAL NUMBER.)
+
+
+
+                              END OF USER INPUT PROCESSING
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =     0.10    
+       SYSTEM TIME (SEC)    =      0.0    
+       TOTAL CPU TIME (SEC) =     0.10    
+       WALLCLOCK TIME (SEC) =            0
+1
+
+   Abaqus 2025                                  Date 05-Nov-2026   Time 01:28:37
+   For use by Supplied by Team-SolidSQUAD under license from Dassault Systemes or its subsidiary.
+
+     Original public elastic/plastic solid bar; mm-N-MPa                                       STEP    1  INCREMENT    1
+                                                                                          TIME COMPLETED IN THIS STEP   0.00    
+
+
+                        S T E P       1     S U B S T R U C T U R E  G E N E R A T E
+
+
+                                                                                          
+  SUBSTRUCTURE NAME:    analysis_Z101                                                                                                                                                   
+
+  NUMBER OF RETAINED NODAL DEGREES OF FREEDOM:    54
+  NUMBER OF RETAINED EIGENMODES              :     0
+  NUMBER OF SUBSTRUCTURE LOAD CASES          :     0
+  NUMBER OF RESIDUAL MODES                   :     0
+
+  SUBSTRUCTURE STIFFNESS MATRIX WILL BE GENERATED
+
+  SUBSTRUCTURE MASS MATRIX WILL NOT BE GENERATED
+  SUBSTRUCTURE VISCOUS DAMPING MATRIX WILL NOT BE GENERATED
+  SUBSTRUCTURE STRUCTURAL DAMPING MATRIX WILL NOT BE GENERATED
+  SUBSTRUCTURE RECOVERY MATRIX WILL NOT BE GENERATED
+  
+                   M E M O R Y   E S T I M A T E
+  
+ PROCESS      FLOATING PT       MINIMUM MEMORY        MEMORY TO
+              OPERATIONS           REQUIRED          MINIMIZE I/O
+             PER ITERATION           (MB)               (MB)
+  
+     1          6.23E+05               12                 19
+  
+ NOTE:
+      (1) SINCE ABAQUS DOES NOT PRE-ALLOCATE MEMORY AND ONLY ALLOCATES MEMORY AS NEEDED DURING THE ANALYSIS,
+          THE MEMORY REQUIREMENT PRINTED HERE CAN ONLY BE VIEWED AS A GENERAL GUIDELINE BASED ON THE BEST
+          KNOWLEDGE AVAILABLE AT THE BEGINNING OF A STEP BEFORE THE SOLUTION PROCESS HAS BEGUN.
+      (2) THE ESTIMATE IS NORMALLY UPDATED AT THE BEGINNING OF EVERY STEP. IT IS THE MAXIMUM VALUE OF THE
+          ESTIMATE FROM THE CURRENT STEP TO THE LAST STEP OF THE ANALYSIS, WITH UNSYMMETRIC SOLUTION TAKEN
+          INTO ACCOUNT IF APPLICABLE. 
+      (3) SINCE THE ESTIMATE IS BASED ON THE ACTIVE DEGREES OF FREEDOM IN THE FIRST ITERATION OF THE 
+          CURRENT STEP, THE MEMORY ESTIMATE MIGHT BE SIGNIFICANTLY DIFFERENT THAN ACTUAL USAGE FOR 
+          PROBLEMS WITH SUBSTANTIAL CHANGES IN ACTIVE DEGREES OF FREEDOM BETWEEN STEPS (OR EVEN WITHIN
+          THE SAME STEP). EXAMPLES ARE: PROBLEMS WITH SIGNIFICANT CONTACT CHANGES, PROBLEMS WITH MODEL
+          CHANGE, PROBLEMS WITH BOTH STATIC STEP AND STEADY STATE DYNAMIC PROCEDURES WHERE ACOUSTIC 
+          ELEMENTS WILL ONLY BE ACTIVATED IN THE STEADY STATE DYNAMIC STEPS.
+      (4) FOR MULTI-PROCESS EXECUTION, THE ESTIMATED VALUE OF FLOATING POINT OPERATIONS FOR EACH PROCESS
+          IS BASED ON AN INITIAL SCHEDULING OF OPERATIONS AND MIGHT NOT REFLECT THE ACTUAL FLOATING 
+          POINT OPERATIONS COMPLETED ON EACH PROCESS. OPERATIONS ARE DYNAMICALLY BALANCED DURING EXECUTION, 
+          SO THE ACTUAL BALANCE OF OPERATIONS BETWEEN PROCESSES IS EXPECTED TO BE BETTER THAN THE ESTIMATE
+          PRINTED HERE.
+      (5) THE UPPER LIMIT OF MEMORY THAT CAN BE ALLOCATED BY ABAQUS WILL IN GENERAL DEPEND ON THE VALUE OF
+          THE "MEMORY" PARAMETER AND THE AMOUNT OF PHYSICAL MEMORY AVAILABLE ON THE MACHINE. PLEASE SEE
+          THE "ABAQUS ANALYSIS USER'S MANUAL" FOR MORE DETAILS. THE ACTUAL USAGE OF MEMORY AND OF DISK
+          SPACE FOR SCRATCH DATA WILL DEPEND ON THIS UPPER LIMIT AS WELL AS THE MEMORY REQUIRED TO MINIMIZE
+          I/O. IF THE MEMORY UPPER LIMIT IS GREATER THAN THE MEMORY REQUIRED TO MINIMIZE I/O, THEN THE ACTUAL
+          MEMORY USAGE WILL BE CLOSE TO THE ESTIMATED "MEMORY TO MINIMIZE I/O" VALUE, AND THE SCRATCH DISK
+          USAGE WILL BE CLOSE-TO-ZERO; OTHERWISE, THE ACTUAL MEMORY USED WILL BE CLOSE TO THE PREVIOUSLY
+          MENTIONED MEMORY LIMIT, AND THE SCRATCH DISK USAGE WILL BE ROUGHLY PROPORTIONAL TO THE DIFFERENCE
+          BETWEEN THE ESTIMATED "MEMORY TO MINIMIZE I/O" AND THE MEMORY UPPER LIMIT. HOWEVER ACCURATE
+          ESTIMATE OF THE SCRATCH DISK SPACE IS NOT POSSIBLE.
+      (6) USING "*RESTART, WRITE" CAN GENERATE A LARGE AMOUNT OF DATA WRITTEN IN THE WORK DIRECTORY.
+  
+                   S U B S T R U C T U R E   D I S K   S P A C E   E S T I M A T E
+  
+  
+ DISKSPACE REQUIRED BY THE TEMPORARY DATA IS    2.0 MBYTES
+  
+  
+ DISKSPACE REQUIRED BY THE PERSISTENT DATA IS    2.5 MBYTES
+  
+  
+ ESTIMATE OF THE TOTAL DISK SPACE REQUIRED IS    4.5 MBYTES
+  
+
+
+          THE ANALYSIS HAS BEEN COMPLETED
+
+
+
+                              ANALYSIS COMPLETE
+                              WITH      3 WARNING MESSAGES ON THE DAT FILE
+
+
+
+     JOB TIME SUMMARY
+       USER TIME (SEC)      =     0.60    
+       SYSTEM TIME (SEC)    =     0.10    
+       TOTAL CPU TIME (SEC) =     0.70    
+       WALLCLOCK TIME (SEC) =            1

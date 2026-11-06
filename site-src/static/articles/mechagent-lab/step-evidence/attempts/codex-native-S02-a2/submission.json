@@ -1,0 +1,9 @@
+{
+  "solution": {
+    "artifact_id": "artifact_c03c3437adb3252c66b8",
+    "n": 8,
+    "U_mm": 0.006926605540432034,
+    "relative_error": 0.0007020536624686588
+  },
+  "explanation": "The exact continuum displacement is (F/E) integral_0^1 dx/(1+x) = 0.01 ln(2) = 0.006931471805599453 mm. Uniform linear axial elements with midpoint areas give U_n = (0.01/n) sum_{i=0}^{n-1} 1/[1+(i+0.5)/n]. The relative errors for n=1, 2, 4 are 0.03820330607402449, 0.010723400533282187, and 0.0027804907732542003, all above 0.001. For n=8 the executed mesh gives U=0.006926605540432034 mm and relative error 0.0007020536624686588, so 8 is the smallest allowed qualifying n. Executed evidence: artifact_c03c3437adb3252c66b8."
+}

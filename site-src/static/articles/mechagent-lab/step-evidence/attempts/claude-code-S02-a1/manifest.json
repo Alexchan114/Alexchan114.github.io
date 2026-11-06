@@ -1,0 +1,48 @@
+{
+  "attempt": "claude-code-S02-a1",
+  "task": "S02",
+  "configuration": "claude-code",
+  "model": "deepseek-v4-flash",
+  "classification": "passed",
+  "status": "submitted",
+  "raw_score": 100,
+  "score": 100,
+  "elapsed_seconds": 18.0,
+  "tool_calls": 5,
+  "solver_tests": 0,
+  "sdk_estimated_usd": 0.08161699999999998,
+  "actual_billed_usd": null,
+  "protocol_note": null,
+  "input_tokens": 1799,
+  "output_tokens": 2654,
+  "cached_input_tokens": 0,
+  "observation": "recorded events only; no hidden reasoning reconstructed",
+  "timeline_events": 52,
+  "source_files": [
+    "task.json",
+    "query.json",
+    "run.json",
+    "submission.json",
+    "evaluation.json",
+    "broker_state.json",
+    "active_tools.json"
+  ],
+  "artifacts": [
+    {
+      "id": "artifact_c03c3437adb3252c66b8",
+      "parameters": {
+        "n": 8
+      },
+      "files": [
+        "artifact_c03c3437adb3252c66b8.csv",
+        "artifact_c03c3437adb3252c66b8.json"
+      ]
+    }
+  ],
+  "solver_scope": "no native solver artifact for this attempt",
+  "partition": false,
+  "late_host_supplement": false,
+  "scoring_changed": false,
+  "inference_repeated": false,
+  "analysis_repeated": false
+}

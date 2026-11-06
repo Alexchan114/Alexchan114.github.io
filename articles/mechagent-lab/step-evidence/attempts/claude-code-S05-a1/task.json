@@ -1,0 +1,32 @@
+{
+  "title": "Bounded sampling and physical tolerance mapping",
+  "title_zh": "有界抽样及物理公差映射",
+  "query": "Generate 16 samples of 72 independent variables using each of MC,LHS,Sobol,Halton. All marginals are standard normal conditioned on [-1,1], not clipped normal or uniform. Use sample_test once per method, seed=20261104. Submit four artifact IDs and physical values for the first MC vector. First42 are Z shape changes (0.15a mm), next6 prelift (.3348+0.15a mm), final24 alternating X,Y per 12 rigid CORE terminals (0.1a mm). SUB is unchanged; translation preserves terminal dimensions.",
+  "fixture": {
+    "n": 16,
+    "dimensions": 72,
+    "seed": 20261104,
+    "bounds": [
+      -1,
+      1
+    ],
+    "marginal": "truncated standard normal",
+    "shape_count": 42,
+    "prelift_count": 6,
+    "terminal_count": 12
+  },
+  "output": {
+    "artifact_ids": "4 strings, MC/LHS/Sobol/Halton order",
+    "first_MC_physical_mm": "72 numbers"
+  },
+  "id": "S05",
+  "version": "0.2.2",
+  "tier": "public_reduced_physics",
+  "budget": {
+    "max_turns": 6,
+    "max_output_tokens": 6144,
+    "max_tool_calls": 24,
+    "max_solver_tests": 1
+  },
+  "scoring": "binary: all independent checks required; no self-report scoring"
+}

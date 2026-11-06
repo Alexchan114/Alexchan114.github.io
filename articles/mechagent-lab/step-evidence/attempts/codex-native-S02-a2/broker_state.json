@@ -1,0 +1,14 @@
+{
+  "calls": 3,
+  "solver_calls": 0,
+  "submitted": true,
+  "evaluation": {
+    "status": "passed",
+    "score": 100,
+    "checks": {
+      "minimal_mesh": true,
+      "accuracy": true,
+      "reported": true
+    }
+  }
+}

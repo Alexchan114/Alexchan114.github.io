@@ -1,0 +1,12 @@
+{
+  "status": "passed",
+  "score": 100,
+  "checks": {
+    "maximal_safe_partition": true,
+    "interface": true,
+    "translations": true,
+    "reduction": true,
+    "actual_solver": true,
+    "curve_error": true
+  }
+}

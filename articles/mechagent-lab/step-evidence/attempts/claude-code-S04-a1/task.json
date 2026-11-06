@@ -1,0 +1,59 @@
+{
+  "title": "Autonomous 3D substructure partition",
+  "title_zh": "三维子结构自主分区",
+  "query": "Choose the cut maximizing eliminated translational DOFs while keeping all potentially plastic elements outside the linear substructure. Retain ROOT and all interface translations. Run partition_test on your chosen cut: it invokes actual Abaqus generation, reduced solve and ODB extraction via MCP (1 CPU). Cite the returned artifact. Do not use stress magnitude alone to declare a region linear.",
+  "fixture": {
+    "dimensions_mm": [
+      12,
+      2,
+      2
+    ],
+    "mesh": "117 nodes,48 C3D8; x planes at integers; 9 nodes per plane",
+    "node_rule": "label=1+9*i+3*j+k; i=0..12,j,k=0..2",
+    "materials": [
+      {
+        "x_mm": [
+          0,
+          6
+        ],
+        "E_MPa": 1000,
+        "nu": 0,
+        "law": "linear elastic"
+      },
+      {
+        "x_mm": [
+          6,
+          12
+        ],
+        "E_MPa": 1000,
+        "nu": 0,
+        "law": "J2 plastic; yield=1MPa; hardening=50MPa"
+      }
+    ],
+    "load": "ROOT fixed; TIP U1=0.12mm, NLGEOM=NO",
+    "cuts_mm": [
+      2,
+      4,
+      6,
+      8
+    ],
+    "requirement": "linear substructure must preserve nonlinear constitutive regions; curve error <=1e-4 N"
+  },
+  "output": {
+    "artifact_id": "string",
+    "cut_mm": "integer",
+    "retained_nodes": "18 integers",
+    "retained_dofs": "[1,2,3]",
+    "eliminated_dofs": "integer"
+  },
+  "id": "S04",
+  "version": "0.2.2",
+  "tier": "abaqus_mcp_3d",
+  "budget": {
+    "max_turns": 6,
+    "max_output_tokens": 6144,
+    "max_tool_calls": 24,
+    "max_solver_tests": 1
+  },
+  "scoring": "binary: all independent checks required; no self-report scoring"
+}

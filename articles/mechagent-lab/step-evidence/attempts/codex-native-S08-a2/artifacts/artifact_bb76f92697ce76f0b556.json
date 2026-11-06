@@ -1,0 +1,146 @@
+{
+  "task": "S08",
+  "parameters": {},
+  "result": {
+    "engine": "read-only synthetic job evidence; no real jobs submitted",
+    "cases": {
+      "c01": {
+        "solver": "completed",
+        "U3": -8,
+        "forces": [
+          -0.41,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8
+        ],
+        "active": false
+      },
+      "c02": {
+        "solver": "completed",
+        "U3": -8,
+        "forces": [
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.35,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8
+        ],
+        "active": false
+      },
+      "c03": {
+        "solver": "completed",
+        "U3": -8,
+        "forces": [
+          -0.38,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9
+        ],
+        "active": false
+      },
+      "c04": {
+        "solver": "interrupted",
+        "U3": -7,
+        "forces": [
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01
+        ],
+        "active": false
+      },
+      "c05": {
+        "solver": "completed",
+        "U3": -8,
+        "forces": [
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1
+        ],
+        "active": false
+      },
+      "c06": {
+        "solver": "running",
+        "U3": -4,
+        "forces": [
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1
+        ],
+        "active": true
+      },
+      "c07": {
+        "solver": "input_error",
+        "error": "negative element volume",
+        "active": false
+      },
+      "c08": {
+        "solver": "completed",
+        "U3": -8,
+        "forces": [
+          -0.45,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8
+        ],
+        "active": false
+      }
+    }
+  }
+}

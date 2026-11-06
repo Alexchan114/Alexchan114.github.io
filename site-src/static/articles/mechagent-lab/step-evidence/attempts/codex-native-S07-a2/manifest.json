@@ -1,0 +1,59 @@
+{
+  "attempt": "codex-native-S07-a2",
+  "task": "S07",
+  "configuration": "codex-native",
+  "model": "gpt-6.1-sol",
+  "classification": "passed",
+  "status": "submitted",
+  "raw_score": 100,
+  "score": 100,
+  "elapsed_seconds": 48.51600000000326,
+  "tool_calls": 4,
+  "solver_tests": 0,
+  "sdk_estimated_usd": null,
+  "actual_billed_usd": null,
+  "protocol_note": null,
+  "input_tokens": 78222,
+  "output_tokens": 1157,
+  "cached_input_tokens": 54400,
+  "observation": "recorded events only; no hidden reasoning reconstructed",
+  "timeline_events": 27,
+  "source_files": [
+    "task.json",
+    "query.json",
+    "run.json",
+    "submission.json",
+    "evaluation.json",
+    "broker_state.json"
+  ],
+  "artifacts": [
+    {
+      "id": "artifact_8547199f85d1c0ca0368",
+      "parameters": {
+        "lambda": 1.224
+      },
+      "files": [
+        "artifact_8547199f85d1c0ca0368.csv",
+        "artifact_8547199f85d1c0ca0368.json",
+        "artifact_8547199f85d1c0ca0368_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_9da803fc33ea11da92b8",
+      "parameters": {
+        "lambda": 1.223
+      },
+      "files": [
+        "artifact_9da803fc33ea11da92b8.csv",
+        "artifact_9da803fc33ea11da92b8.json",
+        "artifact_9da803fc33ea11da92b8_contacts.csv"
+      ]
+    }
+  ],
+  "solver_scope": "no native solver artifact for this attempt",
+  "partition": false,
+  "late_host_supplement": false,
+  "scoring_changed": false,
+  "inference_repeated": false,
+  "analysis_repeated": false
+}

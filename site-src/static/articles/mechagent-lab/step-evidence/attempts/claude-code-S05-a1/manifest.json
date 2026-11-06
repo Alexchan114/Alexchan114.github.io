@@ -1,0 +1,90 @@
+{
+  "attempt": "claude-code-S05-a1",
+  "task": "S05",
+  "configuration": "claude-code",
+  "model": "deepseek-v4-flash",
+  "classification": "failed",
+  "status": "submitted",
+  "raw_score": 0,
+  "score": 0,
+  "elapsed_seconds": 19.734000000004016,
+  "tool_calls": 6,
+  "solver_tests": 0,
+  "sdk_estimated_usd": 0.120077,
+  "actual_billed_usd": null,
+  "protocol_note": null,
+  "input_tokens": 5635,
+  "output_tokens": 3502,
+  "cached_input_tokens": 0,
+  "observation": "recorded events only; no hidden reasoning reconstructed",
+  "timeline_events": 55,
+  "source_files": [
+    "task.json",
+    "query.json",
+    "run.json",
+    "submission.json",
+    "evaluation.json",
+    "broker_state.json",
+    "active_tools.json"
+  ],
+  "artifacts": [
+    {
+      "id": "artifact_0c8563bc703f32f01ec9",
+      "parameters": {
+        "method": "LHS",
+        "seed": 20261104
+      },
+      "files": [
+        "artifact_0c8563bc703f32f01ec9.csv",
+        "artifact_0c8563bc703f32f01ec9.json",
+        "artifact_0c8563bc703f32f01ec9_amplitudes.csv",
+        "artifact_0c8563bc703f32f01ec9_uniform.csv"
+      ]
+    },
+    {
+      "id": "artifact_1c0d368a8dd5177776f4",
+      "parameters": {
+        "method": "Halton",
+        "seed": 20261104
+      },
+      "files": [
+        "artifact_1c0d368a8dd5177776f4.csv",
+        "artifact_1c0d368a8dd5177776f4.json",
+        "artifact_1c0d368a8dd5177776f4_amplitudes.csv",
+        "artifact_1c0d368a8dd5177776f4_uniform.csv"
+      ]
+    },
+    {
+      "id": "artifact_83f61dcc9be41d1ef70f",
+      "parameters": {
+        "method": "Sobol",
+        "seed": 20261104
+      },
+      "files": [
+        "artifact_83f61dcc9be41d1ef70f.csv",
+        "artifact_83f61dcc9be41d1ef70f.json",
+        "artifact_83f61dcc9be41d1ef70f_amplitudes.csv",
+        "artifact_83f61dcc9be41d1ef70f_uniform.csv"
+      ]
+    },
+    {
+      "id": "artifact_ce327829ae3041fa2d6e",
+      "parameters": {
+        "method": "MC",
+        "seed": 20261104
+      },
+      "files": [
+        "artifact_ce327829ae3041fa2d6e.csv",
+        "artifact_ce327829ae3041fa2d6e.json",
+        "artifact_ce327829ae3041fa2d6e_amplitudes.csv",
+        "artifact_ce327829ae3041fa2d6e_uniform.csv"
+      ]
+    }
+  ],
+  "solver_scope": "no native solver artifact for this attempt",
+  "partition": false,
+  "late_host_supplement": false,
+  "scoring_changed": false,
+  "inference_repeated": false,
+  "analysis_repeated": false
+}

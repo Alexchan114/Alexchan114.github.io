@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "score": 100,
+  "checks": {
+    "library_identity": true,
+    "coverage": true,
+    "no_adjustment": true,
+    "minimal_tolerance": true
+  }
+}

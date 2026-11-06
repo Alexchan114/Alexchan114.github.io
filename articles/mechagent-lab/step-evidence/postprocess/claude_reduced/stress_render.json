@@ -1,0 +1,185 @@
+{
+  "image_path": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\renders\\claude_reduced\\stress\\preview.png",
+  "state_path": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\renders\\claude_reduced\\stress\\scene.pvsm",
+  "color_array": "S_MISES_Avg",
+  "color_range": [
+    1.406154990196228,
+    1.95136296749115
+  ],
+  "rendered_timestep": 1.0,
+  "rendered_bounds": [
+    0.0,
+    12.0,
+    0.0,
+    2.0,
+    0.0,
+    2.0
+  ],
+  "association": "POINTS",
+  "view": "isometric",
+  "metadata": {
+    "points": 72,
+    "cells": 24,
+    "bounds": [
+      0.0,
+      12.0,
+      0.0,
+      2.0,
+      0.0,
+      2.0
+    ],
+    "arrays": {
+      "POINTS": [
+        {
+          "name": "NodeLabel",
+          "components": 1,
+          "ranges": [
+            [
+              1.0,
+              117.0
+            ]
+          ]
+        },
+        {
+          "name": "InstanceId",
+          "components": 1,
+          "ranges": [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "name": "AveragingRegionId",
+          "components": 1,
+          "ranges": [
+            [
+              -1.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "name": "U",
+          "components": 3,
+          "ranges": [
+            [
+              -1.7933677616582576e-40,
+              0.11999999731779099
+            ],
+            [
+              -0.009550952352583408,
+              0.009550952352583408
+            ],
+            [
+              -0.009550952352583408,
+              0.009550952352583408
+            ]
+          ],
+          "tuple_magnitude_range": [
+            4.475049844650849e-41,
+            0.12060026318798561
+          ]
+        },
+        {
+          "name": "S_MISES_Avg",
+          "components": 1,
+          "ranges": [
+            [
+              1.406154990196228,
+              1.95136296749115
+            ]
+          ]
+        },
+        {
+          "name": "S_MISES_Avg_VariationPct",
+          "components": 1,
+          "ranges": [
+            [
+              0.0,
+              61.38446200362047
+            ]
+          ]
+        },
+        {
+          "name": "S_MISES_Avg_Averaged",
+          "components": 1,
+          "ranges": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        },
+        {
+          "name": "PEEQ_Avg",
+          "components": 1,
+          "ranges": [
+            [
+              0.006532219238579273,
+              0.01891888491809368
+            ]
+          ]
+        },
+        {
+          "name": "PEEQ_Avg_VariationPct",
+          "components": 1,
+          "ranges": [
+            [
+              0.0,
+              60.765932837457946
+            ]
+          ]
+        },
+        {
+          "name": "PEEQ_Avg_Averaged",
+          "components": 1,
+          "ranges": [
+            [
+              0.0,
+              1.0
+            ]
+          ]
+        }
+      ],
+      "CELLS": [
+        {
+          "name": "ElementLabel",
+          "components": 1,
+          "ranges": [
+            [
+              25.0,
+              48.0
+            ]
+          ]
+        },
+        {
+          "name": "InstanceId",
+          "components": 1,
+          "ranges": [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        },
+        {
+          "name": "SectionAssignmentId",
+          "components": 1,
+          "ranges": [
+            [
+              0.0,
+              0.0
+            ]
+          ]
+        }
+      ]
+    },
+    "frame_index": 0,
+    "timestep": 1.0,
+    "available_timesteps": [
+      1.0
+    ]
+  }
+}

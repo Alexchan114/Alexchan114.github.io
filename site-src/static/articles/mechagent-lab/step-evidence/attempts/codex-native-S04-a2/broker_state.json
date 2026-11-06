@@ -1,0 +1,13 @@
+{
+  "calls": 5,
+  "solver_calls": 1,
+  "submitted": true,
+  "evaluation": {
+    "status": "failed",
+    "score": 0,
+    "checks": {
+      "schema_and_artifacts": false
+    },
+    "error": "''"
+  }
+}

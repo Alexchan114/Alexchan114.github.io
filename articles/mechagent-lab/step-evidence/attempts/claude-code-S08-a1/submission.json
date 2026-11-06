@@ -1,0 +1,26 @@
+{
+  "solution": {
+    "artifact_id": "artifact_bb76f92697ce76f0b556",
+    "ranking": [
+      "c02",
+      "c03",
+      "c01",
+      "c08"
+    ],
+    "contact_failures": [
+      "c02",
+      "c03"
+    ],
+    "actions": {
+      "c01": "done",
+      "c02": "done",
+      "c03": "done",
+      "c04": "retry_solve",
+      "c05": "reextract",
+      "c06": "wait",
+      "c07": "repair_mesh",
+      "c08": "done"
+    }
+  },
+  "explanation": "Trustworthy completed cases at final |U3|=8 mm with 12 channels: c01, c02, c03, c08. Minimum |normal force| (N): c02=0.35, c03=0.38, c01=0.41, c08=0.45 -> ascending ranking c02, c03, c01, c08. Contact failures (<0.4 N): c02 and c03, listed in same ascending order. Excluded: c04 interrupted at U3=-7 (inactive -> retry_solve), c05 completed but only 11 channels (missing channel -> reextract), c06 active/running (wait), c07 negative element volume input error (repair_mesh). Per minimal recovery policy, trustworthy completed cases including genuine contact failures are done (no retry for physical failure). Evidence from host-issued artifact_bb76f92697ce76f0b556; no solver launched."
+}

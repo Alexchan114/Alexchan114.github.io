@@ -1,0 +1,35 @@
+{
+  "configuration": "claude-code",
+  "harness": "Claude Code",
+  "client_version": "2.1.154",
+  "model": "deepseek-v4-flash",
+  "provider_id": "ab26ff7c-b94a-4228-a0b0-a5b40a926362",
+  "auth": "existing CCS route",
+  "task": "S04",
+  "tier": "abaqus_mcp_3d",
+  "status": "submitted",
+  "started_utc": "2026-11-04T17:28:09.063358+00:00",
+  "preregistration_hash": "037405cc6b04e0b16b03354067e59a24b2c01f55ccfecb8a2634cf985e0ca093",
+  "automatic_benchmark_retry": false,
+  "actual_billed_usd": null,
+  "elapsed_seconds": 64.42199999999866,
+  "returncode": 0,
+  "tool_calls": 3,
+  "solver_tests": 1,
+  "evaluation": {
+    "status": "passed",
+    "score": 100,
+    "checks": {
+      "maximal_safe_partition": true,
+      "interface": true,
+      "translations": true,
+      "reduction": true,
+      "actual_solver": true,
+      "curve_error": true
+    }
+  },
+  "observed_prohibited_tools": [],
+  "forwarded_model_requests": 4,
+  "model_gateway_blocked": null,
+  "finished_utc": "2026-11-04T17:29:13.493850+00:00"
+}

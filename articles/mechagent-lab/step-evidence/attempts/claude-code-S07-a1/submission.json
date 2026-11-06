@@ -1,0 +1,11 @@
+{
+  "solution": {
+    "lambda_safe": 1.223,
+    "lambda_failed": 1.224,
+    "artifact_ids": {
+      "safe": "artifact_9da803fc33ea11da92b8",
+      "fail": "artifact_8547199f85d1c0ca0368"
+    }
+  },
+  "explanation": "Executed S07 pose tests along lambda in [0,2] using the lever-arm rigid kinematics plus unilateral spring contact model. At lambda=1.223 (offset X=0.1223 mm, angle=2.446 deg) the minimum of the 12 normal forces is 0.400775 N, so all contacts remain >=0.4 N (safe). At lambda=1.224 (offset X=0.1224 mm, angle=2.448 deg) the minimum drops to 0.399608 N, so the first contact loss criterion is violated (failed). Bracket width = 0.001 <= 0.002. Artifact IDs are host-issued from the executed experiments: safe artifact_9da803fc33ea11da92b8, fail artifact_8547199f85d1c0ca0368. Earlier scans at lambda=1.22 (0.404276 N, safe) and lambda=1.23 (0.392605 N, failed) bound the search, confirming this is the first crossing."
+}

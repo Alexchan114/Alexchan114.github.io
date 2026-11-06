@@ -1,0 +1,6 @@
+﻿json_path,value_json
+"$[""task""]","""S02"""
+"$[""parameters""][""n""]",8
+"$[""result""][""engine""]","""1D axial linear elements, midpoint area"""
+"$[""result""][""n""]",8
+"$[""result""][""U_mm""]",0.006926605540432034

@@ -1,0 +1,9 @@
+{
+  "explanation": "Selected L17, the only library exactly matching target topology mesh-A, material E1000, and retained coordinates [[0,0,0],[0,0,1]]. L24 fails coordinates, L33 fails material, L41 fails topology; tolerance cannot excuse these. Maximum normal offset = (0.1 X + 0.1 Y)路n where n=(0.70710678,0.70710678,0): 0.1*0.70710678 + 0.1*0.70710678 = 0.1414213562373095 mm. Minimal safe tie tolerance = max distance + 1e-6 mm margin = 0.1414223562373095 mm, with ADJUST=false. Executed S06 (artifact_74e640f9534a003b55fd), which reported compatible=true, coverage=true, max_distance_mm=0.1414213562373095.",
+  "solution": {
+    "artifact_id": "artifact_74e640f9534a003b55fd",
+    "library_id": "L17",
+    "tie_tolerance_mm": 0.1414223562373095,
+    "adjust": false
+  }
+}

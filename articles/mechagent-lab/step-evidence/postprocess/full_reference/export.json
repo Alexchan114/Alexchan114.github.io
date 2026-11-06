@@ -1,0 +1,10 @@
+{
+  "pvd_path": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\mcp\\runs\\abaqus_96a14613ac654a50\\vtk\\collection.pvd",
+  "manifest_path": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\mcp\\runs\\abaqus_96a14613ac654a50\\vtk\\manifest.json",
+  "frame_count": 1,
+  "warnings": [],
+  "source_readonly": true,
+  "source_snapshot_mode": "size+mtime; bulk input ODB is not redundantly copied",
+  "averaging_regions": "section",
+  "averaging_threshold": 75.0
+}

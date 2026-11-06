@@ -1,0 +1,52 @@
+{
+  "engine": "actual Abaqus via stdio MCP; independent full reference reused",
+  "cut_mm": 6,
+  "eliminated_dofs": 135,
+  "retained_nodes": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63
+  ],
+  "checks": {
+    "endpoint": true,
+    "elastic_analytic": true,
+    "force_balance": true,
+    "plastic_active": true,
+    "reduced_force": true,
+    "curve_equivalence": true
+  },
+  "max_curve_difference_N": 0.0,
+  "reduced_final": {
+    "time": 1.0,
+    "U1": 0.11999999731779099,
+    "tip_RF1": 7.406830787658691,
+    "root_RF1": -7.406830787658691,
+    "max_PEEQ": 0.02014344185590744
+  },
+  "jobs": {
+    "full": "abaqus_5d1d0ab8c1f34371",
+    "generation": "abaqus_6ffccd9efd9e49d3",
+    "reduced": "abaqus_eff56b44421446e6",
+    "extract": "abaqus_12e8f8b243154f31"
+  },
+  "input_hashes": {
+    "full.inp": "bdd7dea95cbe5f30a2dd43d4892be776f4c204a2147f03db3612690ae0a72ef0",
+    "generation.inp": "1286b64317d8729ed2cc8ed5e06c4959842f18b58afe1a23223bdd53c00aee03",
+    "reduced.inp": "27a2efe7d9b68fac5e2f4eeb9aa32417359056cc8b92e10c16e95e704c58deae"
+  }
+}

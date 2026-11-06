@@ -1,0 +1,9 @@
+{
+  "solution": {
+    "U_mm": 0.044,
+    "reaction_N": -12,
+    "energy_Nmm": 0.264,
+    "artifact_id": "artifact_441ec2c4c6913f3e3334"
+  },
+  "explanation": "Ran the host FEM (S01, 1D axial direct stiffness) via the mechanics tool. Converted E from GPa to MPa (2000, 1000, 3000 MPa); series stiffnesses k=EA/L give 1000, 500, 1500 N/mm, total compliance 0.0036667 mm/N, so tip U = 12 N * compliance = 0.044 mm, strain energy = 0.5*F*U = 0.264 N路mm, and root reaction = -12 N (opposing the applied tip load). Values are taken from artifact artifact_441ec2c4c6913f3e3334."
+}

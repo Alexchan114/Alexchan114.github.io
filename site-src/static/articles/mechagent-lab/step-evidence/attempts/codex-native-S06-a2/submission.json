@@ -1,0 +1,9 @@
+{
+  "solution": {
+    "artifact_id": "artifact_74e640f9534a003b55fd",
+    "library_id": "L17",
+    "tie_tolerance_mm": 0.1414223562373095,
+    "adjust": false
+  },
+  "explanation": "L17 exactly matches the target topology, material, and retained coordinates; L24, L33, and L41 fail coordinates, material, and topology respectively. Maximum normal distance is 0.1*n_x + 0.1*n_y = 0.1414213562373095 mm, so the minimal safe tolerance including the 1e-6 mm margin is 0.1414223562373095 mm. The unchanged master and translated CORE slave faces use adjust=false (JSON boolean). interface_test artifact_74e640f9534a003b55fd confirms compatibility and coverage via metadata identity and planar geometry; no Abaqus execution is claimed."
+}

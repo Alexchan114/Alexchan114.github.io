@@ -1,0 +1,17 @@
+{
+  "task": "S06",
+  "parameters": {
+    "library_id": "L17",
+    "tie_tolerance_mm": 0.1414223562373095,
+    "adjust": false
+  },
+  "result": {
+    "engine": "metadata identity plus planar geometric coverage, not Abaqus Tie execution",
+    "library_id": "L17",
+    "compatible": true,
+    "max_distance_mm": 0.1414213562373095,
+    "tie_tolerance_mm": 0.1414223562373095,
+    "coverage": true,
+    "adjust": false
+  }
+}

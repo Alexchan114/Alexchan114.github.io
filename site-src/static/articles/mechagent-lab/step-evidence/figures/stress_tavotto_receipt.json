@@ -1,0 +1,348 @@
+{
+  "conflicts": [],
+  "document_revision": null,
+  "error": null,
+  "export_dir": "D:\\huaweiproject\\outputs\\mechanics_agent_benchmark_v03_20261105\\step_evidence\\figures\\tavottofile\\export",
+  "files": [
+    {
+      "name": "stress.pdf",
+      "url": "/exports/stress.pdf"
+    },
+    {
+      "name": "stress.png",
+      "url": "/exports/stress.png"
+    }
+  ],
+  "job_id": "b6b18e4cc56c4f42",
+  "outputs": [
+    {
+      "bytes": 142525,
+      "dimensions": {
+        "mm": [
+          254.0,
+          254.0
+        ],
+        "px": null
+      },
+      "error": null,
+      "format": "pdf",
+      "manifest": {
+        "backend": "rendercore",
+        "bytes": 142525,
+        "carrier": "mixed",
+        "checks": {
+          "carrier": "verified",
+          "clipping": "verified",
+          "fonts_embedded": "verified",
+          "image_ppi": "unknown",
+          "integrity": "verified",
+          "size": "verified",
+          "text_layer": "not_applicable"
+        },
+        "dpi": null,
+        "fonts_used": [
+          "DejaVuSans-Bold",
+          "DejaVuSans"
+        ],
+        "format": "pdf",
+        "identity": {
+          "artifact": "71d3d391a04803304dc09d52da3a2da45dd52d1d190c17b5aca6a202a95a4910",
+          "identity_version": 1,
+          "render": "sha256:ae5045a4b6f853e4968fc5c5d6f7449d134f873c605da2824aeb345499ad8ce7",
+          "run": "b6b18e4cc56c4f42",
+          "semantic": "sha256:0bbd1c62458c3046780602c3116f0aafb3c7412959482398a580689270b028c2"
+        },
+        "manifest_version": 1,
+        "notes": [
+          "载体是 mixed：矢量之外还有位图对象（面板里的位图源或位图面板）",
+          "没有规范给出最低 ppi，位图密度只记录不判",
+          "裁切只对计划里的对象判；外来页内部不分析（unknown）"
+        ],
+        "plan_identity": "sha256:0bbd1c62458c3046780602c3116f0aafb3c7412959482398a580689270b028c2",
+        "policy": "standard",
+        "provenance": {
+          "execution_receipts": [
+            "sha256:9d0f21710f22b05dd7cfe7ae3d610a44aa3d005c2fcb43e30548921a57c9f61b"
+          ],
+          "nodes": [
+            {
+              "id": "runtime:lab_evidence_figures.py#stress",
+              "instance": 1,
+              "internal": "unknown",
+              "kind": "imported_page",
+              "node": "runtime:lab_evidence_figures.py#stress",
+              "origin": "execution",
+              "receipt_identity": "sha256:9d0f21710f22b05dd7cfe7ae3d610a44aa3d005c2fcb43e30548921a57c9f61b",
+              "source_id": "runtime:lab_evidence_figures.py#stress"
+            }
+          ],
+          "nodes_truncated": false,
+          "receipts": [
+            {
+              "binding": {
+                "changed": 0,
+                "matched": true,
+                "revision": "sha256:00d13cda860c2198ed014406cdf07e5509e40f8cc6d490038725b7458203b3dc",
+                "unobserved": 0
+              },
+              "completeness": "complete",
+              "control_plane": "workerd",
+              "cwd_origin": "sandbox",
+              "generation": 4,
+              "machine": "AMD64",
+              "observation": "partial",
+              "packages": {
+                "matplotlib": "3.11.1",
+                "numpy": "2.5.2",
+                "pandas": "3.0.5",
+                "pillow": "12.3.0",
+                "scipy": "1.18.0",
+                "seaborn": "0.13.2"
+              },
+              "pid_check": "ok",
+              "platform": "win32",
+              "python_implementation": "CPython",
+              "python_source": "bundled",
+              "python_version": "3.13.15",
+              "receipt_id": "sha256:9feb80ae5ae15ddd0248d594c657665c4d8c57d71379361cbf5cdd230c0168f0",
+              "receipt_identity": "sha256:9d0f21710f22b05dd7cfe7ae3d610a44aa3d005c2fcb43e30548921a57c9f61b",
+              "runtime_rejected": null,
+              "source_revision": "cc42074244ee4260a33d6589f0739b5948e79760"
+            }
+          ],
+          "sources": [
+            {
+              "bytes_sha256": "8f025c895c26ea2dc5b110412f5ce21b84ba88df4a8aee8435bd1ada76fc6ac4",
+              "kind": "pdf",
+              "origin": "execution",
+              "patch_hash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "receipt_identity": "sha256:9d0f21710f22b05dd7cfe7ae3d610a44aa3d005c2fcb43e30548921a57c9f61b",
+              "source_id": "runtime:lab_evidence_figures.py#stress"
+            }
+          ]
+        },
+        "px": null,
+        "required": [
+          "integrity",
+          "size"
+        ],
+        "sha256": "71d3d391a04803304dc09d52da3a2da45dd52d1d190c17b5aca6a202a95a4910",
+        "size_pt": [
+          720.0,
+          720.0
+        ],
+        "verdict": "accepted"
+      },
+      "name": "stress.pdf",
+      "replaced": true,
+      "status": "done",
+      "url": "/exports/stress.pdf",
+      "vector": true
+    },
+    {
+      "bytes": 226737,
+      "dimensions": {
+        "mm": [
+          254.0,
+          254.0
+        ],
+        "px": [
+          1800,
+          1800
+        ]
+      },
+      "error": null,
+      "format": "png",
+      "manifest": {
+        "backend": "rendercore",
+        "bytes": 226737,
+        "carrier": null,
+        "checks": {
+          "dpi_tag": "verified",
+          "integrity": "verified",
+          "raster_density": "unknown",
+          "size": "verified"
+        },
+        "dpi": 180.01,
+        "fonts_used": [],
+        "format": "png",
+        "identity": {
+          "artifact": "4e1c83b5ed366275a06113424629e98cbff9b900c5acd305953f558caf81de9e",
+          "identity_version": 1,
+          "render": "sha256:76af951446d8aec61ace87c91a3f1de2874a7e66bc0fff10277bf52bedf6c4af",
+          "run": "b6b18e4cc56c4f42",
+          "semantic": "sha256:0bbd1c62458c3046780602c3116f0aafb3c7412959482398a580689270b028c2"
+        },
+        "manifest_version": 1,
+        "notes": [
+          "没有规范给出最低 ppi，密度只记录不判"
+        ],
+        "plan_identity": "sha256:0bbd1c62458c3046780602c3116f0aafb3c7412959482398a580689270b028c2",
+        "policy": "standard",
+        "provenance": {
+          "execution_receipts": [
+            "sha256:9d0f21710f22b05dd7cfe7ae3d610a44aa3d005c2fcb43e30548921a57c9f61b"
+          ],
+          "nodes": [
+            {
+              "id": "runtime:lab_evidence_figures.py#stress",
+              "instance": 1,
+              "internal": "unknown",
+              "kind": "imported_page",
+              "node": "runtime:lab_evidence_figures.py#stress",
+              "origin": "execution",
+              "receipt_identity": "sha256:9d0f21710f22b05dd7cfe7ae3d610a44aa3d005c2fcb43e30548921a57c9f61b",
+              "source_id": "runtime:lab_evidence_figures.py#stress"
+            }
+          ],
+          "nodes_truncated": false,
+          "receipts": [
+            {
+              "binding": {
+                "changed": 0,
+                "matched": true,
+                "revision": "sha256:00d13cda860c2198ed014406cdf07e5509e40f8cc6d490038725b7458203b3dc",
+                "unobserved": 0
+              },
+              "completeness": "complete",
+              "control_plane": "workerd",
+              "cwd_origin": "sandbox",
+              "generation": 4,
+              "machine": "AMD64",
+              "observation": "partial",
+              "packages": {
+                "matplotlib": "3.11.1",
+                "numpy": "2.5.2",
+                "pandas": "3.0.5",
+                "pillow": "12.3.0",
+                "scipy": "1.18.0",
+                "seaborn": "0.13.2"
+              },
+              "pid_check": "ok",
+              "platform": "win32",
+              "python_implementation": "CPython",
+              "python_source": "bundled",
+              "python_version": "3.13.15",
+              "receipt_id": "sha256:9feb80ae5ae15ddd0248d594c657665c4d8c57d71379361cbf5cdd230c0168f0",
+              "receipt_identity": "sha256:9d0f21710f22b05dd7cfe7ae3d610a44aa3d005c2fcb43e30548921a57c9f61b",
+              "runtime_rejected": null,
+              "source_revision": "cc42074244ee4260a33d6589f0739b5948e79760"
+            }
+          ],
+          "sources": [
+            {
+              "bytes_sha256": "8f025c895c26ea2dc5b110412f5ce21b84ba88df4a8aee8435bd1ada76fc6ac4",
+              "kind": "pdf",
+              "origin": "execution",
+              "patch_hash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "receipt_identity": "sha256:9d0f21710f22b05dd7cfe7ae3d610a44aa3d005c2fcb43e30548921a57c9f61b",
+              "source_id": "runtime:lab_evidence_figures.py#stress"
+            }
+          ]
+        },
+        "px": [
+          1800,
+          1800
+        ],
+        "required": [
+          "integrity",
+          "size"
+        ],
+        "sha256": "4e1c83b5ed366275a06113424629e98cbff9b900c5acd305953f558caf81de9e",
+        "size_pt": null,
+        "verdict": "accepted"
+      },
+      "name": "stress.png",
+      "replaced": true,
+      "status": "done",
+      "url": "/exports/stress.png",
+      "vector": false
+    }
+  ],
+  "progress": {
+    "phase": "done",
+    "step": 2,
+    "total": 2
+  },
+  "request": {
+    "acknowledged": [],
+    "background": "white",
+    "document_id": null,
+    "document_revision": null,
+    "figure_id": null,
+    "filename": "stress",
+    "formats": [
+      "pdf",
+      "png"
+    ],
+    "include_report": false,
+    "inspection": {
+      "mode": "standard",
+      "profile_id": null
+    },
+    "overwrite": "replace",
+    "ppi": 180,
+    "scope": "canvas",
+    "validation_policy": "block_on_error"
+  },
+  "status": "done",
+  "timing": {
+    "elapsed_ms": 371,
+    "finished_at": 1793944236.0927076,
+    "started_at": 1793944235.7219276
+  },
+  "trace": {
+    "current_phase": "publish",
+    "dropped": 0,
+    "events": [
+      {
+        "at_ms": 0.44,
+        "facts": {
+          "formats": 2
+        },
+        "outcome": "ok",
+        "phase": "prepare"
+      },
+      {
+        "at_ms": 0.728,
+        "outcome": "ok",
+        "phase": "source"
+      },
+      {
+        "at_ms": 0.777,
+        "outcome": "ok",
+        "phase": "compile"
+      },
+      {
+        "at_ms": 303.131,
+        "facts": {
+          "sources": 1
+        },
+        "outcome": "ok",
+        "phase": "compose"
+      },
+      {
+        "at_ms": 312.178,
+        "outcome": "ok",
+        "phase": "raster"
+      },
+      {
+        "at_ms": 355.47,
+        "outcome": "ok",
+        "phase": "inspect"
+      },
+      {
+        "at_ms": 368.597,
+        "outcome": "ok",
+        "phase": "publish"
+      }
+    ],
+    "failed_code": null,
+    "failed_phase": null,
+    "limit": 64,
+    "trace_version": 1,
+    "truncated": false
+  },
+  "validation_summary": {},
+  "warnings": []
+}

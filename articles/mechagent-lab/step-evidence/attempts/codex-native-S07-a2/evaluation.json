@@ -1,0 +1,10 @@
+{
+  "status": "passed",
+  "score": 100,
+  "checks": {
+    "bracket": true,
+    "safe": true,
+    "failed": true,
+    "different_evidence": true
+  }
+}

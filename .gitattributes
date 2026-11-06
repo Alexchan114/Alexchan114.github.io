@@ -1,3 +1,6 @@
 # Published measurements and downloads retain the bytes recorded in provenance.
 /assets/cae-mcp/** -text
 /site-src/static/assets/cae-mcp/** -text
+# Evidence hashes refer to exact bytes, including native fixed-width logs.
+/articles/mechagent-lab/step-evidence/** -text
+/site-src/static/articles/mechagent-lab/step-evidence/** -text

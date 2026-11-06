@@ -1,0 +1,165 @@
+{
+  "title": "Failure recovery and trustworthy ranking",
+  "title_zh": "故障恢复与可信排序",
+  "query": "Rank only trustworthy completed cases by minimum absolute normal force across12pairs at final |U3|=8mm. Sort ASCENDING minimum force, weakest first; ties by case ID ascending. Return contact_failures in this same ascending order. Report failure cases (<0.4N) and a recovery action for every case. Completed evidence must include solver success, final frame,12channels. Minimal recovery policy: every trustworthy completed case is done, including genuine contact failures; physical failure alone is not a reason to retry. Inactive interrupted jobs use retry_solve, completed jobs with missing channels use reextract, active jobs use wait, input errors with negative volume use repair_mesh. Never retry an active job or treat numerical abort as contact failure. inspect_cases exposes read-only evidence; no solver is launched.",
+  "fixture": {
+    "final_abs_U3_mm": 8,
+    "expected_pairs": 12,
+    "threshold_N": 0.4,
+    "cases": {
+      "c01": {
+        "solver": "completed",
+        "U3": -8,
+        "forces": [
+          -0.41,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8
+        ],
+        "active": false
+      },
+      "c02": {
+        "solver": "completed",
+        "U3": -8,
+        "forces": [
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.35,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8
+        ],
+        "active": false
+      },
+      "c03": {
+        "solver": "completed",
+        "U3": -8,
+        "forces": [
+          -0.38,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9,
+          -0.9
+        ],
+        "active": false
+      },
+      "c04": {
+        "solver": "interrupted",
+        "U3": -7,
+        "forces": [
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01,
+          -0.01
+        ],
+        "active": false
+      },
+      "c05": {
+        "solver": "completed",
+        "U3": -8,
+        "forces": [
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1
+        ],
+        "active": false
+      },
+      "c06": {
+        "solver": "running",
+        "U3": -4,
+        "forces": [
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1,
+          -0.1
+        ],
+        "active": true
+      },
+      "c07": {
+        "solver": "input_error",
+        "error": "negative element volume",
+        "active": false
+      },
+      "c08": {
+        "solver": "completed",
+        "U3": -8,
+        "forces": [
+          -0.45,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8,
+          -0.8
+        ],
+        "active": false
+      }
+    }
+  },
+  "output": {
+    "artifact_id": "string",
+    "ranking": "case IDs",
+    "contact_failures": "case IDs",
+    "actions": "object: done/retry_solve/reextract/wait/repair_mesh"
+  },
+  "id": "S08",
+  "version": "0.2.2",
+  "tier": "public_reduced_physics",
+  "budget": {
+    "max_turns": 6,
+    "max_output_tokens": 6144,
+    "max_tool_calls": 24,
+    "max_solver_tests": 1
+  },
+  "scoring": "binary: all independent checks required; no self-report scoring"
+}

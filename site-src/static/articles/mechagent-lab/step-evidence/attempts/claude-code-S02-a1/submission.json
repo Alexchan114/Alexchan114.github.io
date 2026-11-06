@@ -1,0 +1,9 @@
+{
+  "solution": {
+    "U_mm": 0.006926605540432034,
+    "n": 8,
+    "relative_error": 0.00070205,
+    "artifact_id": "artifact_c03c3437adb3252c66b8"
+  },
+  "explanation": "Exact U = (F/E)*ln2 = 0.006931471806 mm. Midpoint-area linear FE: U_n = (F/E)*sum h/(1+x_mid). Errors: n=4 -> 0.00278 > 1e-3; n=8 -> 0.000702 <= 1e-3, so smallest n=8. Executed S02 n=8, artifact artifact_c03c3437adb3252c66b8, U=0.006926605540 mm."
+}

@@ -1,0 +1,53 @@
+{
+  "cases": {
+    "full_reference": {
+      "job_id": "abaqus_5d1d0ab8c1f34371",
+      "source_odb_sha256": "509950e466a6c0a95ef79d39d83c679237e6aa88d90e585168b48ceae84eb792",
+      "source_odb_bytes": 676200,
+      "note": "Independent full reference; not an agent-generated full solve",
+      "step": "Pull",
+      "frame_index": 20,
+      "frame_time": 1.0,
+      "contour_stress": "S:MISES; MPa; scalar-before-average; section regions; Avg75",
+      "substructure_recovery": false,
+      "inference_repeated": false,
+      "analysis_repeated": false,
+      "stress_sha256": "62705ffd153b8b0fdc84351cec2b88a42089792a5b3f1c06a0b1821c98f38d0c",
+      "deformation_sha256": "a6ac4917057004d5d410ec0137795da57b689376d299e1b43757a29d4f83431c"
+    },
+    "claude_reduced": {
+      "job_id": "abaqus_eff56b44421446e6",
+      "source_odb_sha256": "3686d91e3ce6348161989b67e79f9dae1436ed91173a29ef1fef9d92564228dc",
+      "source_odb_bytes": 549280,
+      "note": "Completed within recorded successful Claude S04 attempt",
+      "step": "Pull",
+      "frame_index": 20,
+      "frame_time": 1.0,
+      "contour_stress": "S:MISES; MPa; scalar-before-average; section regions; Avg75",
+      "substructure_recovery": false,
+      "inference_repeated": false,
+      "analysis_repeated": false,
+      "stress_sha256": "55b8228959e029bf183a9ace339bcf4537881cee4e7264f7a05a1ece69272716",
+      "deformation_sha256": "198398db158afcfa2ea23f8b3a4a5dadf9a231b55d27eb3c7786188cbb9d17f5"
+    },
+    "codex_late_reduced": {
+      "job_id": "abaqus_122454d847e74e6e",
+      "source_odb_sha256": "b2ae2d4c101ea5cbb054e87408ad98e619c24664500e271bc69859f43121d9bb",
+      "source_odb_bytes": 549280,
+      "note": "Late host supplement only; not available to agent by deadline; score unchanged",
+      "step": "Pull",
+      "frame_index": 20,
+      "frame_time": 1.0,
+      "contour_stress": "S:MISES; MPa; scalar-before-average; section regions; Avg75",
+      "substructure_recovery": false,
+      "inference_repeated": false,
+      "analysis_repeated": false,
+      "stress_sha256": "55b8228959e029bf183a9ace339bcf4537881cee4e7264f7a05a1ece69272716",
+      "deformation_sha256": "198398db158afcfa2ea23f8b3a4a5dadf9a231b55d27eb3c7786188cbb9d17f5"
+    }
+  },
+  "read_only": true,
+  "grades_changed": false,
+  "new_analyses": 0,
+  "native_binaries_published": false
+}

@@ -1,0 +1,488 @@
+{
+  "scope": "host calibration; not agent score; no contact or industrial speedup claim",
+  "checks": {
+    "endpoint": true,
+    "elastic_analytic": true,
+    "force_balance": true,
+    "plastic_active": true,
+    "reduced_force": true,
+    "curve_equivalence": true
+  },
+  "passed": true,
+  "full_final": {
+    "time": 1.0,
+    "U1": 0.11999999731779099,
+    "tip_RF1": 7.406830787658691,
+    "root_RF1": -7.406830787658691,
+    "max_PEEQ": 0.02014344185590744
+  },
+  "reduced_final": {
+    "time": 1.0,
+    "U1": 0.11999999731779099,
+    "tip_RF1": 7.406830787658691,
+    "root_RF1": -7.406830787658691,
+    "max_PEEQ": 0.02014344185590744
+  },
+  "validation_basis": "elastic analytical check plus independent full/reduced 3D solves; not a 1D plastic exact solution",
+  "plastic_1d_diagnostic": {
+    "approximation_force_N": 7.2727272727272725,
+    "full_3d_force_N": 7.406830787658691,
+    "relative_difference": 0.018439233303070103,
+    "note": "Not an exact 3D solution: lateral plastic contraction and interface constraints are absent from the 1D approximation. Original strict-check failure retained in validation_history."
+  },
+  "max_curve_difference_N": 0.0,
+  "input_hashes": {
+    "full.inp": "bdd7dea95cbe5f30a2dd43d4892be776f4c204a2147f03db3612690ae0a72ef0",
+    "generation.inp": "1286b64317d8729ed2cc8ed5e06c4959842f18b58afe1a23223bdd53c00aee03",
+    "reduced.inp": "27a2efe7d9b68fac5e2f4eeb9aa32417359056cc8b92e10c16e95e704c58deae"
+  },
+  "jobs": {
+    "full": {
+      "submitted": {
+        "job_id": "abaqus_5d1d0ab8c1f34371",
+        "status": "queued",
+        "operation": "abq_solve",
+        "job_directory": "D:\\kimi\\cae-mcp\\runs\\abaqus_5d1d0ab8c1f34371",
+        "next_tool": "abaqus_job_status",
+        "note": "Execution continues independently of the MCP connection; poll status and artifacts."
+      },
+      "state": {
+        "job_id": "abaqus_5d1d0ab8c1f34371",
+        "domain": "abaqus",
+        "operation": "abq_solve",
+        "status": "succeeded",
+        "created_at": "2026-11-04T00:02:09.654302+00:00",
+        "stage": "done",
+        "result": {
+          "odb_path": "D:\\kimi\\cae-mcp\\runs\\abaqus_5d1d0ab8c1f34371\\analysis.odb",
+          "solver_completed": true,
+          "datacheck_passed": false,
+          "cpus": 1,
+          "memory_percent": 10,
+          "input_manifest": {
+            "input_path": "D:\\kimi\\cae-mcp\\runs\\abaqus_5d1d0ab8c1f34371\\model.inp",
+            "files": [
+              {
+                "source": "D:\\kimi\\benchmark_public\\solid_20261104_03\\full.inp",
+                "snapshot": "D:\\kimi\\cae-mcp\\runs\\abaqus_5d1d0ab8c1f34371\\model.inp",
+                "sha256": "bdd7dea95cbe5f30a2dd43d4892be776f4c204a2147f03db3612690ae0a72ef0",
+                "bytes": 4255
+              }
+            ]
+          },
+          "resource_allocation": {
+            "plan": {
+              "resource_plan_id": "resource_11d6a2bea9104a60",
+              "created_at": "2026-11-04T00:02:09.650302+00:00",
+              "inp_path": "D:\\kimi\\benchmark_public\\solid_20261104_03\\full.inp",
+              "model": {
+                "node_count": 117,
+                "element_count": 48,
+                "element_types": {
+                  "C3D8": 48
+                },
+                "estimated_dofs": 351,
+                "dof_estimate_note": "Upper sizing proxy; constraints, extra DOFs and generated mesh are not solved here",
+                "contact_definitions": 0,
+                "nonlinear_geometry": false,
+                "steps": [
+                  "Pull"
+                ],
+                "solver": "standard",
+                "files_sha256": {
+                  "D:\\kimi\\benchmark_public\\solid_20261104_03\\full.inp": "bdd7dea95cbe5f30a2dd43d4892be776f4c204a2147f03db3612690ae0a72ef0"
+                },
+                "warnings": []
+              },
+              "host": {
+                "physical_cpus": 6,
+                "logical_cpus": 12,
+                "solver_cpu_budget": 4,
+                "total_memory_bytes": 33977139200,
+                "available_memory_bytes": 22523674624,
+                "solver_memory_budget_percent": 70,
+                "license_cpu_limit": null,
+                "license_capacity_verified": false,
+                "scope": "CPU/memory reservations cover solves owned by this suite only"
+              },
+              "allocation": {
+                "cpus": 1,
+                "memory_percent": 15,
+                "solver": "standard",
+                "reason": "351 approximate DOFs, contact weight 1; CPU tier 1, effective cap 4; memory cap 56%",
+                "weighted_dofs": 351,
+                "policy": "local-size-policy-v1",
+                "limitations": [
+                  "Rule based sizing, not a measured optimal CPU count or memory requirement",
+                  "Memory option is an upper cap, not guaranteed resident memory; Explicit analysis does not use the Standard memory cap",
+                  "License availability is checked by actual execution; optional configured limit is not a live license query"
+                ]
+              }
+            },
+            "effective_allocation": {
+              "cpus": 1,
+              "memory_percent": 10,
+              "solver": "standard",
+              "reason": "351 approximate DOFs, contact weight 1; CPU tier 1, effective cap 4; memory cap 56%",
+              "weighted_dofs": 351,
+              "policy": "local-size-policy-v1",
+              "limitations": [
+                "Rule based sizing, not a measured optimal CPU count or memory requirement",
+                "Memory option is an upper cap, not guaranteed resident memory; Explicit analysis does not use the Standard memory cap",
+                "License availability is checked by actual execution; optional configured limit is not a live license query"
+              ]
+            },
+            "manual_override": true
+          },
+          "resource_allocation_path": "D:\\kimi\\cae-mcp\\runs\\abaqus_5d1d0ab8c1f34371\\resource_allocation.json"
+        },
+        "error": null,
+        "child": null,
+        "worker": {
+          "pid": 24400,
+          "created": 1793750529.7111638
+        },
+        "updated_at": "2026-11-04T00:02:20.625309+00:00",
+        "resource_class": "abaqus",
+        "resource_reservation": {
+          "cpus": 1,
+          "memory_percent": 10
+        },
+        "reservation_acquired_at": "2026-11-04T00:02:09.950703+00:00",
+        "started_at": "2026-11-04T00:02:09.950703+00:00",
+        "queue_seconds": 0.016000000000019554,
+        "command": [
+          "D:\\SIMULIA\\Commands\\abaqus.bat",
+          "job=analysis",
+          "input=model.inp",
+          "cpus=1",
+          "memory=10%",
+          "interactive",
+          "standard_parallel=all",
+          "threads_per_mpi_process=1"
+        ],
+        "last_exit_code": 0,
+        "finished_at": "2026-11-04T00:02:20.625309+00:00",
+        "elapsed_seconds": 10.687999999999988,
+        "execution_seconds": 10.671999999999969,
+        "cancel_requested": false,
+        "job_directory": "D:\\kimi\\cae-mcp\\runs\\abaqus_5d1d0ab8c1f34371"
+      }
+    },
+    "generation": {
+      "submitted": {
+        "job_id": "abaqus_6ffccd9efd9e49d3",
+        "status": "queued",
+        "operation": "abq_solve",
+        "job_directory": "D:\\kimi\\cae-mcp\\runs\\abaqus_6ffccd9efd9e49d3",
+        "next_tool": "abaqus_job_status",
+        "note": "Execution continues independently of the MCP connection; poll status and artifacts."
+      },
+      "previous_attempts": [],
+      "state": {
+        "job_id": "abaqus_6ffccd9efd9e49d3",
+        "domain": "abaqus",
+        "operation": "abq_solve",
+        "status": "succeeded",
+        "created_at": "2026-11-04T17:28:17.967382+00:00",
+        "stage": "done",
+        "result": {
+          "odb_path": "D:\\kimi\\cae-mcp\\runs\\abaqus_6ffccd9efd9e49d3\\analysis.odb",
+          "solver_completed": true,
+          "datacheck_passed": false,
+          "cpus": 1,
+          "memory_percent": 10,
+          "input_manifest": {
+            "input_path": "D:\\kimi\\cae-mcp\\runs\\abaqus_6ffccd9efd9e49d3\\model.inp",
+            "files": [
+              {
+                "source": "D:\\kimi\\benchmark_public\\v03_native_20261105\\claude-code-S04-a1\\generation.inp",
+                "snapshot": "D:\\kimi\\cae-mcp\\runs\\abaqus_6ffccd9efd9e49d3\\model.inp",
+                "sha256": "1286b64317d8729ed2cc8ed5e06c4959842f18b58afe1a23223bdd53c00aee03",
+                "bytes": 2288
+              }
+            ]
+          },
+          "resource_allocation": {
+            "plan": {
+              "resource_plan_id": "resource_4e846151b47a403e",
+              "created_at": "2026-11-04T17:28:17.963383+00:00",
+              "inp_path": "D:\\kimi\\benchmark_public\\v03_native_20261105\\claude-code-S04-a1\\generation.inp",
+              "model": {
+                "node_count": 63,
+                "element_count": 24,
+                "element_types": {
+                  "C3D8": 24
+                },
+                "estimated_dofs": 189,
+                "dof_estimate_note": "Upper sizing proxy; constraints, extra DOFs and generated mesh are not solved here",
+                "contact_definitions": 0,
+                "nonlinear_geometry": false,
+                "steps": [
+                  "Generate"
+                ],
+                "solver": "standard",
+                "files_sha256": {
+                  "D:\\kimi\\benchmark_public\\v03_native_20261105\\claude-code-S04-a1\\generation.inp": "1286b64317d8729ed2cc8ed5e06c4959842f18b58afe1a23223bdd53c00aee03"
+                },
+                "warnings": [
+                  "Size estimate cannot fully resolve *SUBSTRUCTUREGENERATE"
+                ]
+              },
+              "host": {
+                "physical_cpus": 6,
+                "logical_cpus": 12,
+                "solver_cpu_budget": 4,
+                "total_memory_bytes": 33977139200,
+                "available_memory_bytes": 16865824768,
+                "solver_memory_budget_percent": 70,
+                "license_cpu_limit": null,
+                "license_capacity_verified": false,
+                "scope": "CPU/memory reservations cover solves owned by this suite only"
+              },
+              "allocation": {
+                "cpus": 1,
+                "memory_percent": 15,
+                "solver": "standard",
+                "reason": "189 approximate DOFs, contact weight 1; CPU tier 1, effective cap 4; memory cap 39%",
+                "weighted_dofs": 189,
+                "policy": "local-size-policy-v1",
+                "limitations": [
+                  "Rule based sizing, not a measured optimal CPU count or memory requirement",
+                  "Memory option is an upper cap, not guaranteed resident memory; Explicit analysis does not use the Standard memory cap",
+                  "License availability is checked by actual execution; optional configured limit is not a live license query"
+                ]
+              }
+            },
+            "effective_allocation": {
+              "cpus": 1,
+              "memory_percent": 10,
+              "solver": "standard",
+              "reason": "189 approximate DOFs, contact weight 1; CPU tier 1, effective cap 4; memory cap 39%",
+              "weighted_dofs": 189,
+              "policy": "local-size-policy-v1",
+              "limitations": [
+                "Rule based sizing, not a measured optimal CPU count or memory requirement",
+                "Memory option is an upper cap, not guaranteed resident memory; Explicit analysis does not use the Standard memory cap",
+                "License availability is checked by actual execution; optional configured limit is not a live license query"
+              ]
+            },
+            "manual_override": true
+          },
+          "resource_allocation_path": "D:\\kimi\\cae-mcp\\runs\\abaqus_6ffccd9efd9e49d3\\resource_allocation.json"
+        },
+        "error": null,
+        "child": null,
+        "worker": {
+          "pid": 17672,
+          "created": 1793813298.1461308
+        },
+        "updated_at": "2026-11-04T17:28:40.349471+00:00",
+        "resource_class": "abaqus",
+        "resource_reservation": {
+          "cpus": 1,
+          "memory_percent": 10
+        },
+        "reservation_acquired_at": "2026-11-04T17:28:18.436198+00:00",
+        "started_at": "2026-11-04T17:28:18.437198+00:00",
+        "queue_seconds": 0.014999999999417923,
+        "command": [
+          "D:\\SIMULIA\\Commands\\abaqus.bat",
+          "job=analysis",
+          "input=model.inp",
+          "cpus=1",
+          "memory=10%",
+          "interactive",
+          "standard_parallel=all",
+          "threads_per_mpi_process=1"
+        ],
+        "last_exit_code": 0,
+        "finished_at": "2026-11-04T17:28:40.349471+00:00",
+        "elapsed_seconds": 21.92199999999866,
+        "execution_seconds": 21.906999999999243,
+        "cancel_requested": false,
+        "job_directory": "D:\\kimi\\cae-mcp\\runs\\abaqus_6ffccd9efd9e49d3"
+      }
+    },
+    "reduced": {
+      "submitted": {
+        "job_id": "abaqus_eff56b44421446e6",
+        "status": "queued",
+        "operation": "abq_solve",
+        "job_directory": "D:\\kimi\\cae-mcp\\runs\\abaqus_eff56b44421446e6",
+        "next_tool": "abaqus_job_status",
+        "note": "Execution continues independently of the MCP connection; poll status and artifacts."
+      },
+      "previous_attempts": [],
+      "state": {
+        "job_id": "abaqus_eff56b44421446e6",
+        "domain": "abaqus",
+        "operation": "abq_solve",
+        "status": "succeeded",
+        "created_at": "2026-11-04T17:28:42.115755+00:00",
+        "stage": "done",
+        "result": {
+          "odb_path": "D:\\kimi\\cae-mcp\\runs\\abaqus_eff56b44421446e6\\analysis.odb",
+          "solver_completed": true,
+          "datacheck_passed": false,
+          "cpus": 1,
+          "memory_percent": 10,
+          "input_manifest": {
+            "input_path": "D:\\kimi\\cae-mcp\\runs\\abaqus_eff56b44421446e6\\model.inp",
+            "files": [
+              {
+                "source": "D:\\kimi\\benchmark_public\\v03_native_20261105\\claude-code-S04-a1\\reduced.inp",
+                "snapshot": "D:\\kimi\\cae-mcp\\runs\\abaqus_eff56b44421446e6\\model.inp",
+                "sha256": "27a2efe7d9b68fac5e2f4eeb9aa32417359056cc8b92e10c16e95e704c58deae",
+                "bytes": 2857
+              }
+            ]
+          },
+          "resource_allocation": {
+            "plan": {
+              "resource_plan_id": "resource_4109526e063d4fa9",
+              "created_at": "2026-11-04T17:28:42.111755+00:00",
+              "inp_path": "D:\\kimi\\benchmark_public\\v03_native_20261105\\claude-code-S04-a1\\reduced.inp",
+              "model": {
+                "node_count": 72,
+                "element_count": 25,
+                "element_types": {
+                  "C3D8": 24,
+                  "Z101": 1
+                },
+                "estimated_dofs": 216,
+                "dof_estimate_note": "Upper sizing proxy; constraints, extra DOFs and generated mesh are not solved here",
+                "contact_definitions": 0,
+                "nonlinear_geometry": false,
+                "steps": [
+                  "Pull"
+                ],
+                "solver": "standard",
+                "files_sha256": {
+                  "D:\\kimi\\benchmark_public\\v03_native_20261105\\claude-code-S04-a1\\reduced.inp": "27a2efe7d9b68fac5e2f4eeb9aa32417359056cc8b92e10c16e95e704c58deae"
+                },
+                "warnings": [
+                  "Approximate connectivity count for unsupported element type Z101"
+                ]
+              },
+              "host": {
+                "physical_cpus": 6,
+                "logical_cpus": 12,
+                "solver_cpu_budget": 4,
+                "total_memory_bytes": 33977139200,
+                "available_memory_bytes": 16913702912,
+                "solver_memory_budget_percent": 70,
+                "license_cpu_limit": null,
+                "license_capacity_verified": false,
+                "scope": "CPU/memory reservations cover solves owned by this suite only"
+              },
+              "allocation": {
+                "cpus": 1,
+                "memory_percent": 15,
+                "solver": "standard",
+                "reason": "216 approximate DOFs, contact weight 1; CPU tier 1, effective cap 4; memory cap 39%",
+                "weighted_dofs": 216,
+                "policy": "local-size-policy-v1",
+                "limitations": [
+                  "Rule based sizing, not a measured optimal CPU count or memory requirement",
+                  "Memory option is an upper cap, not guaranteed resident memory; Explicit analysis does not use the Standard memory cap",
+                  "License availability is checked by actual execution; optional configured limit is not a live license query"
+                ]
+              }
+            },
+            "effective_allocation": {
+              "cpus": 1,
+              "memory_percent": 10,
+              "solver": "standard",
+              "reason": "216 approximate DOFs, contact weight 1; CPU tier 1, effective cap 4; memory cap 39%",
+              "weighted_dofs": 216,
+              "policy": "local-size-policy-v1",
+              "limitations": [
+                "Rule based sizing, not a measured optimal CPU count or memory requirement",
+                "Memory option is an upper cap, not guaranteed resident memory; Explicit analysis does not use the Standard memory cap",
+                "License availability is checked by actual execution; optional configured limit is not a live license query"
+              ]
+            },
+            "manual_override": true
+          },
+          "resource_allocation_path": "D:\\kimi\\cae-mcp\\runs\\abaqus_eff56b44421446e6\\resource_allocation.json"
+        },
+        "error": null,
+        "child": null,
+        "worker": {
+          "pid": 16760,
+          "created": 1793813322.268932
+        },
+        "updated_at": "2026-11-04T17:29:04.055515+00:00",
+        "resource_class": "abaqus",
+        "resource_reservation": {
+          "cpus": 1,
+          "memory_percent": 10
+        },
+        "reservation_acquired_at": "2026-11-04T17:28:42.550613+00:00",
+        "started_at": "2026-11-04T17:28:42.551614+00:00",
+        "queue_seconds": 0.0,
+        "command": [
+          "D:\\SIMULIA\\Commands\\abaqus.bat",
+          "job=analysis",
+          "input=model.inp",
+          "cpus=1",
+          "memory=10%",
+          "interactive",
+          "standard_parallel=all",
+          "threads_per_mpi_process=1"
+        ],
+        "last_exit_code": 0,
+        "finished_at": "2026-11-04T17:29:04.055515+00:00",
+        "elapsed_seconds": 21.5,
+        "execution_seconds": 21.5,
+        "cancel_requested": false,
+        "job_directory": "D:\\kimi\\cae-mcp\\runs\\abaqus_eff56b44421446e6"
+      }
+    },
+    "extract": {
+      "submitted": {
+        "job_id": "abaqus_12e8f8b243154f31",
+        "status": "queued",
+        "operation": "abq_run_script",
+        "job_directory": "D:\\kimi\\cae-mcp\\runs\\abaqus_12e8f8b243154f31",
+        "next_tool": "abaqus_job_status",
+        "note": "Execution continues independently of the MCP connection; poll status and artifacts."
+      },
+      "previous_attempts": [],
+      "state": {
+        "job_id": "abaqus_12e8f8b243154f31",
+        "domain": "abaqus",
+        "operation": "abq_run_script",
+        "status": "succeeded",
+        "created_at": "2026-11-04T17:29:04.264943+00:00",
+        "stage": "done",
+        "result": {
+          "script_completed": true
+        },
+        "error": null,
+        "child": null,
+        "worker": {
+          "pid": 22300,
+          "created": 1793813344.4084961
+        },
+        "updated_at": "2026-11-04T17:29:05.762157+00:00",
+        "resource_class": "abaqus_python",
+        "started_at": "2026-11-04T17:29:04.702548+00:00",
+        "queue_seconds": 0.0,
+        "command": [
+          "D:\\SIMULIA\\Commands\\abaqus.bat",
+          "python",
+          "native.py",
+          "native_request.json"
+        ],
+        "last_exit_code": 0,
+        "finished_at": "2026-11-04T17:29:05.762157+00:00",
+        "elapsed_seconds": 1.062000000005355,
+        "execution_seconds": 1.062000000005355,
+        "cancel_requested": false,
+        "job_directory": "D:\\kimi\\cae-mcp\\runs\\abaqus_12e8f8b243154f31"
+      }
+    }
+  }
+}

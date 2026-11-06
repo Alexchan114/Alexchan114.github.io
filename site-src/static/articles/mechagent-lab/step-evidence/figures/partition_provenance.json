@@ -1,0 +1,8 @@
+{
+  "source_script": "lab_evidence_figures.py",
+  "source_sha256": "ef17e00608c2cbb2fc70f3ec8085e28c16252579f95e844bae415c9227cdfdf9",
+  "source": "actual INP membership",
+  "native_data_catalog": "../postprocess/catalog.json",
+  "exported_by": "Tavotto",
+  "png_sha256": "cc2bebe4134c8aae7c93ff68655ab205217b73699e34a236a07f5562b0166f7e"
+}

@@ -88,4 +88,13 @@ connector_article: true
 <h2>Further reading and inspectable files</h2>
 <p><a href="https://learn.chatgpt.com/docs/non-interactive-mode">Codex non-interactive execution</a> · <a href="https://code.claude.com/docs/en/headless">Claude Code programmatic execution</a> · <a href="/post/2026/11/04/mechanics-benchmark-v02/">Historical mini / Pi records</a></p>
 <p><a href="/articles/mechagent-lab/summary.csv">CSV</a> · <a href="/articles/mechagent-lab/summary.json">JSON</a> · <a href="/articles/mechagent-lab/native_extension_registration.json">Frozen registration</a></p>
+
+
+
+<!-- STEP-EVIDENCE-START -->
+<h2>Step Evidence: From Partition to Genuine Stress Contours</h2>
+<p>An additive archive covers all 25 retained records, 805 observable events and 38 numerical artifacts. Inspect inputs, decision outputs, tool calls, JSON/CSV and solver logs for each attempt; S04 also includes node/element partition memberships and genuine ODB stress/displacement contours.</p>
+<p><a href="/articles/mechagent-lab/step-evidence/index.en.html">Open the step evidence archive</a> · <a href="/articles/mechagent-lab/mechagent-lab-step-evidence.zip">Download the additive evidence bundle</a></p>
+<figure><a href="/articles/mechagent-lab/step-evidence/index.en.html"><img src="/articles/mechagent-lab/step-evidence/figures/stress.png" alt="Genuine full and reduced ODB stress contours" loading="lazy"></a><figcaption>Read-only postprocessing only: no model or analysis reruns and no score changes. Full-model contours are independent reference evidence. Reduced contours cover retained solids only; SUB internal stress is not recovered. Late Codex outputs are labeled post-trial host supplements, not a pass. Large ODB/SIM/SUP files remain local.</figcaption></figure>
+<!-- STEP-EVIDENCE-END -->
 </article>

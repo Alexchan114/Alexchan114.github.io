@@ -1,0 +1,21 @@
+﻿json_path,value_json
+"$[""task""]","""S07"""
+"$[""parameters""][""lambda""]",1.235
+"$[""result""][""engine""]","""rigid lever kinematics plus unilateral springs; not full connector CAE"""
+"$[""result""][""lambda""]",1.235
+"$[""result""][""offset_X_mm""]",0.12350000000000001
+"$[""result""][""angle_deg""]",2.47
+"$[""result""][""forces_N""][0]",0.4186834711403757
+"$[""result""][""forces_N""][1]",0.4198937703188571
+"$[""result""][""forces_N""][2]",0.4202817587537128
+"$[""result""][""forces_N""][3]",0.41984743644494293
+"$[""result""][""forces_N""][4]",0.41859080339254734
+"$[""result""][""forces_N""][5]",0.41651185959652604
+"$[""result""][""forces_N""][6]",0.41361060505687924
+"$[""result""][""forces_N""][7]",0.4098870397736064
+"$[""result""][""forces_N""][8]",0.4053411637467081
+"$[""result""][""forces_N""][9]",0.39997297697618417
+"$[""result""][""forces_N""][10]",0.3937824794620346
+"$[""result""][""forces_N""][11]",0.3867696712042594
+"$[""result""][""min_force_N""]",0.3867696712042594
+"$[""result""][""failed""]",true

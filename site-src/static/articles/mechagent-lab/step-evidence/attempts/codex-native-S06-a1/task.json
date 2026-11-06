@@ -1,0 +1,115 @@
+{
+  "title": "Reuse, geometry compatibility and Tie coverage",
+  "title_zh": "复用、几何兼容与绑定覆盖",
+  "query": "Choose a reusable library matching target retained topology/material/coordinates. Independently translated CORE slave faces need an unadjusted Tie to an unchanged master plane; maximum normal offset is 0.1mm X +0.1mm Y projected on n. Give minimal safe tolerance=max distance+1e-6 mm, ADJUST=false. In both experiment and final solution, adjust MUST be a JSON boolean false, not a string. Tolerance must not excuse an incompatible library. Execute interface_test.",
+  "fixture": {
+    "target": {
+      "topology": "mesh-A",
+      "material": "E1000",
+      "retained_xyz": [
+        [
+          0,
+          0,
+          0
+        ],
+        [
+          0,
+          0,
+          1
+        ]
+      ]
+    },
+    "libraries": {
+      "L17": {
+        "topology": "mesh-A",
+        "material": "E1000",
+        "retained_xyz": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "L24": {
+        "topology": "mesh-A",
+        "material": "E1000",
+        "retained_xyz": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0.02,
+            1
+          ]
+        ]
+      },
+      "L33": {
+        "topology": "mesh-A",
+        "material": "E1200",
+        "retained_xyz": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      },
+      "L41": {
+        "topology": "mesh-B",
+        "material": "E1000",
+        "retained_xyz": [
+          [
+            0,
+            0,
+            0
+          ],
+          [
+            0,
+            0,
+            1
+          ]
+        ]
+      }
+    },
+    "master_normal": [
+      0.7071067811865475,
+      0.7071067811865475,
+      0
+    ],
+    "offset_limits_mm": [
+      0.1,
+      0.1
+    ],
+    "margin_mm": 1e-06
+  },
+  "output": {
+    "artifact_id": "string",
+    "library_id": "string",
+    "tie_tolerance_mm": "number",
+    "adjust": "JSON boolean false, not string"
+  },
+  "id": "S06",
+  "version": "0.2.2",
+  "tier": "public_reduced_physics",
+  "budget": {
+    "max_turns": 6,
+    "max_output_tokens": 6144,
+    "max_tool_calls": 24,
+    "max_solver_tests": 1
+  },
+  "scoring": "binary: all independent checks required; no self-report scoring"
+}

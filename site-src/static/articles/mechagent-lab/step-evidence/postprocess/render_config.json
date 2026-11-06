@@ -1,0 +1,108 @@
+{
+  "renders": [
+    {
+      "label": "full_reference_stress",
+      "output_dir": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\renders\\full_reference\\stress",
+      "request": {
+        "data_path": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\mcp\\runs\\abaqus_96a14613ac654a50\\vtk\\collection.pvd",
+        "frame": -1,
+        "array_name": "S_MISES_Avg",
+        "association": "POINTS",
+        "component": -1,
+        "deformation_scale": 0,
+        "width": 1600,
+        "height": 700,
+        "representation": "Surface With Edges",
+        "view": "isometric",
+        "scalar_label": "Mises stress / MPa"
+      }
+    },
+    {
+      "label": "full_reference_deformation",
+      "output_dir": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\renders\\full_reference\\deformation",
+      "request": {
+        "data_path": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\mcp\\runs\\abaqus_96a14613ac654a50\\vtk\\collection.pvd",
+        "frame": -1,
+        "array_name": "U",
+        "association": "POINTS",
+        "component": -1,
+        "deformation_scale": 1,
+        "width": 1600,
+        "height": 700,
+        "representation": "Surface With Edges",
+        "view": "isometric",
+        "scalar_label": "|U| / mm (scale 1)"
+      }
+    },
+    {
+      "label": "claude_reduced_stress",
+      "output_dir": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\renders\\claude_reduced\\stress",
+      "request": {
+        "data_path": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\mcp\\runs\\abaqus_b0364bb4ddb44a7a\\vtk\\collection.pvd",
+        "frame": -1,
+        "array_name": "S_MISES_Avg",
+        "association": "POINTS",
+        "component": -1,
+        "deformation_scale": 0,
+        "width": 1600,
+        "height": 700,
+        "representation": "Surface With Edges",
+        "view": "isometric",
+        "scalar_label": "Mises stress / MPa"
+      }
+    },
+    {
+      "label": "claude_reduced_deformation",
+      "output_dir": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\renders\\claude_reduced\\deformation",
+      "request": {
+        "data_path": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\mcp\\runs\\abaqus_b0364bb4ddb44a7a\\vtk\\collection.pvd",
+        "frame": -1,
+        "array_name": "U",
+        "association": "POINTS",
+        "component": -1,
+        "deformation_scale": 1,
+        "width": 1600,
+        "height": 700,
+        "representation": "Surface With Edges",
+        "view": "isometric",
+        "scalar_label": "|U| / mm (scale 1)"
+      }
+    },
+    {
+      "label": "codex_late_reduced_stress",
+      "output_dir": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\renders\\codex_late_reduced\\stress",
+      "request": {
+        "data_path": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\mcp\\runs\\abaqus_88decbcf6cb84d76\\vtk\\collection.pvd",
+        "frame": -1,
+        "array_name": "S_MISES_Avg",
+        "association": "POINTS",
+        "component": -1,
+        "deformation_scale": 0,
+        "width": 1600,
+        "height": 700,
+        "representation": "Surface With Edges",
+        "view": "isometric",
+        "scalar_label": "Mises stress / MPa"
+      }
+    },
+    {
+      "label": "codex_late_reduced_deformation",
+      "output_dir": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\renders\\codex_late_reduced\\deformation",
+      "request": {
+        "data_path": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\mcp\\runs\\abaqus_88decbcf6cb84d76\\vtk\\collection.pvd",
+        "frame": -1,
+        "array_name": "U",
+        "association": "POINTS",
+        "component": -1,
+        "deformation_scale": 1,
+        "width": 1600,
+        "height": 700,
+        "representation": "Surface With Edges",
+        "view": "isometric",
+        "scalar_label": "|U| / mm (scale 1)"
+      }
+    }
+  ],
+  "renderer_template": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\installed_renderer_snapshot.py",
+  "output_json": "D:\\kimi\\benchmark_public\\step_evidence_20261106\\renders.json"
+}

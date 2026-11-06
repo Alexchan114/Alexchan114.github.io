@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "score": 100,
+  "checks": {
+    "trusted_ranking": true,
+    "contact_failure": true,
+    "recovery": true
+  }
+}

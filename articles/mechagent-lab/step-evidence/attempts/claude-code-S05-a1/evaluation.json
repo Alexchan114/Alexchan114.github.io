@@ -1,0 +1,13 @@
+{
+  "status": "failed",
+  "score": 0,
+  "checks": {
+    "four_methods": true,
+    "MC_marginal": true,
+    "LHS_marginal": true,
+    "stratification": true,
+    "Sobol_marginal": true,
+    "Halton_marginal": true,
+    "physical_units": false
+  }
+}

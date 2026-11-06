@@ -1,0 +1,11 @@
+{
+  "solution": {
+    "lambda_safe": 1.223,
+    "lambda_failed": 1.224,
+    "artifact_ids": [
+      "artifact_9da803fc33ea11da92b8",
+      "artifact_8547199f85d1c0ca0368"
+    ]
+  },
+  "explanation": "Kinematic unilateral spring model: F_i(lambda)=k_i max(0, initial_overlap_i - 0.1 lambda normal_x_i - lever_i sin(2 lambda pi/180)). All overlaps decrease strictly on [0,2], since their derivatives are -0.1 normal_x_i - lever_i (pi/90) cos(lambda pi/90)<0. Solving the 12 threshold crossings gives contact 12 first at lambda approximately 1.2236638925 (next contact 11 approximately 1.2293778040). Safe pose_test artifact_9da803fc33ea11da92b8 at lambda 1.223 has min force 0.40077483017504734 N; failed pose_test artifact_8547199f85d1c0ca0368 at lambda 1.224 has min force 0.39960772851042353 N, both minima at contact 12. Width 0.001 <= 0.002. This is rigid lever kinematics plus unilateral springs only, not a full connector prediction."
+}

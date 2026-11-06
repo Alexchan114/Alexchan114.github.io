@@ -1,0 +1,33 @@
+{
+  "attempt": "codex-native-S05-a1",
+  "task": "S05",
+  "configuration": "codex-native",
+  "model": "gpt-6.1-sol",
+  "classification": "adapter_invalid",
+  "status": "no_submission",
+  "raw_score": null,
+  "score": null,
+  "elapsed_seconds": 2.0,
+  "tool_calls": 0,
+  "solver_tests": 0,
+  "sdk_estimated_usd": null,
+  "actual_billed_usd": null,
+  "protocol_note": null,
+  "input_tokens": null,
+  "output_tokens": null,
+  "cached_input_tokens": null,
+  "observation": "recorded events only; no hidden reasoning reconstructed",
+  "timeline_events": 6,
+  "source_files": [
+    "task.json",
+    "query.json",
+    "run.json"
+  ],
+  "artifacts": [],
+  "solver_scope": "no native solver artifact for this attempt",
+  "partition": false,
+  "late_host_supplement": false,
+  "scoring_changed": false,
+  "inference_repeated": false,
+  "analysis_repeated": false
+}

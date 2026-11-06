@@ -1,0 +1,9 @@
+{
+  "status": "passed",
+  "score": 100,
+  "checks": {
+    "minimal_mesh": true,
+    "accuracy": true,
+    "reported": true
+  }
+}

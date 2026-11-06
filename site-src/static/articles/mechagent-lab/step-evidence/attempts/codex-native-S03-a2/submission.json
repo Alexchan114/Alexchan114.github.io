@@ -1,0 +1,28 @@
+{
+  "explanation": "For contact j on plate i, F_j=k_j*max(0,0.3348+0.15*a_i+0.18-gap_j). Thus a_i must be at least max over its pair of (gap_j+0.4/k_j-0.3348-0.18)/0.15, and at least zero. Since sum(a_i^2) increases with every nonnegative amplitude and plates are independent, these pairwise lower bounds are the global minimum. Amplitudes were rounded upward to 12 decimal places for numerical feasibility. The executed contact_test artifact verifies all 12 forces >=0.4 N, without friction; objective 1.8424679103087716.",
+  "solution": {
+    "amplitudes": [
+      0.368000000001,
+      0.548952380953,
+      0.682285714286,
+      0.279111111112,
+      0.748952380953,
+      0.548952380953
+    ],
+    "artifact_id": "artifact_9805d356ba16b5efd335",
+    "forces_N": [
+      0.5400000000008998,
+      0.4000000000011994,
+      0.40000000000064984,
+      0.5828571428577001,
+      0.6971428571432003,
+      0.4000000000003001,
+      0.40000000000079994,
+      0.42000000000119975,
+      0.4000000000006506,
+      0.6171428571436,
+      0.46285714285769997,
+      0.40000000000064984
+    ]
+  }
+}

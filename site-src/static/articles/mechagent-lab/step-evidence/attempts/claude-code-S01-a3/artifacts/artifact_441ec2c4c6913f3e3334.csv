@@ -1,0 +1,7 @@
+﻿json_path,value_json
+"$[""task""]","""S01"""
+"$[""parameters""]",{}
+"$[""result""][""engine""]","""NumPy direct stiffness, 1D axial FEM"""
+"$[""result""][""U_mm""]",0.044
+"$[""result""][""reaction_N""]",-12.000000000000002
+"$[""result""][""energy_Nmm""]",0.26400000000000007

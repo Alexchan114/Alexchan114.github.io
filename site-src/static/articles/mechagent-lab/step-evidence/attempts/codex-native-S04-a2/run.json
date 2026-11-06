@@ -1,0 +1,31 @@
+{
+  "configuration": "codex-native",
+  "harness": "Codex CLI",
+  "client_version": "0.166.0-alpha.5.1",
+  "model": "gpt-6.1-sol",
+  "auth": "existing ChatGPT login",
+  "reasoning_effort": "xhigh",
+  "task": "S04",
+  "tier": "abaqus_mcp_3d",
+  "status": "submitted",
+  "started_utc": "2026-11-04T17:43:57.951140+00:00",
+  "preregistration_hash": "9b8ebb56c9c79a62f0561b9c54e74965c542d532a7aea8fa14608f68eed2c4a4",
+  "automatic_benchmark_retry": false,
+  "actual_billed_usd": null,
+  "elapsed_seconds": 294.375,
+  "returncode": 0,
+  "tool_calls": 5,
+  "solver_tests": 1,
+  "evaluation": {
+    "status": "failed",
+    "score": 0,
+    "checks": {
+      "schema_and_artifacts": false
+    },
+    "error": "''"
+  },
+  "observed_prohibited_tools": [],
+  "forwarded_model_requests": 0,
+  "model_gateway_blocked": null,
+  "finished_utc": "2026-11-04T17:48:52.335028+00:00"
+}

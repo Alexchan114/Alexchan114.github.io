@@ -1,0 +1,106 @@
+{
+  "odb": "D:\\kimi\\cae-mcp\\runs\\abaqus_eff56b44421446e6\\analysis.odb",
+  "odb_version": "Abaqus/Standard 2025",
+  "instances": [
+    {
+      "name": "PART-1-1",
+      "nodes": 72,
+      "elements": 25,
+      "section_assignments": 1
+    }
+  ],
+  "steps": [
+    {
+      "name": "Pull",
+      "number": 1,
+      "frames": 21,
+      "domain": "TIME",
+      "fields_at_last_frame": [
+        {
+          "name": "AC YIELD",
+          "components": [],
+          "invariants": [],
+          "positions": [
+            "INTEGRATION_POINT"
+          ],
+          "section_points": []
+        },
+        {
+          "name": "PEEQ",
+          "components": [],
+          "invariants": [],
+          "positions": [
+            "INTEGRATION_POINT"
+          ],
+          "section_points": []
+        },
+        {
+          "name": "RF",
+          "components": [
+            "RF1",
+            "RF2",
+            "RF3"
+          ],
+          "invariants": [
+            "MAGNITUDE"
+          ],
+          "positions": [
+            "NODAL"
+          ],
+          "section_points": []
+        },
+        {
+          "name": "S",
+          "components": [
+            "S11",
+            "S22",
+            "S33",
+            "S12",
+            "S13",
+            "S23"
+          ],
+          "invariants": [
+            "MISES",
+            "MAX_PRINCIPAL",
+            "MID_PRINCIPAL",
+            "MIN_PRINCIPAL",
+            "TRESCA",
+            "PRESS",
+            "INV3"
+          ],
+          "positions": [
+            "INTEGRATION_POINT"
+          ],
+          "section_points": []
+        },
+        {
+          "name": "U",
+          "components": [
+            "U1",
+            "U2",
+            "U3"
+          ],
+          "invariants": [
+            "MAGNITUDE"
+          ],
+          "positions": [
+            "NODAL"
+          ],
+          "section_points": []
+        }
+      ]
+    }
+  ],
+  "defaults": {
+    "step": "Pull",
+    "frame_index": 20,
+    "fields": [
+      "U",
+      "S:MISES"
+    ],
+    "avg": 75,
+    "regions": "section assignments",
+    "section_points": "all detected",
+    "encoding": "binary"
+  }
+}

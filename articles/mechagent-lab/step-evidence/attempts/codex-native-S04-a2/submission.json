@@ -1,0 +1,33 @@
+{
+  "solution": {
+    "artifact_id": "",
+    "cut_mm": 6,
+    "eliminated_dofs": 135,
+    "retained_dofs": [
+      1,
+      2,
+      3
+    ],
+    "retained_nodes": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      55,
+      56,
+      57,
+      58,
+      59,
+      60,
+      61,
+      62,
+      63
+    ]
+  },
+  "explanation": "The linear substructure spans x=0..6 mm, so all its elements have the specified linear elastic constitutive law, with NLGEOM=NO. All J2 plastic elements at x=6..12 mm remain outside. Cuts 2, 4 and 6 eliminate respectively 27, 81 and 135 translational DOFs after retaining ROOT and all cut-interface translations; cut 8 would include plastic elements and is inadmissible. At cut 6, retain ROOT nodes 1..9 and interface nodes 55..63, each with DOFs 1,2,3. The five interior planes contain 45 nodes and eliminate 135 DOFs. This uses constitutive assignments, not stress magnitude, to establish eligibility. The native partition_test was requested through experiment({cut_mm:6}), but the MCP call timed out after 240 seconds without returning a result or host-issued artifact ID. A retry was rejected with 'One native candidate allowed per attempt'. Therefore the curve-error requirement could not be verified, and artifact_id is empty to avoid fabricating execution evidence."
+}

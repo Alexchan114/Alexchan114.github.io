@@ -1,0 +1,26 @@
+{
+  "solution": {
+    "artifact_id": "artifact_bb76f92697ce76f0b556",
+    "ranking": [
+      "c02",
+      "c03",
+      "c01",
+      "c08"
+    ],
+    "contact_failures": [
+      "c02",
+      "c03"
+    ],
+    "actions": {
+      "c01": "done",
+      "c02": "done",
+      "c03": "done",
+      "c04": "retry_solve",
+      "c05": "reextract",
+      "c06": "wait",
+      "c07": "repair_mesh",
+      "c08": "done"
+    }
+  },
+  "explanation": "Read-only evidence artifact_bb76f92697ce76f0b556 supports completed solver status, final |U3|=8 mm and all 12 channels for c02, c03, c01, c08. Their minimum absolute normal forces are respectively 0.35, 0.38, 0.41, 0.45 N, yielding ascending ranking c02,c03,c01,c08. Only c02 and c03 are below 0.4 N; both are done under the minimal recovery policy. Exclude c04 (inactive interrupted, |U3|=7 mm; retry_solve), c05 (completed but only 11 channels; reextract), c06 (active running; wait), and c07 (negative element volume input error; repair_mesh). No solver was launched."
+}

@@ -1,0 +1,16 @@
+{
+  "source_odb": "D:\\kimi\\cae-mcp\\runs\\abaqus_eff56b44421446e6\\analysis.odb",
+  "read_only": true,
+  "step": "Pull",
+  "frame_index": 20,
+  "time": 1.0,
+  "stress_rows": 192,
+  "field": "S",
+  "position": "INTEGRATION_POINT",
+  "stress_unit": "MPa",
+  "length_unit": "mm",
+  "force_unit": "N",
+  "averaging": "none; original stored integration-point tensors and Mises invariant",
+  "substructure_recovery": false,
+  "status": "extracted"
+}

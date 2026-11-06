@@ -1,0 +1,18 @@
+{
+  "calls": 6,
+  "solver_calls": 0,
+  "submitted": true,
+  "evaluation": {
+    "status": "passed",
+    "score": 100,
+    "checks": {
+      "four_methods": true,
+      "MC_marginal": true,
+      "LHS_marginal": true,
+      "stratification": true,
+      "Sobol_marginal": true,
+      "Halton_marginal": true,
+      "physical_units": true
+    }
+  }
+}

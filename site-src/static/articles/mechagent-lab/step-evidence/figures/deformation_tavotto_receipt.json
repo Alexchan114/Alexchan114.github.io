@@ -1,0 +1,348 @@
+{
+  "conflicts": [],
+  "document_revision": null,
+  "error": null,
+  "export_dir": "D:\\huaweiproject\\outputs\\mechanics_agent_benchmark_v03_20261105\\step_evidence\\figures\\tavottofile\\export",
+  "files": [
+    {
+      "name": "deformation.pdf",
+      "url": "/exports/deformation.pdf"
+    },
+    {
+      "name": "deformation.png",
+      "url": "/exports/deformation.png"
+    }
+  ],
+  "job_id": "a022a28e0d754c14",
+  "outputs": [
+    {
+      "bytes": 139858,
+      "dimensions": {
+        "mm": [
+          254.0,
+          254.0
+        ],
+        "px": null
+      },
+      "error": null,
+      "format": "pdf",
+      "manifest": {
+        "backend": "rendercore",
+        "bytes": 139858,
+        "carrier": "mixed",
+        "checks": {
+          "carrier": "verified",
+          "clipping": "verified",
+          "fonts_embedded": "verified",
+          "image_ppi": "unknown",
+          "integrity": "verified",
+          "size": "verified",
+          "text_layer": "not_applicable"
+        },
+        "dpi": null,
+        "fonts_used": [
+          "DejaVuSans-Bold",
+          "DejaVuSans"
+        ],
+        "format": "pdf",
+        "identity": {
+          "artifact": "50bed6368fc98f58801db7f9b682d314c3720b07cec12a8a05a63e4a242bec17",
+          "identity_version": 1,
+          "render": "sha256:032bfc59ff0b4e9e1ab7bf635cbe758cbb08112a6564557eb09128f874b153de",
+          "run": "a022a28e0d754c14",
+          "semantic": "sha256:20793f7dab1de0ef800c0f363f50632be127550ce7ad15e0c41e8c4af4650089"
+        },
+        "manifest_version": 1,
+        "notes": [
+          "载体是 mixed：矢量之外还有位图对象（面板里的位图源或位图面板）",
+          "没有规范给出最低 ppi，位图密度只记录不判",
+          "裁切只对计划里的对象判；外来页内部不分析（unknown）"
+        ],
+        "plan_identity": "sha256:20793f7dab1de0ef800c0f363f50632be127550ce7ad15e0c41e8c4af4650089",
+        "policy": "standard",
+        "provenance": {
+          "execution_receipts": [
+            "sha256:9d0f21710f22b05dd7cfe7ae3d610a44aa3d005c2fcb43e30548921a57c9f61b"
+          ],
+          "nodes": [
+            {
+              "id": "runtime:lab_evidence_figures.py#deformation",
+              "instance": 1,
+              "internal": "unknown",
+              "kind": "imported_page",
+              "node": "runtime:lab_evidence_figures.py#deformation",
+              "origin": "execution",
+              "receipt_identity": "sha256:9d0f21710f22b05dd7cfe7ae3d610a44aa3d005c2fcb43e30548921a57c9f61b",
+              "source_id": "runtime:lab_evidence_figures.py#deformation"
+            }
+          ],
+          "nodes_truncated": false,
+          "receipts": [
+            {
+              "binding": {
+                "changed": 0,
+                "matched": true,
+                "revision": "sha256:00d13cda860c2198ed014406cdf07e5509e40f8cc6d490038725b7458203b3dc",
+                "unobserved": 0
+              },
+              "completeness": "complete",
+              "control_plane": "workerd",
+              "cwd_origin": "sandbox",
+              "generation": 4,
+              "machine": "AMD64",
+              "observation": "partial",
+              "packages": {
+                "matplotlib": "3.11.1",
+                "numpy": "2.5.2",
+                "pandas": "3.0.5",
+                "pillow": "12.3.0",
+                "scipy": "1.18.0",
+                "seaborn": "0.13.2"
+              },
+              "pid_check": "ok",
+              "platform": "win32",
+              "python_implementation": "CPython",
+              "python_source": "bundled",
+              "python_version": "3.13.15",
+              "receipt_id": "sha256:9feb80ae5ae15ddd0248d594c657665c4d8c57d71379361cbf5cdd230c0168f0",
+              "receipt_identity": "sha256:9d0f21710f22b05dd7cfe7ae3d610a44aa3d005c2fcb43e30548921a57c9f61b",
+              "runtime_rejected": null,
+              "source_revision": "cc42074244ee4260a33d6589f0739b5948e79760"
+            }
+          ],
+          "sources": [
+            {
+              "bytes_sha256": "b7f8fc7fcea148543a8ad037710f3b3b85a76a544a90cb1d180970b78d3ad66d",
+              "kind": "pdf",
+              "origin": "execution",
+              "patch_hash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "receipt_identity": "sha256:9d0f21710f22b05dd7cfe7ae3d610a44aa3d005c2fcb43e30548921a57c9f61b",
+              "source_id": "runtime:lab_evidence_figures.py#deformation"
+            }
+          ]
+        },
+        "px": null,
+        "required": [
+          "integrity",
+          "size"
+        ],
+        "sha256": "50bed6368fc98f58801db7f9b682d314c3720b07cec12a8a05a63e4a242bec17",
+        "size_pt": [
+          720.0,
+          720.0
+        ],
+        "verdict": "accepted"
+      },
+      "name": "deformation.pdf",
+      "replaced": true,
+      "status": "done",
+      "url": "/exports/deformation.pdf",
+      "vector": true
+    },
+    {
+      "bytes": 224779,
+      "dimensions": {
+        "mm": [
+          254.0,
+          254.0
+        ],
+        "px": [
+          1800,
+          1800
+        ]
+      },
+      "error": null,
+      "format": "png",
+      "manifest": {
+        "backend": "rendercore",
+        "bytes": 224779,
+        "carrier": null,
+        "checks": {
+          "dpi_tag": "verified",
+          "integrity": "verified",
+          "raster_density": "unknown",
+          "size": "verified"
+        },
+        "dpi": 180.01,
+        "fonts_used": [],
+        "format": "png",
+        "identity": {
+          "artifact": "cec9f9a11b9a501ee1831d04496bf3ad36a3dd9b1add99691e0be8f95138d2c9",
+          "identity_version": 1,
+          "render": "sha256:6f2745bb825381e8c23ba7e72d5aa4059e0e70ad36991013824419b62c3bd26d",
+          "run": "a022a28e0d754c14",
+          "semantic": "sha256:20793f7dab1de0ef800c0f363f50632be127550ce7ad15e0c41e8c4af4650089"
+        },
+        "manifest_version": 1,
+        "notes": [
+          "没有规范给出最低 ppi，密度只记录不判"
+        ],
+        "plan_identity": "sha256:20793f7dab1de0ef800c0f363f50632be127550ce7ad15e0c41e8c4af4650089",
+        "policy": "standard",
+        "provenance": {
+          "execution_receipts": [
+            "sha256:9d0f21710f22b05dd7cfe7ae3d610a44aa3d005c2fcb43e30548921a57c9f61b"
+          ],
+          "nodes": [
+            {
+              "id": "runtime:lab_evidence_figures.py#deformation",
+              "instance": 1,
+              "internal": "unknown",
+              "kind": "imported_page",
+              "node": "runtime:lab_evidence_figures.py#deformation",
+              "origin": "execution",
+              "receipt_identity": "sha256:9d0f21710f22b05dd7cfe7ae3d610a44aa3d005c2fcb43e30548921a57c9f61b",
+              "source_id": "runtime:lab_evidence_figures.py#deformation"
+            }
+          ],
+          "nodes_truncated": false,
+          "receipts": [
+            {
+              "binding": {
+                "changed": 0,
+                "matched": true,
+                "revision": "sha256:00d13cda860c2198ed014406cdf07e5509e40f8cc6d490038725b7458203b3dc",
+                "unobserved": 0
+              },
+              "completeness": "complete",
+              "control_plane": "workerd",
+              "cwd_origin": "sandbox",
+              "generation": 4,
+              "machine": "AMD64",
+              "observation": "partial",
+              "packages": {
+                "matplotlib": "3.11.1",
+                "numpy": "2.5.2",
+                "pandas": "3.0.5",
+                "pillow": "12.3.0",
+                "scipy": "1.18.0",
+                "seaborn": "0.13.2"
+              },
+              "pid_check": "ok",
+              "platform": "win32",
+              "python_implementation": "CPython",
+              "python_source": "bundled",
+              "python_version": "3.13.15",
+              "receipt_id": "sha256:9feb80ae5ae15ddd0248d594c657665c4d8c57d71379361cbf5cdd230c0168f0",
+              "receipt_identity": "sha256:9d0f21710f22b05dd7cfe7ae3d610a44aa3d005c2fcb43e30548921a57c9f61b",
+              "runtime_rejected": null,
+              "source_revision": "cc42074244ee4260a33d6589f0739b5948e79760"
+            }
+          ],
+          "sources": [
+            {
+              "bytes_sha256": "b7f8fc7fcea148543a8ad037710f3b3b85a76a544a90cb1d180970b78d3ad66d",
+              "kind": "pdf",
+              "origin": "execution",
+              "patch_hash": "sha256:4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+              "receipt_identity": "sha256:9d0f21710f22b05dd7cfe7ae3d610a44aa3d005c2fcb43e30548921a57c9f61b",
+              "source_id": "runtime:lab_evidence_figures.py#deformation"
+            }
+          ]
+        },
+        "px": [
+          1800,
+          1800
+        ],
+        "required": [
+          "integrity",
+          "size"
+        ],
+        "sha256": "cec9f9a11b9a501ee1831d04496bf3ad36a3dd9b1add99691e0be8f95138d2c9",
+        "size_pt": null,
+        "verdict": "accepted"
+      },
+      "name": "deformation.png",
+      "replaced": true,
+      "status": "done",
+      "url": "/exports/deformation.png",
+      "vector": false
+    }
+  ],
+  "progress": {
+    "phase": "done",
+    "step": 2,
+    "total": 2
+  },
+  "request": {
+    "acknowledged": [],
+    "background": "white",
+    "document_id": null,
+    "document_revision": null,
+    "figure_id": null,
+    "filename": "deformation",
+    "formats": [
+      "pdf",
+      "png"
+    ],
+    "include_report": false,
+    "inspection": {
+      "mode": "standard",
+      "profile_id": null
+    },
+    "overwrite": "replace",
+    "ppi": 180,
+    "scope": "canvas",
+    "validation_policy": "block_on_error"
+  },
+  "status": "done",
+  "timing": {
+    "elapsed_ms": 355,
+    "finished_at": 1793944236.8043735,
+    "started_at": 1793944236.449793
+  },
+  "trace": {
+    "current_phase": "publish",
+    "dropped": 0,
+    "events": [
+      {
+        "at_ms": 0.457,
+        "facts": {
+          "formats": 2
+        },
+        "outcome": "ok",
+        "phase": "prepare"
+      },
+      {
+        "at_ms": 0.73,
+        "outcome": "ok",
+        "phase": "source"
+      },
+      {
+        "at_ms": 0.779,
+        "outcome": "ok",
+        "phase": "compile"
+      },
+      {
+        "at_ms": 284.691,
+        "facts": {
+          "sources": 1
+        },
+        "outcome": "ok",
+        "phase": "compose"
+      },
+      {
+        "at_ms": 294.94,
+        "outcome": "ok",
+        "phase": "raster"
+      },
+      {
+        "at_ms": 339.768,
+        "outcome": "ok",
+        "phase": "inspect"
+      },
+      {
+        "at_ms": 352.884,
+        "outcome": "ok",
+        "phase": "publish"
+      }
+    ],
+    "failed_code": null,
+    "failed_phase": null,
+    "limit": 64,
+    "trace_version": 1,
+    "truncated": false
+  },
+  "validation_summary": {},
+  "warnings": []
+}

@@ -1,0 +1,5 @@
+{
+  "returncode": 0,
+  "stdout": "{\n  \"checks\": {\n    \"endpoint\": true,\n    \"elastic_analytic\": true,\n    \"force_balance\": true,\n    \"plastic_active\": true,\n    \"reduced_force\": true,\n    \"curve_equivalence\": true\n  },\n  \"passed\": true,\n  \"directory\": \"D:\\\\kimi\\\\benchmark_public\\\\v03_native_20261105\\\\claude-code-S04-a1\"\n}\n",
+  "stderr": ""
+}

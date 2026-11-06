@@ -1,0 +1,214 @@
+{
+  "attempt": "claude-code-S07-a1",
+  "task": "S07",
+  "configuration": "claude-code",
+  "model": "deepseek-v4-flash",
+  "classification": "protocol_ambiguity",
+  "status": "submitted",
+  "raw_score": 0,
+  "score": null,
+  "elapsed_seconds": 16.875,
+  "tool_calls": 18,
+  "solver_tests": 0,
+  "sdk_estimated_usd": 0.08791600000000001,
+  "actual_billed_usd": null,
+  "protocol_note": "Task descriptor says safe/fail IDs without explicitly requiring an array. Submitted named endpoint object is rejected by the frozen array-indexing validator. Raw grade retained; exclude this formatting-ambiguous cell from capability conclusions.",
+  "input_tokens": 5301,
+  "output_tokens": 2139,
+  "cached_input_tokens": 0,
+  "observation": "recorded events only; no hidden reasoning reconstructed",
+  "timeline_events": 121,
+  "source_files": [
+    "task.json",
+    "query.json",
+    "run.json",
+    "submission.json",
+    "evaluation.json",
+    "broker_state.json",
+    "active_tools.json"
+  ],
+  "artifacts": [
+    {
+      "id": "artifact_07862ace889c30f5ee3e",
+      "parameters": {
+        "lambda": 1.235
+      },
+      "files": [
+        "artifact_07862ace889c30f5ee3e.csv",
+        "artifact_07862ace889c30f5ee3e.json",
+        "artifact_07862ace889c30f5ee3e_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_349af5e6fc2c875a6c81",
+      "parameters": {
+        "lambda": 1.24
+      },
+      "files": [
+        "artifact_349af5e6fc2c875a6c81.csv",
+        "artifact_349af5e6fc2c875a6c81.json",
+        "artifact_349af5e6fc2c875a6c81_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_62d293b26e71bdd0fbc2",
+      "parameters": {
+        "lambda": 1.25
+      },
+      "files": [
+        "artifact_62d293b26e71bdd0fbc2.csv",
+        "artifact_62d293b26e71bdd0fbc2.json",
+        "artifact_62d293b26e71bdd0fbc2_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_6a838347d8547050e3ea",
+      "parameters": {
+        "lambda": 1.1
+      },
+      "files": [
+        "artifact_6a838347d8547050e3ea.csv",
+        "artifact_6a838347d8547050e3ea.json",
+        "artifact_6a838347d8547050e3ea_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_8547199f85d1c0ca0368",
+      "parameters": {
+        "lambda": 1.224
+      },
+      "files": [
+        "artifact_8547199f85d1c0ca0368.csv",
+        "artifact_8547199f85d1c0ca0368.json",
+        "artifact_8547199f85d1c0ca0368_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_85a097d5ca48671252f0",
+      "parameters": {
+        "lambda": 0
+      },
+      "files": [
+        "artifact_85a097d5ca48671252f0.csv",
+        "artifact_85a097d5ca48671252f0.json",
+        "artifact_85a097d5ca48671252f0_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_88d2084f76291bbf6b5c",
+      "parameters": {
+        "lambda": 1.3
+      },
+      "files": [
+        "artifact_88d2084f76291bbf6b5c.csv",
+        "artifact_88d2084f76291bbf6b5c.json",
+        "artifact_88d2084f76291bbf6b5c_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_990da6e146db90b6fce9",
+      "parameters": {
+        "lambda": 1.5
+      },
+      "files": [
+        "artifact_990da6e146db90b6fce9.csv",
+        "artifact_990da6e146db90b6fce9.json",
+        "artifact_990da6e146db90b6fce9_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_9da803fc33ea11da92b8",
+      "parameters": {
+        "lambda": 1.223
+      },
+      "files": [
+        "artifact_9da803fc33ea11da92b8.csv",
+        "artifact_9da803fc33ea11da92b8.json",
+        "artifact_9da803fc33ea11da92b8_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_c130d266df6cb5357710",
+      "parameters": {
+        "lambda": 1.22
+      },
+      "files": [
+        "artifact_c130d266df6cb5357710.csv",
+        "artifact_c130d266df6cb5357710.json",
+        "artifact_c130d266df6cb5357710_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_ccf5828c7a2becca43f6",
+      "parameters": {
+        "lambda": 1.2
+      },
+      "files": [
+        "artifact_ccf5828c7a2becca43f6.csv",
+        "artifact_ccf5828c7a2becca43f6.json",
+        "artifact_ccf5828c7a2becca43f6_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_cd5e7c7582de5a875668",
+      "parameters": {
+        "lambda": 1.225
+      },
+      "files": [
+        "artifact_cd5e7c7582de5a875668.csv",
+        "artifact_cd5e7c7582de5a875668.json",
+        "artifact_cd5e7c7582de5a875668_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_d8b483d205a8e527070e",
+      "parameters": {
+        "lambda": 1.23
+      },
+      "files": [
+        "artifact_d8b483d205a8e527070e.csv",
+        "artifact_d8b483d205a8e527070e.json",
+        "artifact_d8b483d205a8e527070e_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_db5a7349e310c7699518",
+      "parameters": {
+        "lambda": 1
+      },
+      "files": [
+        "artifact_db5a7349e310c7699518.csv",
+        "artifact_db5a7349e310c7699518.json",
+        "artifact_db5a7349e310c7699518_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_e78f73b94b94053ab7d8",
+      "parameters": {
+        "lambda": 0.5
+      },
+      "files": [
+        "artifact_e78f73b94b94053ab7d8.csv",
+        "artifact_e78f73b94b94053ab7d8.json",
+        "artifact_e78f73b94b94053ab7d8_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_f07d6db51c83185b9244",
+      "parameters": {
+        "lambda": 1.222
+      },
+      "files": [
+        "artifact_f07d6db51c83185b9244.csv",
+        "artifact_f07d6db51c83185b9244.json",
+        "artifact_f07d6db51c83185b9244_contacts.csv"
+      ]
+    }
+  ],
+  "solver_scope": "no native solver artifact for this attempt",
+  "partition": false,
+  "late_host_supplement": false,
+  "scoring_changed": false,
+  "inference_repeated": false,
+  "analysis_repeated": false
+}

@@ -88,4 +88,13 @@ connector_article: true
 <h2>延伸阅读与可检查文件</h2>
 <p><a href="https://learn.chatgpt.com/docs/non-interactive-mode">Codex non-interactive execution</a> · <a href="https://code.claude.com/docs/en/headless">Claude Code programmatic execution</a> · <a href="/post/2026/11/04/mechanics-benchmark-v02/">历史 mini / Pi 记录</a></p>
 <p><a href="/articles/mechagent-lab/summary.csv">CSV</a> · <a href="/articles/mechagent-lab/summary.json">JSON</a> · <a href="/articles/mechagent-lab/native_extension_registration.json">冻结注册</a></p>
+
+
+
+<!-- STEP-EVIDENCE-START -->
+<h2>逐步证据：从分区到真实应力云图</h2>
+<p>新增独立证据档案，收录全部 25 条保留记录的 805 条可观察事件与 38 份数值产物。每个案例均可查看输入、决策输出、工具调用、JSON/CSV 和计算日志；S04 另有分区节点/单元清单、真实 ODB 应力及位移云图。</p>
+<p><a href="/articles/mechagent-lab/step-evidence/index.html">打开逐步证据档案</a> · <a href="/articles/mechagent-lab/mechagent-lab-step-evidence.zip">下载独立证据包</a></p>
+<figure><a href="/articles/mechagent-lab/step-evidence/index.html"><img src="/articles/mechagent-lab/step-evidence/figures/stress.png" alt="Genuine full and reduced ODB stress contours" loading="lazy"></a><figcaption>仅只读后处理，没有重跑模型或分析，也没有改变原评分。完整模型云图为独立参考；降阶模型仅显示保留实体应力，不恢复子结构内部应力。Codex 的延迟完成结果标作事后主机补充证据，不改判为通过。大体积 ODB/SIM/SUP 文件仅在本地保留。</figcaption></figure>
+<!-- STEP-EVIDENCE-END -->
 </article>

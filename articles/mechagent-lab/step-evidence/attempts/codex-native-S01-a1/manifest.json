@@ -1,0 +1,45 @@
+{
+  "attempt": "codex-native-S01-a1",
+  "task": "S01",
+  "configuration": "codex-native",
+  "model": "gpt-6.1-sol",
+  "classification": "passed",
+  "status": "submitted",
+  "raw_score": 100,
+  "score": 100,
+  "elapsed_seconds": 155.67199999999866,
+  "tool_calls": 3,
+  "solver_tests": 0,
+  "sdk_estimated_usd": null,
+  "actual_billed_usd": null,
+  "protocol_note": null,
+  "input_tokens": 51212,
+  "output_tokens": 598,
+  "cached_input_tokens": 40320,
+  "observation": "recorded events only; no hidden reasoning reconstructed",
+  "timeline_events": 34,
+  "source_files": [
+    "task.json",
+    "query.json",
+    "run.json",
+    "submission.json",
+    "evaluation.json",
+    "broker_state.json"
+  ],
+  "artifacts": [
+    {
+      "id": "artifact_441ec2c4c6913f3e3334",
+      "parameters": {},
+      "files": [
+        "artifact_441ec2c4c6913f3e3334.csv",
+        "artifact_441ec2c4c6913f3e3334.json"
+      ]
+    }
+  ],
+  "solver_scope": "no native solver artifact for this attempt",
+  "partition": false,
+  "late_host_supplement": false,
+  "scoring_changed": false,
+  "inference_repeated": false,
+  "analysis_repeated": false
+}

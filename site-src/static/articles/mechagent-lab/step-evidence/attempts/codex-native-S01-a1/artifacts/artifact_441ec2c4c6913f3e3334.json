@@ -1,0 +1,10 @@
+{
+  "task": "S01",
+  "parameters": {},
+  "result": {
+    "engine": "NumPy direct stiffness, 1D axial FEM",
+    "U_mm": 0.044,
+    "reaction_N": -12.000000000000002,
+    "energy_Nmm": 0.26400000000000007
+  }
+}

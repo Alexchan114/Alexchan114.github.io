@@ -1,0 +1,50 @@
+{
+  "attempt": "claude-code-S04-a1",
+  "task": "S04",
+  "configuration": "claude-code",
+  "model": "deepseek-v4-flash",
+  "classification": "passed",
+  "status": "submitted",
+  "raw_score": 100,
+  "score": 100,
+  "elapsed_seconds": 64.42199999999866,
+  "tool_calls": 3,
+  "solver_tests": 1,
+  "sdk_estimated_usd": 0.060145,
+  "actual_billed_usd": null,
+  "protocol_note": null,
+  "input_tokens": 2209,
+  "output_tokens": 1836,
+  "cached_input_tokens": 0,
+  "observation": "recorded events only; no hidden reasoning reconstructed",
+  "timeline_events": 101,
+  "source_files": [
+    "task.json",
+    "query.json",
+    "run.json",
+    "submission.json",
+    "evaluation.json",
+    "native_result.json",
+    "native_console.json",
+    "broker_state.json",
+    "active_tools.json"
+  ],
+  "artifacts": [
+    {
+      "id": "artifact_c2f145708ef0f848c70f",
+      "parameters": {
+        "cut_mm": 6
+      },
+      "files": [
+        "artifact_c2f145708ef0f848c70f.csv",
+        "artifact_c2f145708ef0f848c70f.json"
+      ]
+    }
+  ],
+  "solver_scope": "actual Abaqus",
+  "partition": true,
+  "late_host_supplement": false,
+  "scoring_changed": false,
+  "inference_repeated": false,
+  "analysis_repeated": false
+}

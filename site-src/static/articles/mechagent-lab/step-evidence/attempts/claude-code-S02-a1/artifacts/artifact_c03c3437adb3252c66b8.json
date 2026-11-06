@@ -1,0 +1,11 @@
+{
+  "task": "S02",
+  "parameters": {
+    "n": 8
+  },
+  "result": {
+    "engine": "1D axial linear elements, midpoint area",
+    "n": 8,
+    "U_mm": 0.006926605540432034
+  }
+}

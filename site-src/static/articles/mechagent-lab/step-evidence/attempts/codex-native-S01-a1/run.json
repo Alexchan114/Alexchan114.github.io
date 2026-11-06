@@ -1,0 +1,31 @@
+{
+  "configuration": "codex-native",
+  "harness": "Codex CLI",
+  "client_version": "0.166.0-alpha.5.1",
+  "model": "gpt-6.1-sol",
+  "auth": "existing ChatGPT login",
+  "reasoning_effort": "xhigh",
+  "task": "S01",
+  "tier": "public_reduced_physics",
+  "status": "submitted",
+  "started_utc": "2026-11-04T16:27:40.657493+00:00",
+  "preregistration_hash": "27ac1cf41f385cf6dffa8d6eb6f8ab2eb10002d6b39e78b8b93fd47c0b9da2c8",
+  "automatic_benchmark_retry": false,
+  "actual_billed_usd": null,
+  "elapsed_seconds": 155.67199999999866,
+  "returncode": 0,
+  "tool_calls": 3,
+  "solver_tests": 0,
+  "evaluation": {
+    "status": "passed",
+    "score": 100,
+    "checks": {
+      "displacement": true,
+      "equilibrium": true,
+      "energy": true,
+      "executed": true
+    }
+  },
+  "observed_prohibited_tools": [],
+  "finished_utc": "2026-11-04T16:30:16.330126+00:00"
+}

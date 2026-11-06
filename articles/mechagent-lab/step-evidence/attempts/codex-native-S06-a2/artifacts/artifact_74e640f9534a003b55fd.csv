@@ -1,0 +1,12 @@
+﻿json_path,value_json
+"$[""task""]","""S06"""
+"$[""parameters""][""library_id""]","""L17"""
+"$[""parameters""][""tie_tolerance_mm""]",0.1414223562373095
+"$[""parameters""][""adjust""]",false
+"$[""result""][""engine""]","""metadata identity plus planar geometric coverage, not Abaqus Tie execution"""
+"$[""result""][""library_id""]","""L17"""
+"$[""result""][""compatible""]",true
+"$[""result""][""max_distance_mm""]",0.1414213562373095
+"$[""result""][""tie_tolerance_mm""]",0.1414223562373095
+"$[""result""][""coverage""]",true
+"$[""result""][""adjust""]",false

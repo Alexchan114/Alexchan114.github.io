@@ -1,0 +1,14 @@
+{
+  "calls": 4,
+  "solver_calls": 0,
+  "submitted": true,
+  "evaluation": {
+    "status": "passed",
+    "score": 100,
+    "checks": {
+      "optimal_prelift": true,
+      "coverage": true,
+      "reported": true
+    }
+  }
+}

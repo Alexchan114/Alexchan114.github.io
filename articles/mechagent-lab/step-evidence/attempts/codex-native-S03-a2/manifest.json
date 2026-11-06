@@ -1,0 +1,73 @@
+{
+  "attempt": "codex-native-S03-a2",
+  "task": "S03",
+  "configuration": "codex-native",
+  "model": "gpt-6.1-sol",
+  "classification": "passed",
+  "status": "submitted",
+  "raw_score": 100,
+  "score": 100,
+  "elapsed_seconds": 56.67199999999866,
+  "tool_calls": 4,
+  "solver_tests": 0,
+  "sdk_estimated_usd": null,
+  "actual_billed_usd": null,
+  "protocol_note": null,
+  "input_tokens": 65422,
+  "output_tokens": 1534,
+  "cached_input_tokens": 43136,
+  "observation": "recorded events only; no hidden reasoning reconstructed",
+  "timeline_events": 28,
+  "source_files": [
+    "task.json",
+    "query.json",
+    "run.json",
+    "submission.json",
+    "evaluation.json",
+    "broker_state.json"
+  ],
+  "artifacts": [
+    {
+      "id": "artifact_9805d356ba16b5efd335",
+      "parameters": {
+        "amplitudes": [
+          0.368000000001,
+          0.548952380953,
+          0.682285714286,
+          0.279111111112,
+          0.748952380953,
+          0.548952380953
+        ]
+      },
+      "files": [
+        "artifact_9805d356ba16b5efd335.csv",
+        "artifact_9805d356ba16b5efd335.json",
+        "artifact_9805d356ba16b5efd335_contacts.csv"
+      ]
+    },
+    {
+      "id": "artifact_a7fd671e4a77bff3032b",
+      "parameters": {
+        "amplitudes": [
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ]
+      },
+      "files": [
+        "artifact_a7fd671e4a77bff3032b.csv",
+        "artifact_a7fd671e4a77bff3032b.json",
+        "artifact_a7fd671e4a77bff3032b_contacts.csv"
+      ]
+    }
+  ],
+  "solver_scope": "no native solver artifact for this attempt",
+  "partition": false,
+  "late_host_supplement": false,
+  "scoring_changed": false,
+  "inference_repeated": false,
+  "analysis_repeated": false
+}
